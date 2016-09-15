@@ -1,0 +1,31 @@
+{
+  "name": "tapp",
+  "version": "1.0.0",
+  "description": "an account manager for beer reps",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/Tap-App/Tapp.git"
+  },
+  "keywords": [
+    "beer",
+    "sales",
+    "inventory",
+    "account",
+    "management"
+  ],
+  "author": "",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/Tap-App/Tapp/issues"
+  },
+  "homepage": "https://github.com/Tap-App/Tapp#readme",
+  "dependencies": {
+    "angular": "^1.5.8",
+    "bootstrap": "^3.3.7",
+    "jquery": "^3.1.0"
+  }
+}
