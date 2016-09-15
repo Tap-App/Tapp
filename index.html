@@ -23,9 +23,32 @@
   </head>
   <body>
     <nav class="navbar navbar-default navbar-fixed-top">
-  <div class="container">
-    <button type="button" class="btn btn-default navbar-btn navbar-right">Sign in</button>
-  </div>
+  <div class="container-fluid">
+    <!-- collapse toggle -->
+    <div class="navbar-header">
+      <button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#bs-example-navbar-collapse-1" aria-expanded="false">
+        <span class="sr-only">Toggle navigation</span>
+        <span class="icon-bar"></span>
+        <span class="icon-bar"></span>
+        <span class="icon-bar"></span>
+      </button>
+      <a class="navbar-brand" href="#">Brand</a>
+    </div>
+    <!-- end collapse -->
+
+    <!-- content to toggle -->
+    <div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
+      <ul class="nav navbar-nav">
+        <li class="active"><a href="#">Accounts <span class="sr-only">(current)</span></a></li>
+        <li><a href="#">Order</a></li>
+        <li><a href="#">Inventory</a></li>
+      </ul>
+
+
+      <button type="button" class="btn btn-default navbar-btn navbar-right">Sign in</button>
+
+    </div><!-- /.navbar-collapse -->
+  </div> <!-- /.contanier-fluid -->
 </nav>
 
   </body>
