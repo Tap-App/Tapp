@@ -1,3 +1,17 @@
 body{
   padding-top: 100px;
+  background-color: gold;
+}
+.spacingSmall{
+  height: 200px;
+}
+.hidden{
+  display: none;
+}
+.accountBox{
+  overflow: scroll;
+}
+.account {
+  background-color: grey;
+  overflow: auto;
 }
