@@ -1,13 +1,13 @@
 <h1>see all accounts</h1>
 
 <div class="accountBox">
-<div class="account">
-  <h2>Account Name</h2>
-  <h4>Contact Name</h4>
-  <h4>Phone Number</h4>
-  <h4>Address</h4>
-  <h5>last order date</h5>
-  <h5>avg order ammount</h5>
+<div class="account" ng-repeat="account in myAccountsList">
+  <h2>{{account.accountName}}</h2>
+  <h4>Contact: {{account.contact}}</h4>
+  <h4>Phone Number: {{account.phone}}</h4>
+  <h4>Address: {{account.address}}</h4>
+  <h5>last order date: {{account.lastOrderDate}}</h5>
+  <h5>avg order ammount: {{account.avgOrderAmmount}}</h5>
   <a href="#">Last Order</a>
   <a href="#">Re-Order</a>
   <a href="#">New Order</a>

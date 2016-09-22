@@ -1,0 +1,86 @@
+[{
+    "distributer": "Bear Island",
+    "breweries": [{
+            "id": "1",
+            "name": "Tradesman",
+            "inv": [{
+                    "name": "bottles",
+                    "beers": [{
+                        "name": "Agave Wheat",
+                        "type": "wheat beer",
+                        "qty": "40"
+                    }, {
+                        "name": "Bricklayer Ale",
+                        "type": "Ale",
+                        "qty": "80"
+                    }]
+                }, {
+                    "name": "Sixtels",
+                    "beers": [{
+                        "name": "Agave Wheat",
+                        "type": "wheat beer",
+                        "qty": "5"
+                    }, {
+                        "name": "Bricklayer Ale",
+                        "type": "Ale",
+                        "qty": "10"
+                    }]
+                }, {
+                    "name": "Half Barrels",
+                    "beers": [{
+                        "name": "Agave Wheat",
+                        "type": "wheat beer",
+                        "qty": "8"
+                    }, {
+                        "name": "Bricklayer Ale",
+                        "type": "Ale",
+                        "qty": "10"
+                    }]
+                }
+
+            ]
+        }, {
+            "id": "2",
+            "name": "Benford",
+            "inv": [{
+                    "name": "bottles",
+                    "beers": [{
+                        "name": "O'sOO Oyster Stout",
+                        "type": "Stout",
+                        "qty": "100"
+                    }, {
+                        "name": "Irish Honey Ale",
+                        "type": "Ale",
+                        "qty": "50"
+                    }]
+                }, {
+                    "name": "Sixtels",
+                    "beers": [{
+                        "name": "O'sOO Oyster Stout",
+                        "type": "Stout",
+                        "qty": "15"
+                    }, {
+                        "name": "Irish Honey Ale",
+                        "type": "Ale",
+                        "qty": "20"
+                    }]
+                }, {
+                    "name": "Half Barrels",
+                    "beers": [{
+                        "name": "O'sOO Oyster Stout",
+                        "type": "Stout",
+                        "qty": "9"
+                    }, {
+                        "name": "Irish Honey Ale",
+                        "type": "Ale",
+                        "qty": "5"
+                    }]
+                }
+
+            ]
+        }
+
+    ]
+
+
+}]

@@ -1,7 +1,7 @@
 module.exports = function(app){
-  app.controller('inventoryController',['$scope', '$http', function($scope, $http){
+  app.controller('inventoryController',['$scope', '$http', 'inventoryService', 'userService', function($scope, $http, inventoryService, userService){
 
-
+    
 
 
 

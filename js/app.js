@@ -7,6 +7,12 @@ require('./controllers/ordersController')(app);
 require('./controllers/inventoryController')(app);
 require('./controllers/welcomeController')(app);
 
+// Services
+require('./services/userService')(app);
+require('./services/inventoryService')(app);
+require('./services/accountService')(app);
+
+
 
 //router
 app.config(['$routeProvider', function ($routeProvider) {
