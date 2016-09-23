@@ -4,8 +4,8 @@
 'use strict'
 
 const Hapi = require('hapi')
-const Boom = require ('boom')
 const Inert = require('inert')
+const Mongojs = require('mongojs')
 
 
 const server = new Hapi.Server()
@@ -15,39 +15,22 @@ server.connection({
 })
 
 // this registers inert with hapi
-server.register(Inert, () => {})
-
+server.register([
+  Inert,
+  require('./routes/accounts')], (err) => {
+    if (err) { throw err }
+  })
 
 /***********************
-*  ROUTES
+*  DATABASE
+* // the db is on a remote server (the port default to mongo)
+* let db = mongojs('example.com/mydb', ['mycollection'])
 ***********************/
-server.route({
-  method: 'GET',
-  path: '/accounts',
+server.app.db = Mongojs('tapp-db', ['accounts', 'users', 'inventory'])
 
-  handler(request, reply) {
-    reply(console.log(' account placeholder'))
-  }
-})
-
-server.route({
-  method: 'GET',
-  path: '/inventory',
-
-  handler(request, reply) {
-    reply(console.log(' inventory placeholder'))
-  }
-})
-
-server.route({
-  method: 'GET',
-  path: '/users',
-
-  handler(request, reply) {
-    reply(console.log(' users placeholder'))
-  }
-})
-
+/***********************
+*  ROUTES (extracted to separate files)
+***********************/
 
 /***********************
 *  INERT
