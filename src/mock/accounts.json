@@ -1,0 +1,42 @@
+[
+  {
+    "repID":"1",
+    "accountName":"Spero",
+    "contact":"Rob",
+    "phone": "555-8769",
+    "address":"616 meeting street",
+    "lastOrderDate":"9/16/16",
+    "avgOrderAmmount":"1000"
+
+  },
+  {
+    "repID":"1",
+    "accountName":"616",
+    "contact":"Trey",
+    "phone": "555-7575",
+    "address":"616 meeting street",
+    "lastOrderDate":"9/05/16",
+    "avgOrderAmmount":"500"
+
+  },
+  {
+    "repID":"1",
+    "accountName":"BBQ Joint",
+    "contact":"Gene",
+    "phone": "555-2131",
+    "address":"Somewhere Mt P",
+    "lastOrderDate":"9/20/16",
+    "avgOrderAmmount":"5000"
+
+  },
+  {
+    "repID":"1",
+    "accountName":"Cherrywood",
+    "contact":"Chris P",
+    "phone": "555-8008",
+    "address":"Kiawah Island",
+    "lastOrderDate":"8/28/16",
+    "avgOrderAmmount":"700"
+
+  }
+]
