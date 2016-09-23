@@ -2,6 +2,7 @@
 * Node backed w/ Hapi
 ***********************/
 'use strict'
+
 const Hapi = require('hapi')
 const Boom = require ('boom')
 const Inert = require('inert')
@@ -12,6 +13,9 @@ server.connection({
   host: 'localhost',
   port: 8332
 })
+
+// this registers inert with hapi
+server.register(Inert, () => {})
 
 
 /***********************
@@ -63,10 +67,10 @@ server.route({
       index: true
     }
   }
-});
+})
 
 server.start((err) => {
-  if (error) { throw err }
+  if (err) { throw err }
 
   console.log('Server running at:', server.info.uri)
 })
