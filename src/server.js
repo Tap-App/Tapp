@@ -25,8 +25,11 @@ server.register([
 *  DATABASE
 * // the db is on a remote server (the port default to mongo)
 * let db = mongojs('example.com/mydb', ['mycollection'])
+* localhost:27017
 ***********************/
-server.app.db = Mongojs('tapp-db', ['accounts', 'users', 'inventory'])
+const databaseUrl = 'tapp-db' // "username:password@example.com/mydb"
+const collections = ['accounts', 'users', 'inventory']
+server.app.db = Mongojs(databaseUrl, collections)
 
 /***********************
 *  ROUTES (extracted to separate files)
