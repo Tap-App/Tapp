@@ -10,26 +10,29 @@ const Joi = require('joi')
 exports.register = (server, options, next) => {
   const db = server.app.db
 
+  /***********************
+  *  ROUTES
+  ***********************/
+  server.route({
+    method: 'GET',
+    path: '/users',
+
+    handler(request, reply) {
+      db.users.find((err, data) => {
+          if (err) {
+              return reply(Boom.wrap(err, 'Internal MongoDB error'))
+          }
+          reply(data)
+      })
+    }
+  })
+  
+
   return next()
 }
 
 
-/***********************
-*  ROUTES
-***********************/
-server.route({
-  method: 'GET',
-  path: '/users',
 
-  handler(request, reply) {
-    db.users.find((err, data) => {
-        if (err) {
-            return reply(Boom.wrap(err, 'Internal MongoDB error'))
-        }
-        reply(data)
-    })
-  }
-})
 
 
 /***********************
