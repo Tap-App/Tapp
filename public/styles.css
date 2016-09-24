@@ -12,5 +12,11 @@ body {
   overflow: scroll; }
 
 .account {
-  background-color: grey;
-  overflow: auto; }
+  background-color: white;
+  overflow: auto;
+  margin-top: 5%; }
+
+.beer {
+  background-color: white;
+  overflow: auto;
+  margin-top: 5%; }

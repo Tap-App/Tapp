@@ -1,26 +1,15 @@
-<h1>Inventory Checker</h1>
+<h1>{{user.distributer}} Inventory Checker</h1>
 
-<div class="inventoryBox col-xs-12 col-md-7">
-  <div class="brewery">
-    <h1>Brewery Name</h1>
-      <div class="bottles">
-        <h3>Bottles</h3>
-        <div class="bottleBeer">
-          <h5>Beer <strong>QTY</strong></h5>
-        </div>
-      </div>
-      <div class="sixtles">
-        <h3>Sixtels</h3>
-        <div class="sixtleBeer">
-          <h5>Beer <strong>QTY</strong></h5>
-        </div>
-      </div>
-      <div class="halfBarrels">
-        <h3>Half Barrels</h3>
-        <div class="halfBarrelBeer">
-          <h5>Beer <strong>QTY</strong></h5>
-        </div>
-      </div>
+<div class="inventoryBox col-xs-12 col-md-7" >
+  <div class="beer" ng-repeat="beer in myInventory ">
+    <h3>{{beer.name}}<h3>
+      <h4>Brewery: {{beer.brewery}} Type: {{beer.beerType}}</h4>
+    <p>
+      {{beer.description}}
+    </p>
+    <h4>Available:</h4>
+    <h5>Sixtels: {{beer.qtySixtels}} Half Barrels {{beer.qtyHalfBarrels}} Cases: {{beer.qtyCases}}</h5>
+    <h4>Price: {{beer.unitPrice}}</h4>
   </div>
 </div>
 <aside class="addBreweryBox col-xs-12 col-md-4">

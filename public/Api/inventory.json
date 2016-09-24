@@ -1,86 +1,71 @@
 [{
-    "distributer": "Bear Island",
-    "breweries": [{
-            "id": "1",
-            "name": "Tradesman",
-            "inv": [{
-                    "name": "bottles",
-                    "beers": [{
-                        "name": "Agave Wheat",
-                        "type": "wheat beer",
-                        "qty": "40"
-                    }, {
-                        "name": "Bricklayer Ale",
-                        "type": "Ale",
-                        "qty": "80"
-                    }]
-                }, {
-                    "name": "Sixtels",
-                    "beers": [{
-                        "name": "Agave Wheat",
-                        "type": "wheat beer",
-                        "qty": "5"
-                    }, {
-                        "name": "Bricklayer Ale",
-                        "type": "Ale",
-                        "qty": "10"
-                    }]
-                }, {
-                    "name": "Half Barrels",
-                    "beers": [{
-                        "name": "Agave Wheat",
-                        "type": "wheat beer",
-                        "qty": "8"
-                    }, {
-                        "name": "Bricklayer Ale",
-                        "type": "Ale",
-                        "qty": "10"
-                    }]
-                }
+        "name": "Basil Better Have My Honey",
+        "brewery": "Low Tide",
+        "beerType": "Wheat",
+        "description": "I'm guessing its a wheat with basil and honey",
+        "qtyCases": 20,
+        "qtySixtels": 7,
+        "qtyHalfBarrels": 15,
+        "unitPrice":85,
+        "distributer": "Bear Island"
 
-            ]
-        }, {
-            "id": "2",
-            "name": "Benford",
-            "inv": [{
-                    "name": "bottles",
-                    "beers": [{
-                        "name": "O'sOO Oyster Stout",
-                        "type": "Stout",
-                        "qty": "100"
-                    }, {
-                        "name": "Irish Honey Ale",
-                        "type": "Ale",
-                        "qty": "50"
-                    }]
-                }, {
-                    "name": "Sixtels",
-                    "beers": [{
-                        "name": "O'sOO Oyster Stout",
-                        "type": "Stout",
-                        "qty": "15"
-                    }, {
-                        "name": "Irish Honey Ale",
-                        "type": "Ale",
-                        "qty": "20"
-                    }]
-                }, {
-                    "name": "Half Barrels",
-                    "beers": [{
-                        "name": "O'sOO Oyster Stout",
-                        "type": "Stout",
-                        "qty": "9"
-                    }, {
-                        "name": "Irish Honey Ale",
-                        "type": "Ale",
-                        "qty": "5"
-                    }]
-                }
+    }, {
+        "name": "Sandman Saison",
+        "brewery": "Low Tide",
+        "beerType": "Saison",
+        "description": "Session that Saisson",
+        "qtyCases": 10,
+        "qtySixtels": 4,
+        "qtyHalfBarrels": 8,
+        "unitPrice":85,
+        "distributer": "Bear Island"
 
-            ]
-        }
+    }, {
+        "name": "Welder's Wheat",
+        "brewery": "Tradesman",
+        "beerType": "Wheat",
+        "description": "Wheat Beer with a hint of Agave nectar",
+        "qtyCases": 30,
+        "qtySixtels": 15,
+        "qtyHalfBarrels": 2,
+        "unitPrice":85,
+        "distributer": "Bear Island"
 
-    ]
+    }, {
+        "name": "Bricklayer",
+        "brewery": "Tradesman",
+        "beerType": "Ale",
+        "description": "Amber Ale that tastes good",
+        "qtyCases": 10,
+        "qtySixtels": 19,
+        "qtyHalfBarrels": 4,
+        "unitPrice":85,
+        "distributer": "Bear Island"
+
+    }, {
+        "name": "Circuit Breaker",
+        "brewery": "Tradesman",
+        "beerType": "Lager",
+        "description": "Delicious beer",
+        "qtyCases": 12,
+        "qtySixtels": 2,
+        "qtyHalfBarrels": 8,
+        "unitPrice":85,
+        "distributer": "Bear Island"
+
+    },
+    {
+        "name": "Budweiser",
+        "brewery": "Anheiseur Busch",
+        "beerType": "Lager",
+        "description": "Redneck Beer",
+        "qtyCases": 12,
+        "qtySixtels": 2,
+        "qtyHalfBarrels": 8,
+        "unitPrice":85,
+        "distributer": "AB"
+
+    }
 
 
-}]
+]
