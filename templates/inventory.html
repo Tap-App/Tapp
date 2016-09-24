@@ -1,8 +1,8 @@
 <h1>Inventory Checker</h1>
 
-<div class="inventoryBox col-xs-12 col-md-7">
+<div class="inventoryBox col-xs-12 col-md-7" ng-repeat="distributer in myInventory">
   <div class="brewery">
-    <h1>Brewery Name</h1>
+    <h1>{{distributer.breweries}}</h1>
       <div class="bottles">
         <h3>Bottles</h3>
         <div class="bottleBeer">

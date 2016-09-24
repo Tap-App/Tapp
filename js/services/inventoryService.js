@@ -2,14 +2,14 @@ module.exports = function(app){
 
 
   app.factory('inventoryService',['$http', function($http){
-
-    let myInventory =[];
+    let inventory = [];
+    let myInventoryList =[];
 
 
     return{
 
 
-      getMyAccounts: function(distributer){
+      getMyInventory: function(distributer){
         $http({
               method: 'GET',
               url: '/Api/inventory.json',
@@ -18,12 +18,12 @@ module.exports = function(app){
             angular.copy(response.data, inventory);
             inventory.forEach(function(el){
               if(el.distributer === distributer){
-                myAccountList.push(el);
+                myInventoryList.push(el);
               }
             })
           })
           // console.log("allsongs arrar", allSongList);
-          return myInventory
+          return myInventoryList
       },
 
       // getPages: function(pageNum, perPage){
