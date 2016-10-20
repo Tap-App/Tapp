@@ -10,19 +10,20 @@ module.exports = function(app){
 
 
       getMyAccounts: function(repID){
+        let filteredAccounts = [];
         $http({
               method: 'GET',
               url: '/Api/accounts.json',
           }).then(function(response) {
-            console.log("my accounts", response);
+            console.log("all accounts", response);
             angular.copy(response.data, accountList);
             accountList.forEach(function(el){
               if(el.repID === repID){
-                myAccountsList.push(el);
+                filteredAccounts.push(el);
               }
             })
+            angular.copy(filteredAccounts, myAccountsList);
           })
-          // console.log("allsongs arrar", allSongList);
           return myAccountsList
       },
 

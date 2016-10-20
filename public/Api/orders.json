@@ -1,0 +1,33 @@
+[
+  {
+    "orderID":1,
+    "distributer":"Bear Island",
+    "accountName":"Spero",
+    "username":"bennetth",
+    "deliveryDate":"Wednesday",
+    "orderDate":"9/21/16",
+    "beers":[
+      {
+        "name":"Welder's Wheat",
+        "brewery":"Tradesman",
+        "qtySixtels":2,
+        "qtyCases":5,
+        "qtyHalfBarrels":0
+      },
+      {
+        "name":"Bricklayer",
+        "brewery":"Tradesman",
+        "qtySixtels":0,
+        "qtyCases":0,
+        "qtyHalfBarrels":2
+      },
+      {
+        "name":"Sandman Saison",
+        "brewery":"Low Tide",
+        "qtySixtels":0,
+        "qtyCases":0,
+        "qtyHalfBarrels":3
+      }
+    ]
+  }
+]

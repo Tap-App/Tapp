@@ -20,3 +20,14 @@ body {
   background-color: white;
   overflow: auto;
   margin-top: 5%; }
+
+.order {
+  background-color: white;
+  overflow: auto;
+  margin-top: 5%; }
+
+.beerOrder {
+  border-radius: 5px;
+  background-color: grey;
+  overflow: auto;
+  margin: 1%; }
