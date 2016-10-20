@@ -1,1 +1,15 @@
-<h1>Place an order</h1>
+<div class="distOrders">
+<h1>{{user.distributer}}'s Order List</h1>
+
+<div class="order" ng-repeat="order in distOrders">
+  <h2>Account: {{order.accountName}}</h2>
+  <h3>Order Date: {{order.orderDate}} Rep: {{order.username}} Delivery Day: {{order.deliveryDate}}</h3>
+  <h4>Beers:</h4>
+  <div class="beerOrder col-xs-3" ng-repeat="beer in order.beers">
+    <h5>Beer: {{beer.brewery}} {{beer.name}}</h5>
+    <h6>Cases: {{beer.qtyCases}} Sixtels: {{beer.qtySixtels}} Half Barrels: {{beer.qtyHalfBarrels}}</h6>
+  </div>
+
+
+</div>
+<!-- </div distOrders>  -->

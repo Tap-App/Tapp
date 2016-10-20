@@ -11,6 +11,8 @@ require('./controllers/welcomeController')(app);
 require('./services/userService')(app);
 require('./services/inventoryService')(app);
 require('./services/accountService')(app);
+require('./services/orderService')(app);
+
 
 
 

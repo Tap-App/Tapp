@@ -46,8 +46,12 @@ module.exports = function(app) {
 
 },{}],4:[function(require,module,exports){
 module.exports = function(app) {
-    app.controller('ordersController', ['$scope', '$http', function($scope, $http){
+    app.controller('ordersController', ['$scope', '$http', 'userService', 'orderService', function($scope, $http, userService, orderService){
 
+      $scope.user = userService.getCurrentUser();
+      $scope.allOrders = orderService.getAllOrders();
+      $scope.distOrders = orderService.getDistOrders($scope.user.distributer);
+      $scope.myOrders = orderService.getMyOrders($scope.user.username);
 
 
 
@@ -84,6 +88,8 @@ require('./controllers/welcomeController')(app);
 require('./services/userService')(app);
 require('./services/inventoryService')(app);
 require('./services/accountService')(app);
+require('./services/orderService')(app);
+
 
 
 
@@ -116,7 +122,7 @@ app.config(['$routeProvider', function ($routeProvider) {
 
 }]);
 
-},{"./controllers/accountsController":1,"./controllers/inventoryController":2,"./controllers/loginController":3,"./controllers/ordersController":4,"./controllers/welcomeController":5,"./services/accountService":7,"./services/inventoryService":8,"./services/userService":9}],7:[function(require,module,exports){
+},{"./controllers/accountsController":1,"./controllers/inventoryController":2,"./controllers/loginController":3,"./controllers/ordersController":4,"./controllers/welcomeController":5,"./services/accountService":7,"./services/inventoryService":8,"./services/orderService":9,"./services/userService":10}],7:[function(require,module,exports){
 module.exports = function(app){
 
 
@@ -129,19 +135,20 @@ module.exports = function(app){
 
 
       getMyAccounts: function(repID){
+        let filteredAccounts = [];
         $http({
               method: 'GET',
               url: '/Api/accounts.json',
           }).then(function(response) {
-            console.log("my accounts", response);
+            console.log("all accounts", response);
             angular.copy(response.data, accountList);
             accountList.forEach(function(el){
               if(el.repID === repID){
-                myAccountsList.push(el);
+                filteredAccounts.push(el);
               }
             })
+            angular.copy(filteredAccounts, myAccountsList);
           })
-          // console.log("allsongs arrar", allSongList);
           return myAccountsList
       },
 
@@ -171,7 +178,6 @@ module.exports = function(app){
               method: 'GET',
               url: '/Api/inventory.json',
           }).then(function(response) {
-            console.log("my inventory", response);
             angular.copy(response.data, inventory);
             inventory.forEach(function(el){
               if(el.distributer === distributer){
@@ -179,7 +185,6 @@ module.exports = function(app){
               }
             })
           })
-          // console.log("allsongs arrar", allSongList);
           return myInventoryList
       },
 
@@ -193,6 +198,52 @@ module.exports = function(app){
 };
 
 },{}],9:[function(require,module,exports){
+module.exports = function(app){
+
+
+app.factory('orderService',['$http', function($http){
+ let allOrderList = [];
+ let distributerOrderList = [];
+ let myOrderList = [];
+
+ return {
+   getAllOrders: function(){
+     $http({
+       method: 'GET',
+       url: 'Api/orders.json',
+
+     }).then(function(response){
+
+         angular.copy(response.data, allOrderList);
+
+     });
+     return allOrderList;
+   },
+   getDistOrders: function(distributer){
+     console.log("All Order List inside getdistorders", allOrderList);
+     allOrderList.forEach(function(el){
+       if (el.distributer === distributer) {
+         distributerOrderList.push(el);
+       };
+     });
+     console.log("distributer order list to return", distributerOrderList);
+     return distributerOrderList;
+   },
+   getMyOrders: function(username){
+     allOrderList.forEach(function(el){
+       if (el.username === username) {
+         myOrderList.push(el);
+       };
+     });
+     return myOrderList;
+   },
+ };
+
+
+}]);
+};
+
+},{}],10:[function(require,module,exports){
 module.exports = function(app){
 
 

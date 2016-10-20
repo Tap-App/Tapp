@@ -14,7 +14,6 @@ module.exports = function(app){
               method: 'GET',
               url: '/Api/inventory.json',
           }).then(function(response) {
-            console.log("my inventory", response);
             angular.copy(response.data, inventory);
             inventory.forEach(function(el){
               if(el.distributer === distributer){
@@ -22,7 +21,6 @@ module.exports = function(app){
               }
             })
           })
-          // console.log("allsongs arrar", allSongList);
           return myInventoryList
       },
 
