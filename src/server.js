@@ -17,7 +17,11 @@ server.connection({
 // this registers inert with hapi
 server.register([
   Inert,
-  require('./routes/accounts')], (err) => {
+  require('./routes/accounts'),
+  require('./routes/inventory'),
+  require('./routes/users'),
+  require('./routes/orders')
+  ], (err) => {
     if (err) { throw err }
   })
 
@@ -28,7 +32,7 @@ server.register([
 * localhost:27017
 ***********************/
 const databaseUrl = 'tapp-db' // "username:password@example.com/mydb"
-const collections = ['accounts', 'users', 'inventory']
+const collections = ['accounts', 'users', 'inventory', 'order']
 server.app.db = Mongojs(databaseUrl, collections)
 
 /***********************

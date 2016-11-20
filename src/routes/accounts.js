@@ -55,7 +55,7 @@ exports.register = (server, options, next) => {
     method: 'POST',
     path: '/accounts',
 
-    handler(requet, reply) {
+    handler(request, reply) {
       const account = request.payload
       //create an id
       account._id = Uuid.v1()
@@ -91,7 +91,7 @@ exports.register = (server, options, next) => {
     method: 'PATCH',
     path: '/accounts/{id}',
 
-    handler(requet, reply) {
+    handler(request, reply) {
 
       db.accounts.update(
         {_id: request.params.id},
@@ -142,7 +142,7 @@ exports.register = (server, options, next) => {
   })
 
 
-  return next()
+   next()
 }
 
 
