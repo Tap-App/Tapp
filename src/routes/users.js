@@ -26,9 +26,9 @@ exports.register = (server, options, next) => {
       })
     }
   })
-  
 
-  return next()
+
+   next()
 }
 
 

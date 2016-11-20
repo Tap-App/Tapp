@@ -138,7 +138,7 @@ module.exports = function(app){
         let filteredAccounts = [];
         $http({
               method: 'GET',
-              url: '/Api/accounts.json',
+              url: '/accounts',
           }).then(function(response) {
             console.log("all accounts", response);
             angular.copy(response.data, accountList);
