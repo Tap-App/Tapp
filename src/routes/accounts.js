@@ -7,10 +7,21 @@
 const Boom = require ('boom')
 const Uuid = require ('node-uuid')
 const Joi = require('joi')
+const Mongojs = require('hapi-mongojs')
 
 // This exports.register will wrap all ACCOUNTS routes.
 exports.register = (server, options, next) => {
-  const db = server.app.db
+  const plugins = [
+    {
+      register: Mongojs,
+      options: {
+        url: 'mongodb://localhost:27017/tapp-db',
+        // ENSURE COLLECTION INDEXES (OPTIONAL)
+        collections: [{name:'accounts'}]
+      }
+    }
+  ]
+
 
 
   /***********************
@@ -22,7 +33,10 @@ exports.register = (server, options, next) => {
     path: '/accounts',
 
     handler(request, reply) {
-      db.accounts.find((err, data) => {
+      // get db collection
+      const accountCollection = Mongojs.db().collection('accounts');
+      // execute a query
+      accountCollection.find((err, data) => {
 
           if (err) { return reply(Boom.wrap(err, 'Internal MongoDB error')) }
           reply(data)
