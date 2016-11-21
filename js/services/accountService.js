@@ -39,6 +39,7 @@ module.exports = function(app){
         })
         return myAccountsServer;
       }
+      
       // getPages: function(pageNum, perPage){
       //   console.log(eventList);
       //   let start = (pageNum - 1) * perPage;

@@ -4,7 +4,7 @@ module.exports = function(app){
     $scope.myAccountsList = accountService.getMyAccountsServer($scope.user.repID);
     console.log($scope.myAccountsList);
 
-
+    
 
 
   }]);

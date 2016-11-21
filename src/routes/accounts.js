@@ -83,13 +83,15 @@ exports.register = (server, options, next) => {
     handler(request, reply) {
       const account = request.payload
       //create an id
-      account._id = Uuid.v1()
+      // account._id = Uuid.v1()
+      const accountCollection = Mongojs.db().collection('accounts');
+
 
       accountCollection.save(account, (err, result) => {
 
         if (err) { return reply(Boom.wrap(err, 'Internal MongoDB error')) }
 
-        reply(account)
+
       })
 
     },
@@ -97,8 +99,8 @@ exports.register = (server, options, next) => {
       validate: {
         payload: {
 
-          repID: Joi.number().required(),
-          accountName: Joi.string().min(10).max(50).required(),
+          repId: Joi.string().required(),
+          accountName: Joi.string().min(1).max(50).required(),
           contact: Joi.string().min(1).max(50).required(),
           email: Joi.string().email(),
           phone: Joi.string().min(1).max(20),
