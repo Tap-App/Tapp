@@ -2,7 +2,7 @@
 module.exports = function(app){
   app.controller('accountsController', ['$scope', '$http', 'accountService', 'userService', function($scope, $http, accountService, userService){
     $scope.user = userService.getCurrentUser();
-    $scope.myAccountsList = accountService.getMyAccounts($scope.user.repID);
+    $scope.myAccountsList = accountService.getMyAccountsServer($scope.user.repID);
     console.log($scope.myAccountsList);
 
 
@@ -129,7 +129,7 @@ module.exports = function(app){
   app.factory('accountService',['$http', function($http){
     let accountList = [];
     let myAccountsList =[];
-
+    let myAccountsServer = [];
 
     return{
 
@@ -142,16 +142,28 @@ module.exports = function(app){
           }).then(function(response) {
             console.log("all accounts", response);
             angular.copy(response.data, accountList);
+            console.log("account list", accountList);
             accountList.forEach(function(el){
-              if(el.repID === repID){
+              if(el.repId === repID){
                 filteredAccounts.push(el);
               }
             })
             angular.copy(filteredAccounts, myAccountsList);
           })
+          console.log("filtered accounts", myAccountsList);
           return myAccountsList
       },
 
+      getMyAccountsServer: function(repId) {
+        $http({
+            method: 'GET',
+            url: `/repAccounts/${repId}`
+        }).then(function(response){
+          console.log('server side query results :', response );
+          angular.copy(response.data, myAccountsServer);
+        })
+        return myAccountsServer;
+      }
       // getPages: function(pageNum, perPage){
       //   console.log(eventList);
       //   let start = (pageNum - 1) * perPage;
@@ -220,20 +232,24 @@ app.factory('orderService',['$http', function($http){
      return allOrderList;
    },
    getDistOrders: function(distributer){
+     currentDistOrders = [];
      console.log("All Order List inside getdistorders", allOrderList);
      allOrderList.forEach(function(el){
        if (el.distributer === distributer) {
-         distributerOrderList.push(el);
+         currentDistOrders.push(el);
        };
+       angular.copy(currentDistOrders, distributerOrderList)
      });
      console.log("distributer order list to return", distributerOrderList);
      return distributerOrderList;
    },
    getMyOrders: function(username){
+     currentMyOrders = [];
      allOrderList.forEach(function(el){
        if (el.username === username) {
-         myOrderList.push(el);
+         currentMyOrders.push(el);
        };
+       angular.copy(currentMyOrders, myOrderList)
      });
      return myOrderList;
    },

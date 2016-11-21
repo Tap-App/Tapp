@@ -11,16 +11,8 @@ const Mongojs = require('hapi-mongojs')
 
 // This exports.register will wrap all ACCOUNTS routes.
 exports.register = (server, options, next) => {
-  const plugins = [
-    {
-      register: Mongojs,
-      options: {
-        url: 'mongodb://localhost:27017/tapp-db',
-        // ENSURE COLLECTION INDEXES (OPTIONAL)
-        collections: [{name:'accounts'}]
-      }
-    }
-  ]
+
+
 
 
 
@@ -46,12 +38,31 @@ exports.register = (server, options, next) => {
   })
 
   server.route({
-    // find ONE account
+    // find a rep's accounts
     method: 'GET',
-    path: '/accounts/{id}',
+    path: '/repAccounts/{repId}',
 
     handler(request, reply) {
-      db.accounts.findOne(
+      // get db collection
+      const accountCollection = Mongojs.db().collection('accounts');
+      // execute a query
+      accountCollection.find({repId : request.params.repId}, (err, data) => {
+
+          if (err) { return reply(Boom.wrap(err, 'Internal MongoDB error')) }
+          reply(data)
+      })
+
+    }
+  })
+
+  server.route({
+    // find ONE account
+    method: 'GET',
+    path: '/oneAccount/{id}',
+
+    handler(request, reply) {
+
+      accountCollection.findOne(
         {_id: request.params.id},
         (err, data) => {
 
@@ -74,7 +85,7 @@ exports.register = (server, options, next) => {
       //create an id
       account._id = Uuid.v1()
 
-      db.accounts.save(account, (err, result) => {
+      accountCollection.save(account, (err, result) => {
 
         if (err) { return reply(Boom.wrap(err, 'Internal MongoDB error')) }
 
