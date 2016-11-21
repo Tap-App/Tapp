@@ -5,7 +5,7 @@ module.exports = function(app){
     $scope.myAccountsList = accountService.getMyAccountsServer($scope.user.repID);
     console.log($scope.myAccountsList);
 
-
+    
 
 
   }]);
@@ -164,6 +164,7 @@ module.exports = function(app){
         })
         return myAccountsServer;
       }
+      
       // getPages: function(pageNum, perPage){
       //   console.log(eventList);
       //   let start = (pageNum - 1) * perPage;
