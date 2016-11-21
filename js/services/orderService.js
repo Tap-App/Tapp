@@ -20,20 +20,24 @@ app.factory('orderService',['$http', function($http){
      return allOrderList;
    },
    getDistOrders: function(distributer){
+     currentDistOrders = [];
      console.log("All Order List inside getdistorders", allOrderList);
      allOrderList.forEach(function(el){
        if (el.distributer === distributer) {
-         distributerOrderList.push(el);
+         currentDistOrders.push(el);
        };
+       angular.copy(currentDistOrders, distributerOrderList)
      });
      console.log("distributer order list to return", distributerOrderList);
      return distributerOrderList;
    },
    getMyOrders: function(username){
+     currentMyOrders = [];
      allOrderList.forEach(function(el){
        if (el.username === username) {
-         myOrderList.push(el);
+         currentMyOrders.push(el);
        };
+       angular.copy(currentMyOrders, myOrderList)
      });
      return myOrderList;
    },

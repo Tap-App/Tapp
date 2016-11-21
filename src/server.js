@@ -57,23 +57,7 @@ server.register([
 /***********************
 *  ROUTES (extracted to separate files)
 ***********************/
-// server.route({
-//   // find ALL accounts
-//   method: 'GET',
-//   path: '/accounts',
-//
-//   handler(request, reply) {
-//     // get db collection
-//     const accountCollection = Mongojs.db().collection('accounts');
-//     // execute a query
-//     accountCollection.find((err, data) => {
-//
-//         if (err) { return reply(Boom.wrap(err, 'Internal MongoDB error')) }
-//         reply(data)
-//     })
-//
-//   }
-// })
+
 /***********************
 *  INERT
 * --- *
