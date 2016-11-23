@@ -8,7 +8,7 @@ const Boom = require ('boom')
 const Uuid = require ('node-uuid')
 const Joi = require('joi')
 const Mongojs = require('hapi-mongojs')
-
+const ObjectId = require("mongojs").ObjectId;
 // This exports.register will wrap all ACCOUNTS routes.
 exports.register = (server, options, next) => {
 
@@ -91,7 +91,7 @@ exports.register = (server, options, next) => {
 
         if (err) { return reply(Boom.wrap(err, 'Internal MongoDB error')) }
 
-
+        reply().code(204);
       })
 
     },
@@ -119,8 +119,9 @@ exports.register = (server, options, next) => {
     path: '/accounts/{id}',
 
     handler(request, reply) {
+      const accountCollection = Mongojs.db().collection('accounts');
 
-      db.accounts.update(
+      accountCollection.update(
         {_id: request.params.id},
         {$set: request.payload},
         (err, result) => {
@@ -136,8 +137,8 @@ exports.register = (server, options, next) => {
       validate: {
         payload: Joi.object({
 
-          repID: Joi.number().required(),
-          accountName: Joi.string().min(10).max(50).optional(),
+          repID: Joi.number().optional(),
+          accountName: Joi.string().min(10).max(50).required(),
           contact: Joi.string().min(1).max(50).optional(),
           email: Joi.string().email().optional(),
           phone: Joi.string().min(1).max(20).optional(),
@@ -155,9 +156,11 @@ exports.register = (server, options, next) => {
       method: 'DELETE',
       path: '/accounts/{id}',
       handler(request, reply) {
+        const accountCollection = Mongojs.db().collection('accounts');
+        var oid = ObjectId(request.params.id);
 
-          db.accounts.remove(
-            {id: request.params.id},
+          accountCollection.remove(
+            { _id: oid},
             (err, result) => {
 
               if (err) { return reply(Boom.wrap(err, 'Internal MongoDB error')) }
