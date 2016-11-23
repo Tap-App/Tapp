@@ -38,8 +38,16 @@ module.exports = function(app){
           angular.copy(response.data, myAccountsServer);
         })
         return myAccountsServer;
+      },
+
+      deleteAccount: function(acctId) {
+        $http({
+          method:'DELETE',
+          url:`/accounts/${acctId}`
+        })
+
       }
-      
+
       // getPages: function(pageNum, perPage){
       //   console.log(eventList);
       //   let start = (pageNum - 1) * perPage;
