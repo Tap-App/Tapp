@@ -12,12 +12,14 @@ module.exports = function(app){
       getMyInventory: function(distributer){
         $http({
               method: 'GET',
-              url: '/Api/inventory.json',
+              url: '/inventory',
           }).then(function(response) {
             angular.copy(response.data, inventory);
             inventory.forEach(function(el){
               if(el.distributer === distributer){
-                myInventoryList.push(el);
+                let sorted = [];
+                sorted.push(el);
+                angular.copy(sorted, myInventoryList);
               }
             })
           })

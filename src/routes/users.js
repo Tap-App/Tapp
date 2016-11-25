@@ -6,9 +6,10 @@
 const Boom = require ('boom')
 const Uuid = require ('node-uuid')
 const Joi = require('joi')
+const Mongojs = require('hapi-mongojs')
+const ObjectId = require("mongojs").ObjectId;
 
 exports.register = (server, options, next) => {
-  const db = server.app.db
 
   /***********************
   *  ROUTES
@@ -18,7 +19,10 @@ exports.register = (server, options, next) => {
     path: '/users',
 
     handler(request, reply) {
-      db.users.find((err, data) => {
+      // get db collection
+      const userCollection = Mongojs.db().collection('users');
+      // execute a query
+      userCollection.find((err, data) => {
           if (err) {
               return reply(Boom.wrap(err, 'Internal MongoDB error'))
           }

@@ -10,7 +10,7 @@ module.exports = function(app){
       login: function(user,pass) {
         $http({
               method: 'GET',
-              url: '/Api/users.json',
+              url: '/users',
           }).then(function(response) {
             console.log("all users", response);
             angular.copy(response.data, allUsers);
