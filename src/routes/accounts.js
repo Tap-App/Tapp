@@ -13,9 +13,6 @@ const ObjectId = require("mongojs").ObjectId;
 exports.register = (server, options, next) => {
 
 
-
-
-
   /***********************
   *  ROUTES
   ***********************/
@@ -82,8 +79,7 @@ exports.register = (server, options, next) => {
 
     handler(request, reply) {
       const account = request.payload
-      //create an id
-      // account._id = Uuid.v1()
+
       const accountCollection = Mongojs.db().collection('accounts');
 
 
@@ -138,7 +134,7 @@ exports.register = (server, options, next) => {
         payload: Joi.object({
 
           repID: Joi.number().optional(),
-          accountName: Joi.string().min(10).max(50).required(),
+          accountName: Joi.string().min(10).max(50).optional(),
           contact: Joi.string().min(1).max(50).optional(),
           email: Joi.string().email().optional(),
           phone: Joi.string().min(1).max(20).optional(),

@@ -237,12 +237,14 @@ module.exports = function(app){
       getMyInventory: function(distributer){
         $http({
               method: 'GET',
-              url: '/Api/inventory.json',
+              url: '/inventory',
           }).then(function(response) {
             angular.copy(response.data, inventory);
             inventory.forEach(function(el){
               if(el.distributer === distributer){
-                myInventoryList.push(el);
+                let sorted = [];
+                sorted.push(el);
+                angular.copy(sorted, myInventoryList);
               }
             })
           })
@@ -321,7 +323,7 @@ module.exports = function(app){
       login: function(user,pass) {
         $http({
               method: 'GET',
-              url: '/Api/users.json',
+              url: '/users',
           }).then(function(response) {
             console.log("all users", response);
             angular.copy(response.data, allUsers);
