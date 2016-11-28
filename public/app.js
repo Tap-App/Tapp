@@ -1,8 +1,8 @@
 (function e(t,n,r){function s(o,u){if(!n[o]){if(!t[o]){var a=typeof require=="function"&&require;if(!u&&a)return a(o,!0);if(i)return i(o,!0);throw new Error("Cannot find module '"+o+"'")}var f=n[o]={exports:{}};t[o][0].call(f.exports,function(e){var n=t[o][1][e];return s(n?n:e)},f,f.exports,e,t,n,r)}return n[o].exports}var i=typeof require=="function"&&require;for(var o=0;o<r.length;o++)s(r[o]);return s})({1:[function(require,module,exports){
 module.exports = function(app){
-  app.controller('accountsController', ['$scope', '$http', 'accountService', 'userService', function($scope, $http, accountService, userService){
+  app.controller('accountsController', ['$scope', '$http', '$q', 'accountService', 'userService', function($scope, $http, $q, accountService, userService){
     $scope.user = userService.getCurrentUser();
-    $scope.myAccountsList = accountService.getMyAccountsServer($scope.user.repID);
+    $scope.myAccountsList = accountService.getMyAccountsServer($scope.user.repId);
     console.log($scope.myAccountsList);
 
     $scope.addAcct = function() {
@@ -19,7 +19,7 @@ module.exports = function(app){
                 },
             }).then(function(response) {
                 console.log(response);
-                accountService.getMyAccountsServer($scope.user.repID);
+                accountService.getMyAccountsServer($scope.user.repId);
 
                 $scope.repId = "";
                 $scope.accountName = "";
@@ -40,7 +40,7 @@ module.exports = function(app){
           url:`/accounts/${acctId}`
         }).then(function(response){
           console.log(`reload ${$scope.user.userName}'s accounts'`);
-          accountService.getMyAccountsServer($scope.user.repID);
+          accountService.getMyAccountsServer($scope.user.repId);
         })
       } else {
         console.log(`${acctName} was not deleted`);
@@ -56,11 +56,38 @@ module.exports = function(app){
   app.controller('inventoryController',['$scope', '$http', 'inventoryService', 'userService', function($scope, $http, inventoryService, userService){
 
     $scope.user = userService.getCurrentUser();
-    $scope.myInventory = inventoryService.getMyInventory($scope.user.distributer);
+    $scope.myInventory = inventoryService.getMyInventoryServer($scope.user.distributer);
     console.log($scope.myInventory);
 
-
-
+    $scope.addBeer = function() {
+            $http({
+                method: 'POST',
+                url: '/inventory',
+                contentType: "application/json",
+                data: {
+                  name: $scope.name,
+                  brewery: $scope.brewery,
+                  beerType: $scope.beerType,
+                  description: $scope.description,
+                  qtyCases: $scope.qtyCases,
+                  qtySixtels: $scope.qtySixtels,
+                  qtyHalfBarrels: $scope.qtyHalfBarrels,
+                  unitPrice: $scope.unitPrice,
+                  distributer: $scope.user.distributer
+                },
+            }).then(function(response){
+        // After a response, reload the inventory and clear the fields
+        inventoryService.getMyInventoryServer($scope.user.distributer);
+        $scope.name = "";
+        $scope.brewery = "";
+        $scope.beerType = "";
+        $scope.description = "";
+        $scope.qtyCases = "";
+        $scope.qtySixtels = "";
+        $scope.qtyHalfBarrels= "";
+        $scope.unitPrice = "";
+      })
+    };
 
 
 
@@ -229,7 +256,7 @@ module.exports = function(app){
   app.factory('inventoryService',['$http', function($http){
     let inventory = [];
     let myInventoryList =[];
-
+    let myInventoryServer = [];
 
     return{
 
@@ -249,6 +276,17 @@ module.exports = function(app){
             })
           })
           return myInventoryList
+      },
+      getMyInventoryServer: function(dist) {
+        $http({
+            method: 'GET',
+            url: `/distInventory`,
+            data: {distributer: dist}
+        }).then(function(response){
+          console.log('server side query results :', response );
+          angular.copy(response.data, myInventoryServer);
+        })
+        return myInventoryServer;
       },
 
       // getPages: function(pageNum, perPage){
@@ -273,7 +311,7 @@ app.factory('orderService',['$http', function($http){
    getAllOrders: function(){
      $http({
        method: 'GET',
-       url: 'Api/orders.json',
+       url: '/orders',
 
      }).then(function(response){
 

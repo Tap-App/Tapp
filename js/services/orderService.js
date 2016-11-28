@@ -10,7 +10,7 @@ app.factory('orderService',['$http', function($http){
    getAllOrders: function(){
      $http({
        method: 'GET',
-       url: 'Api/orders.json',
+       url: '/orders',
 
      }).then(function(response){
 

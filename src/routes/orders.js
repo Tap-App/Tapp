@@ -4,12 +4,14 @@
 
 'use strict'
 
-const Boom = require('boom')
-const Uuid = require('node-uuid')
+const Boom = require ('boom')
+const Uuid = require ('node-uuid')
 const Joi = require('joi')
+const Mongojs = require('hapi-mongojs')
+const ObjectId = require("mongojs").ObjectId;
 
 exports.register = (server, options, next) => {
-  const db = server.app.db
+
 
   /***********************
   *  ROUTES
@@ -21,7 +23,10 @@ exports.register = (server, options, next) => {
     path: '/orders',
 
     handler(request, reply) {
-      db.orders.find((err, data) => {
+      // get db collection
+      const ordersCollection = Mongojs.db().collection('orders');
+      // execute a query
+      ordersCollection.find((err, data) => {
 
           if (err) { return reply(Boom.wrap(err, 'Internal MongoDB error')) }
           reply(data)
@@ -36,7 +41,10 @@ exports.register = (server, options, next) => {
     path: '/orders/{id}',
 
     handler(request, reply) {
-      db.orders.findOne(
+      // get db collection
+      const ordersCollection = Mongojs.db().collection('orders');
+      // execute a query
+      ordersCollection.findOne(
         {_id: request.params.id},
         (err, data) => {
 

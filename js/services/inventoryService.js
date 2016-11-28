@@ -4,7 +4,7 @@ module.exports = function(app){
   app.factory('inventoryService',['$http', function($http){
     let inventory = [];
     let myInventoryList =[];
-
+    let myInventoryServer = [];
 
     return{
 
@@ -24,6 +24,17 @@ module.exports = function(app){
             })
           })
           return myInventoryList
+      },
+      getMyInventoryServer: function(dist) {
+        $http({
+            method: 'GET',
+            url: `/distInventory`,
+            data: {distributer: dist}
+        }).then(function(response){
+          console.log('server side query results :', response );
+          angular.copy(response.data, myInventoryServer);
+        })
+        return myInventoryServer;
       },
 
       // getPages: function(pageNum, perPage){
