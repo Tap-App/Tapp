@@ -14,10 +14,15 @@
 </div>
 <aside class="addBreweryBox col-xs-12 col-md-4">
   <h3>Add a Beer!</h3>
-  <form class="" action="index.html" method="post">
-    <input type="text" name="brewery" value="" placeholder="Brewery">
-    <input type="text" name="beer" value="" placeholder="Beer">
-    <input type="number" name="QTY" value="" placeholder="0">
-    <button type="submit" name="button">Submit</button>
-  </form>
+    <input ng-model="brewery" type="text"  value="" placeholder="Brewery">
+    <input ng-model="name" type="text"  value="" placeholder="Beer Name">
+    <input ng-model="beerType" type="text"  value="" placeholder="Beer Type">
+    <input ng-model="description" type="text"  value="" placeholder="Quick Description">
+
+    <h5>QTY Cases</h5><input ng-model="qtyCases" type="number"  value="" placeholder="0">
+    <h5>QTY Sixtels</h5><input ng-model="qtySixtels" type="number"  value="" placeholder="0">
+    <h5>QTY Half-Barrels</h5><input ng-model="qtyHalfBarrels" type="number"  value="" placeholder="0">
+    <h5>Unit Price</h5><input ng-model="unitPrice" type="number"  value="" placeholder="0">
+
+    <button ng-click='addBeer()' type="button" name="button">Add Beer</button>
 </aside>

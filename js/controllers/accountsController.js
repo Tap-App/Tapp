@@ -1,7 +1,7 @@
 module.exports = function(app){
-  app.controller('accountsController', ['$scope', '$http', 'accountService', 'userService', function($scope, $http, accountService, userService){
+  app.controller('accountsController', ['$scope', '$http', '$q', 'accountService', 'userService', function($scope, $http, $q, accountService, userService){
     $scope.user = userService.getCurrentUser();
-    $scope.myAccountsList = accountService.getMyAccountsServer($scope.user.repID);
+    $scope.myAccountsList = accountService.getMyAccountsServer($scope.user.repId);
     console.log($scope.myAccountsList);
 
     $scope.addAcct = function() {
@@ -18,7 +18,7 @@ module.exports = function(app){
                 },
             }).then(function(response) {
                 console.log(response);
-                accountService.getMyAccountsServer($scope.user.repID);
+                accountService.getMyAccountsServer($scope.user.repId);
 
                 $scope.repId = "";
                 $scope.accountName = "";
@@ -39,7 +39,7 @@ module.exports = function(app){
           url:`/accounts/${acctId}`
         }).then(function(response){
           console.log(`reload ${$scope.user.userName}'s accounts'`);
-          accountService.getMyAccountsServer($scope.user.repID);
+          accountService.getMyAccountsServer($scope.user.repId);
         })
       } else {
         console.log(`${acctName} was not deleted`);
