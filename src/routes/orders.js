@@ -56,6 +56,42 @@ exports.register = (server, options, next) => {
 
     }
   })
+  server.route({
+    // save ONE account
+    method: 'POST',
+    path: '/orders',
+
+    handler(request, reply) {
+      const order = request.payload
+
+      const orderCollection = Mongojs.db().collection('orders');
+
+
+      orderCollection.save(order, (err, result) => {
+
+        if (err) { return reply(Boom.wrap(err, 'Internal MongoDB error')) }
+
+        reply().code(204);
+      })
+
+    },
+    // config: {
+    //   validate: {
+    //     payload: {
+    //
+    //       repId: Joi.string().required(),
+    //       accountName: Joi.string().min(1).max(50).required(),
+    //       contact: Joi.string().min(1).max(50).required(),
+    //       email: Joi.string().email(),
+    //       phone: Joi.string().min(1).max(20),
+    //       address: Joi.string().min(1).max(50),
+    //       lastOrderDate: Joi.date().format('YYYY/MM/DD'),
+    //       avgOrderAmmount: Joi.number()
+    //
+    //     }
+    //   }
+    // }
+  })
 
   next()
 // end of register wrapper
