@@ -38,7 +38,7 @@ const plugins = [
 // SERVER:
 const server = new Hapi.Server()
 server.connection({
-  host: 'localhost',
+  
   port: process.env.PORT
 })
 
