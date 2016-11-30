@@ -17,7 +17,7 @@ const plugins = [
   {
     register: Mongojs,
     options:{
-      url: 'mongodb://localhost:27017/tapp-db',
+      url: 'mongodb://heroku_k8513x73:a4v2aule5ka5t5g6ohe0djr6ej@ds115798.mlab.com:15798/heroku_k8513x73',
       collections: [
               {
                 name: 'users'
