@@ -5,6 +5,9 @@ body {
   padding-top: 100px;
   background-color: gold; }
 
+.signIn {
+  margin-right: 0; }
+
 .spacingSmall {
   height: 200px; }
 
@@ -36,6 +39,51 @@ body {
   margin: 1%; }
 
 .orderForm {
-  border: 2px solid black;
   border-radius: 5px;
-  padding: 5%; }
+  padding: 3%;
+  background-color: grey;
+  margin-top: 2%; }
+
+header {
+  height: 300px;
+  width: 100%;
+  background-color: navy;
+  color: white;
+  text-align: center;
+  margin-top: -10%;
+  padding-top: 10%; }
+  header h2 {
+    font-size: 5rem; }
+
+.aboutTapp {
+  background-color: white;
+  padding: 2%;
+  width: 100%;
+  height: 250px; }
+  .aboutTapp h3 {
+    text-align: center;
+    font-size: 4rem;
+    margin-bottom: 2%; }
+  .aboutTapp h4 {
+    text-align: center; }
+
+footer {
+  width: 100%;
+  height: 100px;
+  text-align: center; }
+  footer h4 {
+    margin-top: 5%; }
+
+.loginBox {
+  display: block;
+  margin: 0% auto;
+  background-color: grey;
+  height: 200px;
+  width: 40%;
+  border-radius: 25px;
+  padding: 2%;
+  text-align: center; }
+  .loginBox input {
+    display: block;
+    margin: 4% auto;
+    width: 65%; }

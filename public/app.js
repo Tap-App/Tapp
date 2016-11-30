@@ -60,7 +60,7 @@ module.exports = function(app) {
                 vessel: beerVessel
             })
         }
-        $scope.placeOrder = function(acctName, orderList, repUser, dist) {
+        $scope.placeOrder = function(acctName, orderList, repUser, dist, delivery) {
             var today = new Date();
             var dd = today.getDate();
             var mm = today.getMonth() + 1; //January is 0!
@@ -117,7 +117,8 @@ module.exports = function(app) {
                     username: repUser,
                     accountName: acctName,
                     orderDate: today,
-                    beers: orderList
+                    beers: orderList,
+                    deliveryDate: delivery
                 },
             }).then(function(response){
               $scope.orderAcct = "";
@@ -199,7 +200,15 @@ module.exports = function(app) {
       $scope.distOrders = orderService.getDistOrders($scope.user.distributer);
       $scope.myOrders = orderService.getMyOrders($scope.user.username);
 
+      $scope.delivered = function(id){
+        $http({
+          method: 'PUT',
+          url: `/orders/${id}`
 
+        }).then(function(response){
+          console.log("deliverd");
+        })
+      }
 
 
 

@@ -75,24 +75,28 @@ exports.register = (server, options, next) => {
       })
 
     },
-    // config: {
-    //   validate: {
-    //     payload: {
-    //
-    //       repId: Joi.string().required(),
-    //       accountName: Joi.string().min(1).max(50).required(),
-    //       contact: Joi.string().min(1).max(50).required(),
-    //       email: Joi.string().email(),
-    //       phone: Joi.string().min(1).max(20),
-    //       address: Joi.string().min(1).max(50),
-    //       lastOrderDate: Joi.date().format('YYYY/MM/DD'),
-    //       avgOrderAmmount: Joi.number()
-    //
-    //     }
-    //   }
-    // }
-  })
 
+  })
+  server.route({
+    // mark as delived: true
+    method: 'PUT',
+    path: '/orders/{id}',
+    handler(request, reply) {
+      const ordersCollection = Mongojs.db().collection('orders');
+      var oid = ObjectId(request.params.id);
+
+        accountCollection.update(
+          { _id: oid},
+          {$set: delivered: true},
+          (err, result) => {
+
+            if (err) { return reply(Boom.wrap(err, 'Internal MongoDB error')) }
+            if (result.n === 0) { return reply(Boom.notFound()) }
+
+            reply().code(204);
+        })
+    }
+  })
   next()
 // end of register wrapper
 }

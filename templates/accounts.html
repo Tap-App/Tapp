@@ -37,6 +37,15 @@
 <aside class="orderForm col-md-4">
   <h4>Order Form</h4>
   <h5>Account: {{orderAcct}}</h5>
+  <h6>Delivery Day</h6><select ng-model="deliveryDay"class="deliveryDay" name="">
+    <option value="Monday">Monday</option>
+    <option value="Tuesday">Tuesday</option>
+    <option value="Wednesday">Wednesday</option>
+    <option value="Thursday">Thursday</option>
+    <option value="Friday">Friday</option>
+    <option value="Saturday">Saturday</option>
+    <option value="Sunday">Sunday</option>
+  </select>
   <h6>Beer: </h6><select ng-model="selectItem" ng-options="item as item.name for item in items">
 </select>
   <h6>qty</h6><input ng-model="orderAmmnt" type="number" name="" value="">
@@ -55,5 +64,5 @@
   <div class="orderBeerList" ng-repeat='beer in orderList'>
     <h6>{{beer.name}} ~ {{beer.qty}} ~ {{beer.vessel}}</h6>
   </div>
-  <button ng-click='placeOrder(orderAcct,orderList,user.username,user.distributer)' type="button" name="button">Place Order</button>
+  <button ng-click='placeOrder(orderAcct,orderList,user.username,user.distributer,deliveryDay)' type="button" name="button">Place Order</button>
 </aside>

@@ -6,7 +6,15 @@ module.exports = function(app) {
       $scope.distOrders = orderService.getDistOrders($scope.user.distributer);
       $scope.myOrders = orderService.getMyOrders($scope.user.username);
 
+      $scope.delivered = function(id){
+        $http({
+          method: 'PUT',
+          url: `/orders/${id}`
 
+        }).then(function(response){
+          console.log("deliverd");
+        })
+      }
 
 
 
