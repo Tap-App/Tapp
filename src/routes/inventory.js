@@ -49,7 +49,23 @@ exports.register = (server, options, next) => {
       })
     }
   })
+  server.route({
+    method: 'GET',
+    path: '/oneBeer/{beerName}',
 
+    handler(request, reply) {
+      
+      // get db collection
+      const inventoryCollection = Mongojs.db().collection('inventory');
+      // execute a query
+      inventoryCollection.find({name : request.params.beerName}, (err, data) => {
+          if (err) {
+              return reply(Boom.wrap(err, 'Internal MongoDB error'))
+          }
+          reply(data)
+      })
+    }
+  })
   server.route({
     // save ONE beer
     method: 'POST',
@@ -87,6 +103,50 @@ exports.register = (server, options, next) => {
       }
     }
   })
+
+  server.route({
+    // update ONE beer
+    method: 'PUT',
+    path: '/inventory',
+
+    handler(request, reply) {
+      const beerAdd = request.payload;
+      const setValue = beerAdd.qty;
+      const setField = beerAdd.field;
+
+      console.log(setField,setValue);
+      const inventoryCollection = Mongojs.db().collection('inventory');
+
+      inventoryCollection.update(
+        {name:beerAdd.name},
+        {$set: {[setField] : setValue}},
+        (err, result) => {
+
+          if (err) { return reply(Boom.wrap(err, 'Internal MongoDB error')) }
+          if (result.n === 0) { return reply(Boom.notFound()) }
+
+          reply().code(204);
+      })
+
+    },
+    // config: {
+    //   validate: {
+    //     payload: Joi.object({
+    //
+    //       repID: Joi.number().optional(),
+    //       accountName: Joi.string().min(10).max(50).optional(),
+    //       contact: Joi.string().min(1).max(50).optional(),
+    //       email: Joi.string().email().optional(),
+    //       phone: Joi.string().min(1).max(20).optional(),
+    //       address: Joi.string().min(1).max(50).optional(),
+    //       lastOrderDate: Joi.date().format('YYYY/MM/DD').optional(),
+    //       avgOrderAmmount: Joi.number().optional()
+    //
+    //     }).required().min(1)
+    //   }
+    // }
+  })
+
 
    next()
 }

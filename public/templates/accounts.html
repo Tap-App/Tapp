@@ -1,21 +1,4 @@
 <h1>{{user.name}}'s accounts</h1>
-
-<div class="accountBox">
-<div class="account" ng-repeat="account in myAccountsList">
-  <h2>{{account.accountName}}</h2>
-  <h4>Contact: {{account.contact}}</h4>
-  <h4>Phone Number: {{account.phone}}</h4>
-  <h4>Address: {{account.address}}</h4>
-  <h5>last order date: {{account.lastOrderDate}}</h5>
-  <h5>avg order ammount: {{account.avgOrderAmmount}}</h5>
-  <a href="#">Last Order</a>
-  <a href="#">Re-Order</a>
-  <a href="#">New Order</a>
-  <hr>
-  <button ng-click="rmAcct(account._id,account.accountName)" type="button" name="button">Remove Account</button>
-</div>
-</div>
-
 <div class="addAccount">
   <h3>Create a new accout</h3>
   <div class="inputContainer">
@@ -29,6 +12,48 @@
     <input ng-model='address' type="text" name="address" value="" placeholder="Address">
 
     <button ng-click='addAcct()' type="button" name="">Add Account</button>
-    
+
   </div>
 </div>
+<main class="col-md-8">
+
+
+<div class="accountBox">
+<div class="account" ng-repeat="account in myAccountsList">
+  <h2>{{account.accountName}}</h2>
+  <h4>Contact: {{account.contact}}</h4>
+  <h4>Phone Number: {{account.phone}}</h4>
+  <h4>Address: {{account.address}}</h4>
+  <h5>last order date: {{account.lastOrderDate}}</h5>
+  <h5>avg order ammount: {{account.avgOrderAmmount}}</h5>
+  <button ng-click='newOrder(account)' type="button" name="button">New Order</button>
+
+
+  <hr>
+  <button ng-click="rmAcct(account._id,account.accountName)" type="button" name="button">Remove Account</button>
+</div>
+</div>
+</main>
+<aside class="orderForm col-md-4">
+  <h4>Order Form</h4>
+  <h5>Account: {{orderAcct}}</h5>
+  <h6>Beer: </h6><select ng-model="selectItem" ng-options="item as item.name for item in items">
+</select>
+  <h6>qty</h6><input ng-model="orderAmmnt" type="number" name="" value="">
+  <h6>Vessel</h6>
+  <h6>Cases Available: {{selectItem.qtyCases}}</h6>
+  <h6>Sixtels Available: {{selectItem.qtySixtels}}</h6>
+  <h6>Half Barrels Available: {{selectItem.qtyHalfBarrels}}</h6>
+  <select ng-model='selectVessel' class="" name="">
+    <option value="cases">Cases</option>
+    <option value="sixtels">Sixtels</option>
+    <option value="halfBarrels">HalfBarrels</option>
+  </select>
+
+  <button ng-click='addToOrderList(selectItem.name,orderAmmnt,selectVessel)'type="button" name="button">Add</button>
+
+  <div class="orderBeerList" ng-repeat='beer in orderList'>
+    <h6>{{beer.name}} ~ {{beer.qty}} ~ {{beer.vessel}}</h6>
+  </div>
+  <button ng-click='placeOrder(orderAcct,orderList,user.username,user.distributer)' type="button" name="button">Place Order</button>
+</aside>

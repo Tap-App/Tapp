@@ -111,7 +111,7 @@ exports.register = (server, options, next) => {
 
   server.route({
     // update ONE account
-    method: 'PATCH',
+    method: 'PUT',
     path: '/accounts/{id}',
 
     handler(request, reply) {
