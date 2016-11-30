@@ -87,7 +87,7 @@ exports.register = (server, options, next) => {
 
         accountCollection.update(
           { _id: oid},
-          {$set: delivered: true},
+          {$set: {delivered: true}},
           (err, result) => {
 
             if (err) { return reply(Boom.wrap(err, 'Internal MongoDB error')) }
