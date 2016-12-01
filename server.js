@@ -39,16 +39,16 @@ const plugins = [
 const server = new Hapi.Server()
 server.connection({
 
-  port: process.env.PORT 
+  port: process.env.PORT || 8332
 })
 
 // this registers inert and route plugins with hapi
 server.register([
   Inert,
-  require('./routes/accounts'),
-  require('./routes/inventory'),
-  require('./routes/users'),
-  require('./routes/orders')
+  require('./src/routes/accounts'),
+  require('./src/routes/inventory'),
+  require('./src/routes/users'),
+  require('./src/routes/orders')
   ], (err) => {
     if (err) { throw err }
   })
@@ -71,7 +71,7 @@ server.route({
   path: '/{param*}',
   handler: {
     directory: {
-      path: '../public/',
+      path: 'public/',
       redirectToSlash: true,
       index: true
     }
