@@ -85,7 +85,7 @@ exports.register = (server, options, next) => {
       const ordersCollection = Mongojs.db().collection('orders');
       var oid = ObjectId(request.params.id);
 
-        accountCollection.update(
+        ordersCollection.update(
           { _id: oid},
           {$set: {delivered: true}},
           (err, result) => {

@@ -2,7 +2,6 @@
   "name": "tapp",
   "version": "1.0.0",
   "description": "an account manager for beer reps",
-  
   "main": "index.js",
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1"
@@ -28,6 +27,7 @@
     "angular": "^1.5.8",
     "boom": "^4.0.0",
     "bootstrap": "^3.3.7",
+    "gulp": "^3.9.1",
     "gulp-browserify": "^0.5.1",
     "gulp-sass": "^2.3.2",
     "gulp-watch": "^4.3.9",

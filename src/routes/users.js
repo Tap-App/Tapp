@@ -14,6 +14,7 @@ exports.register = (server, options, next) => {
   /***********************
   *  ROUTES
   ***********************/
+  // returns all users
   server.route({
     method: 'GET',
     path: '/users',
@@ -30,7 +31,30 @@ exports.register = (server, options, next) => {
       })
     }
   })
+  // creates a new user
+  server.route({
+    method: 'POST',
+    path: '/users',
+    handler(request, reply) {
+      const newUser = {
+                        repId : request.payload.repId,
+                        username : request.payload.username,
+                        name : request.payload.name,
+                        password: request.payload.password,
+                        distributer: request.payload.distributer
+                      }
+      const userCollection = Mongojs.db().collection('users');
+      if (request.payload.access === 'TappRules') {
+        console.log('acces granted');
+        userCollection.save(newUser,(err,data) => {
+          if (err) {
+            return reply(Boom.wrap(err, 'Internal MongoDB error'))
+          }
 
+        })
+      }
+    }
+  })
 
    next()
 }
