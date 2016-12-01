@@ -2,6 +2,8 @@
   "name": "tapp",
   "version": "1.0.0",
   "description": "an account manager for beer reps",
+  "engines": {
+    "node": "6.9.1"},
   "main": "index.js",
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1"
@@ -30,7 +32,7 @@
     "gulp-browserify": "^0.5.1",
     "gulp-sass": "^2.3.2",
     "gulp-watch": "^4.3.9",
-    "hapi": "^15.2.0",
+    "hapi": "^13.4.0",
     "hapi-mongojs": "^3.0.1",
     "inert": "^4.0.2",
     "joi": "^9.0.4",
