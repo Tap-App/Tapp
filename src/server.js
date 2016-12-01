@@ -38,8 +38,8 @@ const plugins = [
 // SERVER:
 const server = new Hapi.Server()
 server.connection({
-  
-  port: process.env.PORT
+
+  port: process.env.PORT 
 })
 
 // this registers inert and route plugins with hapi
