@@ -85,9 +85,9 @@ exports.register = (server, options, next) => {
       const ordersCollection = Mongojs.db().collection('orders');
       var oid = ObjectId(request.params.id);
 
-        accountCollection.update(
+        ordersCollection.update(
           { _id: oid},
-          {$set: delivered: true},
+          {$set: {delivered: true}},
           (err, result) => {
 
             if (err) { return reply(Boom.wrap(err, 'Internal MongoDB error')) }

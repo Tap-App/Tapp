@@ -1,9 +1,25 @@
 
 <div class="loginBox ">
-  <h4>please login to continue</h4>
+  <h4>Please login to continue</h4>
 <input ng-model="user" type="text" name="username" placeholder="username" value="">
 <input ng-model="pass" type="password" name="password" placeholder="password" value="">
 <button ng-click='login()' type="button" name="button">Submit</button>
 
 
+</div>
+
+<div class="signUpBox">
+  <h2>Sign Up</h2>
+  <h4>you will need an access password, a specific rep Id and a specific Distributer to signup</h4>
+  <h4>please email rigganh@gmail.com subject: Tapp Access to recieve these</h4>
+  <h3>Create the following fields all are required:</h3>
+
+<input ng-model="newUserName" type="text" name="" value="" placeholder="Username">
+<input ng-model="newName" type="text" name="" value="" placeholder="Name">
+<input ng-model="newPassword" type="text" name="" value="" placeholder="Password">
+<input ng-model="newDistributer" type="text" name="" value="" placeholder="Distributer">
+<input ng-model="newRepId" type="text" name="" value="" placeholder="Rep Id">
+<input ng-model="newAccess" type="text" name="" value="" placeholder="Access Password">
+
+<button ng-click='createUser()' type="button" name="button">Create User</button>
 </div>
