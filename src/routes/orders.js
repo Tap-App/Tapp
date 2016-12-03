@@ -34,7 +34,24 @@ exports.register = (server, options, next) => {
 
     }
   })
+  server.route({
+    // find A Distributer's orders
+    method: 'GET',
+    path: '/ordersDist',
 
+    handler(request, reply) {
+      const dist = request.payload;
+      // get db collection
+      const ordersCollection = Mongojs.db().collection('orders');
+      // execute a query
+      ordersCollection.find(dist, (err, data) => {
+
+          if (err) { return reply(Boom.wrap(err, 'Internal MongoDB error')) }
+          reply(data)
+      })
+
+    }
+  })
   server.route({
     // find ONE one order
     method: 'GET',
