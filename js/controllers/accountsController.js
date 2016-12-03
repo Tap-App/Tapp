@@ -9,7 +9,7 @@ module.exports = function(app) {
                 method: 'POST',
                 url: '/accounts',
                 data: {
-                    repId: $scope.repId,
+                    repId: $scope.user.repId,
                     accountName: $scope.accountName,
                     contact: $scope.contact,
                     email: $scope.email,

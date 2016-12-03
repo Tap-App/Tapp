@@ -10,7 +10,7 @@ module.exports = function(app) {
                 method: 'POST',
                 url: '/accounts',
                 data: {
-                    repId: $scope.repId,
+                    repId: $scope.user.repId,
                     accountName: $scope.accountName,
                     contact: $scope.contact,
                     email: $scope.email,
@@ -423,16 +423,16 @@ app.factory('orderService',['$http', function($http){
      return allOrderList;
    },
    getDistOrders: function(distributer){
-     currentDistOrders = [];
-     console.log("All Order List inside getdistorders", allOrderList);
-     allOrderList.forEach(function(el){
-       if (el.distributer === distributer) {
-         currentDistOrders.push(el);
-       };
-       angular.copy(currentDistOrders, distributerOrderList)
+     $http({
+       method: 'GET',
+       url: '/ordersDist',
+
+     }).then(function(response){
+
+         angular.copy(response.data, distributerOrderList);
+
      });
-     console.log("distributer order list to return", distributerOrderList);
-     return distributerOrderList;
+     return  distributerOrderList;
    },
    getMyOrders: function(username){
      currentMyOrders = [];
