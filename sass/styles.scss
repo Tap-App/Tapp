@@ -108,3 +108,13 @@ footer{
       width: 65%;
     }
 }
+.orderList{
+  height: 200px;
+  border: 1px solid black;
+  .orderContainer{
+    overflow-y: scroll;
+  }
+  h5{
+    display: inline-block;
+  }
+}

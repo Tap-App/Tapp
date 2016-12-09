@@ -101,3 +101,11 @@ footer {
     display: block;
     margin: 4% auto;
     width: 65%; }
+
+.orderList {
+  height: 200px;
+  border: 1px solid black; }
+  .orderList .orderContainer {
+    overflow-y: scroll; }
+  .orderList h5 {
+    display: inline-block; }

@@ -1,15 +1,33 @@
 <div class="distOrders">
-<h1>{{user.distributer}}'s Order List</h1>
+    <h1>{{user.distributer}}'s Order List</h1>
 
-<div class="order" ng-repeat="order in distOrders">
-  <h2>Account: {{order.accountName}}</h2>
-  <h3>Order Date: {{order.orderDate}} Rep: {{order.username}} Delivery Day: {{order.deliveryDate}}</h3>
-  <h4>Beers:</h4>
-  <div class="beerOrder col-xs-3" ng-repeat="beer in order.beers">
-    <h5>Beer: {{beer.brewery}} {{beer.name}}</h5>
-    <h6>Ammount: {{beer.qty}} {{beer.vessel}}</h6>
-  </div>
 
-  <button ng-click='delivered(order._id)'type="button" name="button">Delivered</button>
+    <div class="orderList col-xs-7">
+        <h4>Not Delivered Orders</h4>
+        <div class="orderContainer">
+            <div class="notDeliveredOrders " ng-repeat="order in notDelivOrders">
+              <a ng-click="showDetails(order)"><h5>{{order.accountName}} {{order.orderDate}}</h5></a>                <button ng-click='delivered(order._id)' type="button" name="button">Delivered</button>
+            </div>
+        </div>
+    </div>
+
+    <div class="orderList col-xs-5">
+        <h4>Delivered Orders</h4>
+        <div class="orderContainer">
+            <div class="deliveredOrders" ng-repeat="order in delivOrders">
+                <a ng-click="showDetails(order)"><h5>{{order.accountName}} {{order.orderDate}}</h5></a>
+            </div>
+        </div>
+    </div>
+
+    <div class="orderDetails col-xs-10">
+        <h2>Order Details</h2>
+        <h3>Order Date: {{orderDets.orderDate}} Rep: {{orderDets.username}} Delivery Day: {{orderDets.deliveryDate}}</h3>
+        <h4>Beers:</h4>
+        <div class="beerOrder col-xs-3" ng-repeat="beer in orderDets.beers">
+            <h5>Beer: {{beer.brewery}} {{beer.name}}</h5>
+            <h6>Ammount: {{beer.qty}} {{beer.vessel}}</h6>
+        </div>
+    </div>
 </div>
 <!-- </div distOrders>  -->

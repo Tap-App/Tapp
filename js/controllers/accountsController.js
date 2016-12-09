@@ -117,7 +117,8 @@ module.exports = function(app) {
                     accountName: acctName,
                     orderDate: today,
                     beers: orderList,
-                    deliveryDate: delivery
+                    deliveryDate: delivery,
+                    delivered: false
                 },
             }).then(function(response){
               $scope.orderAcct = "";

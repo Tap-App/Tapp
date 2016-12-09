@@ -35,16 +35,33 @@ exports.register = (server, options, next) => {
     }
   })
   server.route({
-    // find A Distributer's orders
+    // find A Distributer's Delivered orders
     method: 'GET',
-    path: '/ordersDist',
+    path: '/ordersDistD',
+
+    handler(request, reply) {
+      // get db collection
+      const ordersCollection = Mongojs.db().collection('orders');
+      // execute a query
+      ordersCollection.find({delivered : true}, (err, data) => {
+
+          if (err) { return reply(Boom.wrap(err, 'Internal MongoDB error')) }
+          reply(data)
+      })
+
+    }
+  })
+  server.route({
+    // find A Distributer's UnDelivered orders
+    method: 'GET',
+    path: '/ordersDistND',
 
     handler(request, reply) {
       const dist = request.payload;
       // get db collection
       const ordersCollection = Mongojs.db().collection('orders');
       // execute a query
-      ordersCollection.find(dist, (err, data) => {
+      ordersCollection.find({delivered : false}, (err, data) => {
 
           if (err) { return reply(Boom.wrap(err, 'Internal MongoDB error')) }
           reply(data)
