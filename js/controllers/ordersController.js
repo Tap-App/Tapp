@@ -3,8 +3,8 @@ module.exports = function(app) {
 
       $scope.user = userService.getCurrentUser();
       $scope.allOrders = orderService.getAllOrders();
-      $scope.distOrders = orderService.getDistOrders($scope.user.distributer);
-      $scope.myOrders = orderService.getMyOrders($scope.user.username);
+      $scope.notDelivOrders = orderService.getDistOrdersNotDeliv($scope.user.distributer);
+      $scope.delivOrders = orderService.getDistOrdersDeliv($scope.user.distributer);
 
       $scope.delivered = function(id){
         $http({
@@ -13,7 +13,14 @@ module.exports = function(app) {
 
         }).then(function(response){
           console.log("deliverd");
+          orderService.getDistOrdersNotDeliv($scope.user.distributer);
+          orderService.getDistOrdersDeliv($scope.user.distributer);
         })
+      };
+
+      $scope.showDetails = function(order){
+        console.log("show details for", order);
+        $scope.orderDets = order;
       }
 
 

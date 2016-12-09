@@ -118,7 +118,8 @@ module.exports = function(app) {
                     accountName: acctName,
                     orderDate: today,
                     beers: orderList,
-                    deliveryDate: delivery
+                    deliveryDate: delivery,
+                    delivered: false
                 },
             }).then(function(response){
               $scope.orderAcct = "";
@@ -211,8 +212,8 @@ module.exports = function(app) {
 
       $scope.user = userService.getCurrentUser();
       $scope.allOrders = orderService.getAllOrders();
-      $scope.distOrders = orderService.getDistOrders($scope.user.distributer);
-      $scope.myOrders = orderService.getMyOrders($scope.user.username);
+      $scope.notDelivOrders = orderService.getDistOrdersNotDeliv($scope.user.distributer);
+      $scope.delivOrders = orderService.getDistOrdersDeliv($scope.user.distributer);
 
       $scope.delivered = function(id){
         $http({
@@ -221,7 +222,14 @@ module.exports = function(app) {
 
         }).then(function(response){
           console.log("deliverd");
+          orderService.getDistOrdersNotDeliv($scope.user.distributer);
+          orderService.getDistOrdersDeliv($scope.user.distributer);
         })
+      };
+
+      $scope.showDetails = function(order){
+        console.log("show details for", order);
+        $scope.orderDets = order;
       }
 
 
@@ -406,9 +414,9 @@ module.exports = function(app){
 
 app.factory('orderService',['$http', function($http){
  let allOrderList = [];
- let distributerOrderList = [];
+ let distributerOrderListNotDelivered = [];
  let myOrderList = [];
-
+ let distributerOrderListDelivered= [];
  return {
    getAllOrders: function(){
      $http({
@@ -422,17 +430,32 @@ app.factory('orderService',['$http', function($http){
      });
      return allOrderList;
    },
-   getDistOrders: function(distributer){
+   getDistOrdersNotDeliv: function(dist){
+     console.log("not delivered", dist);
      $http({
        method: 'GET',
-       url: '/ordersDist',
-
+       url: `/ordersDistND`,
+       data: {distributer : dist, delivered: false}
      }).then(function(response){
-
-         angular.copy(response.data, distributerOrderList);
+       console.log("not delivered orders", response);
+         angular.copy(response.data, distributerOrderListNotDelivered);
 
      });
-     return  distributerOrderList;
+     return  distributerOrderListNotDelivered;
+   },
+   getDistOrdersDeliv: function(dist){
+     console.log("delivered distributer", dist);
+     $http({
+       method: 'GET',
+       url: `/ordersDistD`,
+       data: {distributer : dist, delivered: true}
+
+     }).then(function(response){
+       console.log("deliverd orders",response);
+         angular.copy(response.data, distributerOrderListDelivered);
+
+     });
+     return  distributerOrderListDelivered;
    },
    getMyOrders: function(username){
      currentMyOrders = [];
