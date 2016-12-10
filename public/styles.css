@@ -14,8 +14,13 @@ body {
 .hidden {
   display: none; }
 
-.accountBox {
-  overflow: scroll; }
+.accountListBox {
+  height: 300px; }
+  .accountListBox .accountList {
+    overflow: scroll; }
+
+.accountDetails {
+  min-height: 300px; }
 
 .account {
   background-color: white;

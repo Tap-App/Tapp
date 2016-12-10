@@ -28,7 +28,9 @@ module.exports = function(app) {
                 $scope.address = "";
             })
         };
-
+        $scope.showAccountDets = function(account){
+          $scope.accountDets = account;
+        };
         $scope.rmAcct = function(acctId, acctName) {
             console.log("acct id to delete", acctId);
             var check = confirm(`are you sure you want to permenently Delete Acct: ${acctName}`);
