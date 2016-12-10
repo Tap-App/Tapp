@@ -1,18 +1,23 @@
 <h1>{{user.distributer}} Inventory Checker</h1>
 
-<div class="inventoryBox col-xs-12 col-md-7" >
+<div class="inventoryBox col-xs-5 " >
   <div class="beer" ng-repeat="beer in myInventory ">
-    <h3>{{beer.name}}<h3>
-      <h4>Brewery: {{beer.brewery}} Type: {{beer.beerType}}</h4>
-    <p>
-      {{beer.description}}
-    </p>
-    <h4>Available:</h4>
-    <h5>Sixtels: {{beer.qtySixtels}} Half Barrels {{beer.qtyHalfBarrels}} Cases: {{beer.qtyCases}}</h5>
-    <h4>Price: {{beer.unitPrice}}</h4>
+    <a ng-click="showBeerDets(beer)"><h3>{{beer.name}}<h3></a>
+
   </div>
 </div>
-<aside class="addBreweryBox col-xs-12 col-md-4">
+<div class="beerDetailsBox col-xs-5">
+  <h3>{{beerDets.name}}<h3>
+    <h4>Brewery: {{beerDets.brewery}} Type: {{beerDets.beerType}}</h4>
+  <p>
+    {{beerDets.description}}
+  </p>
+  <h4>Available:</h4>
+  <h5>Sixtels: {{beerDets.qtySixtels}} Half Barrels {{beerDets.qtyHalfBarrels}} Cases: {{beerDets.qtyCases}}</h5>
+  <h4>Price: {{beerDets.unitPrice}}</h4>
+
+</div>
+<div class="addBreweryBox col-xs-12 ">
   <h3>Add a Beer!</h3>
     <input ng-model="brewery" type="text"  value="" placeholder="Brewery">
     <input ng-model="name" type="text"  value="" placeholder="Beer Name">
@@ -25,4 +30,4 @@
     <h5>Unit Price</h5><input ng-model="unitPrice" type="number"  value="" placeholder="0">
 
     <button ng-click='addBeer()' type="button" name="button">Add Beer</button>
-</aside>
+</div>

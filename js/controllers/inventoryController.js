@@ -5,6 +5,10 @@ module.exports = function(app){
     $scope.myInventory = inventoryService.getMyInventoryServer($scope.user.distributer);
     console.log($scope.myInventory);
 
+    $scope.showBeerDets = function(beer){
+      $scope.beerDets = beer;
+    }
+    
     $scope.addBeer = function() {
             $http({
                 method: 'POST',
