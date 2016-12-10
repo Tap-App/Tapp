@@ -1,16 +1,16 @@
 <h1>{{user.name}}'s accounts</h1>
 
-<div class="accountListBox col-xs-5">
+<div class="accountListBox col-xs-5 ">
     <div class="accountList">
         <div class="account" ng-repeat="account in myAccountsList">
-            <a ng-click="showAccountDets(account)"><h2>{{account.accountName}}</h2></a>
+            <a ng-click="showAccountDets(account)"><h5>{{account.accountName}}</h5></a>
         </div>
     </div>
 </div>
 
-<div class="accountDetails col-xs-5">
-    <h4>Account Deteails</h4>
-    <h2>{{accountDets.accountName}}</h2>
+<div class="accountDetails col-xs-7 ">
+    <h3>Account Details</h3>
+    <h3>{{accountDets.accountName}}</h3>
     <h4>Contact: {{accountDets.contact}}</h4>
     <h4>Phone Number: {{accountDets.phone}}</h4>
     <h4>Address: {{accountDets.address}}</h4>
@@ -21,7 +21,7 @@
 
 </div>
 
-<div class="addAccount col-xs-5">
+<div class="addAccount col-xs-5 ">
     <h3>Create a new accout</h3>
     <div class="inputContainer">
 
@@ -37,7 +37,7 @@
     </div>
 </div>
 
-<aside class="orderForm col-xs-5">
+<aside class="orderForm col-xs-7 ">
     <h4>Order Form</h4>
     <h5>Account: {{orderAcct}}</h5>
     <h6>Delivery Day</h6>

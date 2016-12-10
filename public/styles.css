@@ -4,6 +4,13 @@
 body {
   padding-top: 100px;
   background-color: gold; }
+  body h1 {
+    text-align: center; }
+
+.col-center {
+  float: none;
+  margin-right: auto;
+  margin-left: auto; }
 
 .signIn {
   margin-right: 0; }
@@ -21,11 +28,18 @@ body {
 
 .accountDetails {
   min-height: 300px; }
+  .accountDetails h3 {
+    text-align: center; }
 
 .account {
   background-color: white;
   overflow: auto;
-  margin-top: 5%; }
+  text-align: center;
+  border-radius: 18px;
+  box-shadow: 2px 2px 5px 1px;
+  width: 80%;
+  display: block;
+  margin: 4% auto; }
 
 .beer {
   background-color: white;
