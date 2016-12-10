@@ -28,8 +28,8 @@ module.exports = function(app){
       getMyInventoryServer: function(dist) {
         $http({
             method: 'GET',
-            url: `/distInventory`,
-            data: {distributer: dist}
+            url: `/distInventory/${dist}`,
+
         }).then(function(response){
           console.log('server side query results :', response );
           angular.copy(response.data, myInventoryServer);

@@ -23,8 +23,8 @@ app.factory('orderService',['$http', function($http){
      console.log("not delivered", dist);
      $http({
        method: 'GET',
-       url: `/ordersDistND`,
-       data: {distributer : dist, delivered: false}
+       url: `/ordersDistND/${dist}`,
+
      }).then(function(response){
        console.log("not delivered orders", response);
          angular.copy(response.data, distributerOrderListNotDelivered);
@@ -36,8 +36,8 @@ app.factory('orderService',['$http', function($http){
      console.log("delivered distributer", dist);
      $http({
        method: 'GET',
-       url: `/ordersDistD`,
-       data: {distributer : dist, delivered: true}
+       url: `/ordersDistD/${dist}`,
+       
 
      }).then(function(response){
        console.log("deliverd orders",response);

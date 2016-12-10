@@ -19,6 +19,14 @@ module.exports = function(app) {
             password: $scope.newPassword,
             distributer: $scope.newDistributer
           }
+        }).then(function(response){
+          alert("User Created Successfully");
+          $scope.newAccess = "";
+          $scope.newRepId = "";
+          $scope.newUserName = "";
+          $scope.newName = "";
+          $scope.newPassword = "";
+          $scope.newDistributer = "";
         })
       }
     }]);

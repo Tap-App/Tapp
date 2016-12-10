@@ -201,6 +201,14 @@ module.exports = function(app) {
             password: $scope.newPassword,
             distributer: $scope.newDistributer
           }
+        }).then(function(response){
+          alert("User Created Successfully");
+          $scope.newAccess = "";
+          $scope.newRepId = "";
+          $scope.newUserName = "";
+          $scope.newName = "";
+          $scope.newPassword = "";
+          $scope.newDistributer = "";
         })
       }
     }]);
@@ -390,8 +398,8 @@ module.exports = function(app){
       getMyInventoryServer: function(dist) {
         $http({
             method: 'GET',
-            url: `/distInventory`,
-            data: {distributer: dist}
+            url: `/distInventory/${dist}`,
+
         }).then(function(response){
           console.log('server side query results :', response );
           angular.copy(response.data, myInventoryServer);
@@ -434,8 +442,8 @@ app.factory('orderService',['$http', function($http){
      console.log("not delivered", dist);
      $http({
        method: 'GET',
-       url: `/ordersDistND`,
-       data: {distributer : dist, delivered: false}
+       url: `/ordersDistND/${dist}`,
+
      }).then(function(response){
        console.log("not delivered orders", response);
          angular.copy(response.data, distributerOrderListNotDelivered);
@@ -447,8 +455,8 @@ app.factory('orderService',['$http', function($http){
      console.log("delivered distributer", dist);
      $http({
        method: 'GET',
-       url: `/ordersDistD`,
-       data: {distributer : dist, delivered: true}
+       url: `/ordersDistD/${dist}`,
+       
 
      }).then(function(response){
        console.log("deliverd orders",response);

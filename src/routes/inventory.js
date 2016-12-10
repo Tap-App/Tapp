@@ -34,14 +34,14 @@ exports.register = (server, options, next) => {
 
   server.route({
     method: 'GET',
-    path: '/distInventory',
+    path: '/distInventory/{dist}',
 
     handler(request, reply) {
-      const dist = request.payload;
+
       // get db collection
       const inventoryCollection = Mongojs.db().collection('inventory');
       // execute a query
-      inventoryCollection.find(dist, (err, data) => {
+      inventoryCollection.find({distributer : request.params.dist}, (err, data) => {
           if (err) {
               return reply(Boom.wrap(err, 'Internal MongoDB error'))
           }
@@ -54,7 +54,7 @@ exports.register = (server, options, next) => {
     path: '/oneBeer/{beerName}',
 
     handler(request, reply) {
-      
+
       // get db collection
       const inventoryCollection = Mongojs.db().collection('inventory');
       // execute a query
