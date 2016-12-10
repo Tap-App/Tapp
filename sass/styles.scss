@@ -44,6 +44,9 @@ body{
     display: block;
     margin: 4% auto;
 }
+.addAccount{
+  padding: 1%;
+}
 .beer {
   background-color: white;
   overflow: auto;
@@ -139,4 +142,10 @@ footer{
   h5{
     display: inline-block;
   }
+}
+.orderDetails{
+    background-color: white;
+    margin: 1% 0 10% 8%;
+    border-radius: 8px;
+    box-shadow: 2px 2px 6px;
 }
