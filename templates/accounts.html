@@ -1,8 +1,8 @@
 <h1>{{user.name}}'s accounts</h1>
 
 <div class="accountListBox col-xs-5 ">
-    <div class="accountList">
-        <div class="account" ng-repeat="account in myAccountsList">
+    <div class="accountList listBox">
+        <div class="listItem" ng-repeat="account in myAccountsList">
             <a ng-click="showAccountDets(account)"><h5>{{account.accountName}}</h5></a>
         </div>
     </div>

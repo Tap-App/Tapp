@@ -4,8 +4,8 @@
 
     <div class="orderList col-xs-7">
         <h4>Not Delivered Orders</h4>
-        <div class="orderContainer">
-            <div class="notDeliveredOrders " ng-repeat="order in notDelivOrders">
+        <div class="orderContainer listBox">
+            <div class="listItem " ng-repeat="order in notDelivOrders">
               <a ng-click="showDetails(order)"><h5>{{order.accountName}} {{order.orderDate}}</h5></a>                <button ng-click='delivered(order._id)' type="button" name="button">Delivered</button>
             </div>
         </div>
@@ -13,8 +13,8 @@
 
     <div class="orderList col-xs-5">
         <h4>Delivered Orders</h4>
-        <div class="orderContainer">
-            <div class="deliveredOrders" ng-repeat="order in delivOrders">
+        <div class="orderContainer listBox">
+            <div class="listItem" ng-repeat="order in delivOrders">
                 <a ng-click="showDetails(order)"><h5>{{order.accountName}} {{order.orderDate}}</h5></a>
             </div>
         </div>

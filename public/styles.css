@@ -31,7 +31,7 @@ body {
   .accountDetails h3 {
     text-align: center; }
 
-.account {
+.listItem {
   background-color: white;
   overflow: auto;
   text-align: center;
@@ -40,6 +40,16 @@ body {
   width: 80%;
   display: block;
   margin: 4% auto; }
+
+.inventoryBox {
+  height: 300px;
+  overflow-y: scroll; }
+
+.addBeerBox {
+  background-color: grey;
+  margin: 2% 0 5% 0;
+  box-shadow: 5px 6px 16px 1px;
+  padding: 1%; }
 
 .addAccount {
   padding: 1%; }
