@@ -85,23 +85,23 @@ exports.register = (server, options, next) => {
       })
 
     },
-    config: {
-      validate: {
-        payload: {
-
-          beerType: Joi.string().min(1).max(50).required(),
-          brewery: Joi.string().min(1).max(50).required(),
-          description: Joi.string().min(1).max(50).required(),
-          distributer: Joi.string().min(1).max(50).required(),
-          name: Joi.string().min(1).max(50).required(),
-          qtyCases: Joi.number(),
-          qtyHalfBarrels: Joi.number(),
-          qtySixtels: Joi.number(),
-          unitPrice: Joi.number(),
-
-        }
-      }
-    }
+    // config: {
+    //   validate: {
+    //     payload: {
+    //
+    //       beerType: Joi.string().min(1).max(50).required(),
+    //       brewery: Joi.string().min(1).max(50).required(),
+    //       description: Joi.string().min(1).max(50).required(),
+    //       distributer: Joi.string().min(1).max(50).required(),
+    //       name: Joi.string().min(1).max(50).required(),
+    //       qtyCases: Joi.number(),
+    //       qtyHalfBarrels: Joi.number(),
+    //       qtySixtels: Joi.number(),
+    //       unitPrice: Joi.number(),
+    //
+    //     }
+    //   }
+    // }
   })
 
   server.route({

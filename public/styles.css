@@ -2,7 +2,7 @@
   box-sizing: border-box; }
 
 body {
-  padding-top: 100px;
+  padding-top: 85px;
   background-color: gold; }
   body h1 {
     text-align: center; }
@@ -49,6 +49,7 @@ body {
 .accountListBox {
   height: 300px; }
   .accountListBox .accountList {
+    height: 300px;
     overflow: scroll; }
 
 .accountDetails {
@@ -75,6 +76,13 @@ body {
   margin: 2% 0 5% 0;
   box-shadow: 5px 6px 16px 1px;
   padding: 1%; }
+  .addBeerBox h3 {
+    text-align: center; }
+  .addBeerBox button {
+    display: block;
+    margin: 4% auto;
+    width: 30%;
+    height: 45px; }
 
 .addAccount {
   padding: 1%; }
@@ -174,3 +182,14 @@ footer {
   margin: 1% 0 10% 8%;
   border-radius: 8px;
   box-shadow: 2px 2px 6px; }
+
+.inputsForAdd {
+  display: inline-block;
+  width: 30%; }
+  .inputsForAdd .type {
+    display: block; }
+  .inputsForAdd input {
+    display: inline-block;
+    width: 30%; }
+  .inputsForAdd h5 {
+    display: inline-block; }

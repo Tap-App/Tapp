@@ -2,7 +2,7 @@
   box-sizing: border-box;
 }
 body{
-  padding-top: 100px;
+  padding-top: 85px;
   background-color: gold;
   h1{
     text-align: center;
@@ -50,6 +50,7 @@ body{
 .accountListBox{
   height: 300px;
   .accountList{
+    height: 300px;
     overflow: scroll;
   }
 }
@@ -78,6 +79,15 @@ body{
     margin: 2% 0 5% 0;
     box-shadow: 5px 6px 16px 1px;
     padding: 1%;
+    h3{
+      text-align: center;
+    }
+    button{
+      display: block;
+      margin: 4% auto;
+      width: 30%;
+      height: 45px;
+    }
 }
 
 .addAccount{
@@ -186,4 +196,18 @@ footer{
     margin: 1% 0 10% 8%;
     border-radius: 8px;
     box-shadow: 2px 2px 6px;
+}
+.inputsForAdd{
+  display: inline-block;
+  width: 30%;
+  .type{
+    display: block;
+  }
+  input{
+    display: inline-block;
+    width: 30%;
+  }
+  h5{
+    display: inline-block;
+  }
 }
