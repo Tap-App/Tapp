@@ -102,21 +102,23 @@ body {
   margin-top: 2%; }
 
 header {
-  height: 300px;
+  min-height: 300px;
   width: 100%;
   background-color: navy;
   color: white;
   text-align: center;
   margin-top: -10%;
-  padding-top: 10%; }
+  padding-top: 10%;
+  padding-bottom: 5%; }
   header h2 {
+    margin: 0;
     font-size: 5rem; }
 
 .aboutTapp {
   background-color: white;
   padding: 2%;
   width: 100%;
-  height: 250px; }
+  min-height: 250px; }
   .aboutTapp h3 {
     text-align: center;
     font-size: 4rem;
@@ -126,7 +128,7 @@ header {
 
 footer {
   width: 100%;
-  height: 100px;
+  min-height: 100px;
   text-align: center; }
   footer h4 {
     margin-top: 5%; }
