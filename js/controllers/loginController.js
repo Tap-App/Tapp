@@ -20,7 +20,8 @@ module.exports = function(app) {
             distributer: $scope.newDistributer
           }
         }).then(function(response){
-          alert("User Created Successfully");
+          console.log(response);
+          alert(response.data);
           $scope.newAccess = "";
           $scope.newRepId = "";
           $scope.newUserName = "";

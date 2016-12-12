@@ -50,8 +50,10 @@ exports.register = (server, options, next) => {
           if (err) {
             return reply(Boom.wrap(err, 'Internal MongoDB error'))
           }
-
+          reply('New User Created Successfully').code(204);
         })
+      } else {
+        reply('Incorrect Access Code')
       }
     }
   })
