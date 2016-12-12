@@ -56,19 +56,19 @@
     <h6>qty</h6>
     <input ng-model="orderAmmnt" type="number" name="" value="">
     <h6>Vessel</h6>
-    <h6>Cases Available: {{selectItem.qtyCases}}</h6>
-    <h6>Sixtels Available: {{selectItem.qtySixtels}}</h6>
-    <h6>Half Barrels Available: {{selectItem.qtyHalfBarrels}}</h6>
+    <h6>Cases Available: {{selectItem.qtyCases}} @ ${{selectItem.priceCases}} ea.</h6>
+    <h6>Sixtels Available: {{selectItem.qtySixtels}} @ ${{selectItem.priceSixtel}} ea.</h6>
+    <h6>Half Barrels Available: {{selectItem.qtyHalfBarrels}} @ ${{selectItem.priceHB}} ea.</h6>
     <select ng-model='selectVessel' class="" name="">
         <option value="cases">Cases</option>
         <option value="sixtels">Sixtels</option>
         <option value="halfBarrels">HalfBarrels</option>
     </select>
 
-    <button ng-click='addToOrderList(selectItem.name,orderAmmnt,selectVessel)' type="button" name="button">Add</button>
+    <button ng-click='addToOrderList(selectItem,orderAmmnt,selectVessel)' type="button" name="button">Add</button>
 
     <div class="orderBeerList" ng-repeat='beer in orderList'>
-        <h6>{{beer.name}} ~ {{beer.qty}} ~ {{beer.vessel}}</h6>
+        <h6>{{beer.name}} ~ {{beer.qty}} ~ {{beer.vessel}} ~ ${{beer.totalBeerPrice}}</h6>
     </div>
-    <button ng-click='placeOrder(orderAcct,orderList,user.username,user.distributer,deliveryDay)' type="button" name="button">Place Order</button>
+    <h5>Total: ${{orderTotal}} </h5><button ng-click='placeOrder(orderAcct,orderList,user.username,user.distributer,deliveryDay)' type="button" name="button">Place Order</button>
 </aside>
