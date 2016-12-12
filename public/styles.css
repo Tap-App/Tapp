@@ -7,6 +7,31 @@ body {
   body h1 {
     text-align: center; }
 
+.loader {
+  width: 10%;
+  position: fixed;
+  z-index: 99;
+  margin-left: 1%; }
+
+.loading {
+  width: 25%;
+  -webkit-animation: spin 2s linear infinite;
+  -moz-animation: spin 2s linear infinite;
+  animation: spin 2s linear infinite; }
+
+@-moz-keyframes spin {
+  100% {
+    -moz-transform: rotate(360deg); } }
+
+@-webkit-keyframes spin {
+  100% {
+    -webkit-transform: rotate(360deg); } }
+
+@keyframes spin {
+  100% {
+    -webkit-transform: rotate(360deg);
+    transform: rotate(360deg); } }
+
 .col-center {
   float: none;
   margin-right: auto;

@@ -1,6 +1,6 @@
 module.exports = function(app){
   app.controller('inventoryController',['$scope', '$http', 'inventoryService', 'userService', function($scope, $http, inventoryService, userService){
-
+    $scope.loading = 0;
     $scope.user = userService.getCurrentUser();
     $scope.myInventory = inventoryService.getMyInventoryServer($scope.user.distributer);
     console.log($scope.myInventory);
@@ -10,6 +10,7 @@ module.exports = function(app){
     }
 
     $scope.addBeer = function() {
+      $scope.loading ++;
             $http({
                 method: 'POST',
                 url: '/inventory',
@@ -28,6 +29,7 @@ module.exports = function(app){
                   distributer: $scope.user.distributer
                 },
             }).then(function(response){
+              $scope.loading --;
         // After a response, reload the inventory and clear the fields
         inventoryService.getMyInventoryServer($scope.user.distributer);
         $scope.name = "";

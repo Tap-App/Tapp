@@ -1,10 +1,14 @@
 module.exports = function(app) {
     app.controller('accountsController', ['$scope', '$http', '$q', 'accountService', 'userService', 'inventoryService', function($scope, $http, $q, accountService, userService, inventoryService) {
+
+        $scope.loading = 0;
+
         $scope.user = userService.getCurrentUser();
         $scope.myAccountsList = accountService.getMyAccountsServer($scope.user.repId);
         console.log($scope.myAccountsList);
 
         $scope.addAcct = function() {
+          $scope.loading ++;
             $http({
                 method: 'POST',
                 url: '/accounts',
@@ -17,6 +21,7 @@ module.exports = function(app) {
                     address: $scope.address
                 },
             }).then(function(response) {
+              $scope.loading --;
                 console.log(response);
                 accountService.getMyAccountsServer($scope.user.repId);
 

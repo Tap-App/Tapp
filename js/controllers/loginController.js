@@ -1,12 +1,13 @@
 module.exports = function(app) {
     app.controller('loginController', ['$scope', '$http', 'userService', function($scope, $http, userService) {
-
+      $scope.loading = 0;
 
 
       $scope.login = function(){
         userService.login($scope.user,$scope.pass);
       }
       $scope.createUser = function(){
+        $scope.loading ++;
         console.log("creating user", $scope.newName);
         $http({
           method: 'POST',
@@ -20,6 +21,7 @@ module.exports = function(app) {
             distributer: $scope.newDistributer
           }
         }).then(function(response){
+          $scope.loading --;
           console.log(response);
           alert(response.data);
           $scope.newAccess = "";

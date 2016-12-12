@@ -1,11 +1,15 @@
 (function e(t,n,r){function s(o,u){if(!n[o]){if(!t[o]){var a=typeof require=="function"&&require;if(!u&&a)return a(o,!0);if(i)return i(o,!0);throw new Error("Cannot find module '"+o+"'")}var f=n[o]={exports:{}};t[o][0].call(f.exports,function(e){var n=t[o][1][e];return s(n?n:e)},f,f.exports,e,t,n,r)}return n[o].exports}var i=typeof require=="function"&&require;for(var o=0;o<r.length;o++)s(r[o]);return s})({1:[function(require,module,exports){
 module.exports = function(app) {
     app.controller('accountsController', ['$scope', '$http', '$q', 'accountService', 'userService', 'inventoryService', function($scope, $http, $q, accountService, userService, inventoryService) {
+
+        $scope.loading = 0;
+
         $scope.user = userService.getCurrentUser();
         $scope.myAccountsList = accountService.getMyAccountsServer($scope.user.repId);
         console.log($scope.myAccountsList);
 
         $scope.addAcct = function() {
+          $scope.loading ++;
             $http({
                 method: 'POST',
                 url: '/accounts',
@@ -18,6 +22,7 @@ module.exports = function(app) {
                     address: $scope.address
                 },
             }).then(function(response) {
+              $scope.loading --;
                 console.log(response);
                 accountService.getMyAccountsServer($scope.user.repId);
 
@@ -159,7 +164,7 @@ module.exports = function(app) {
 },{}],2:[function(require,module,exports){
 module.exports = function(app){
   app.controller('inventoryController',['$scope', '$http', 'inventoryService', 'userService', function($scope, $http, inventoryService, userService){
-
+    $scope.loading = 0;
     $scope.user = userService.getCurrentUser();
     $scope.myInventory = inventoryService.getMyInventoryServer($scope.user.distributer);
     console.log($scope.myInventory);
@@ -169,6 +174,7 @@ module.exports = function(app){
     }
 
     $scope.addBeer = function() {
+      $scope.loading ++;
             $http({
                 method: 'POST',
                 url: '/inventory',
@@ -187,6 +193,7 @@ module.exports = function(app){
                   distributer: $scope.user.distributer
                 },
             }).then(function(response){
+              $scope.loading --;
         // After a response, reload the inventory and clear the fields
         inventoryService.getMyInventoryServer($scope.user.distributer);
         $scope.name = "";
@@ -212,13 +219,14 @@ module.exports = function(app){
 },{}],3:[function(require,module,exports){
 module.exports = function(app) {
     app.controller('loginController', ['$scope', '$http', 'userService', function($scope, $http, userService) {
-
+      $scope.loading = 0;
 
 
       $scope.login = function(){
         userService.login($scope.user,$scope.pass);
       }
       $scope.createUser = function(){
+        $scope.loading ++;
         console.log("creating user", $scope.newName);
         $http({
           method: 'POST',
@@ -232,6 +240,7 @@ module.exports = function(app) {
             distributer: $scope.newDistributer
           }
         }).then(function(response){
+          $scope.loading --;
           console.log(response);
           alert(response.data);
           $scope.newAccess = "";
@@ -248,18 +257,20 @@ module.exports = function(app) {
 },{}],4:[function(require,module,exports){
 module.exports = function(app) {
     app.controller('ordersController', ['$scope', '$http', 'userService', 'orderService', function($scope, $http, userService, orderService){
-
+      $scope.loading = 0;
       $scope.user = userService.getCurrentUser();
       $scope.allOrders = orderService.getAllOrders();
       $scope.notDelivOrders = orderService.getDistOrdersNotDeliv($scope.user.distributer);
       $scope.delivOrders = orderService.getDistOrdersDeliv($scope.user.distributer);
 
       $scope.delivered = function(id){
+        $scope.loading ++;
         $http({
           method: 'PUT',
           url: `/orders/${id}`
 
         }).then(function(response){
+          $scope.loading --;
           console.log("deliverd");
           orderService.getDistOrdersNotDeliv($scope.user.distributer);
           orderService.getDistOrdersDeliv($scope.user.distributer);
