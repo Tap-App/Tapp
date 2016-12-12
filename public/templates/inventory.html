@@ -1,23 +1,27 @@
 <h1>{{user.distributer}} Inventory Checker</h1>
 
 <div class="inventoryBox col-xs-5 " >
-  <div class="beer" ng-repeat="beer in myInventory ">
-    <a ng-click="showBeerDets(beer)"><h3>{{beer.name}}<h3></a>
+  <div class="listBox">
+
+
+  <div class="listItem" ng-repeat="beer in myInventory ">
+    <a ng-click="showBeerDets(beer)"><h5>{{beer.name}}<h5></a>
 
   </div>
+  </div>
 </div>
-<div class="beerDetailsBox col-xs-5">
+<div class="beerDetailsBox col-xs-7">
   <h3>{{beerDets.name}}<h3>
     <h4>Brewery: {{beerDets.brewery}} Type: {{beerDets.beerType}}</h4>
   <p>
     {{beerDets.description}}
   </p>
   <h4>Available:</h4>
-  <h5>Sixtels: {{beerDets.qtySixtels}} Half Barrels {{beerDets.qtyHalfBarrels}} Cases: {{beerDets.qtyCases}}</h5>
-  <h4>Price: {{beerDets.unitPrice}}</h4>
+  <h5>Sixtels: {{beerDets.qtySixtels}} @ ${{beerDets.priceSixtel}} ea. || Half Barrels {{beerDets.qtyHalfBarrels}} @ ${{beerDets.priceHB}} ea. || Cases: {{beerDets.qtyCases}} @ ${{beerDets.priceCases}} ea.</h5>
+  
 
 </div>
-<div class="addBreweryBox col-xs-12 ">
+<div class="addBeerBox col-xs-12 ">
   <h3>Add a Beer!</h3>
     <input ng-model="brewery" type="text"  value="" placeholder="Brewery">
     <input ng-model="name" type="text"  value="" placeholder="Beer Name">
@@ -25,9 +29,11 @@
     <input ng-model="description" type="text"  value="" placeholder="Quick Description">
 
     <h5>QTY Cases</h5><input ng-model="qtyCases" type="number"  value="" placeholder="0">
+    <h5>$</h5><input ng-model="priceCases" type="number" name="" value="">
     <h5>QTY Sixtels</h5><input ng-model="qtySixtels" type="number"  value="" placeholder="0">
+    <h5>$</h5><input ng-model="priceSixtel" type="number" name="" value="">
     <h5>QTY Half-Barrels</h5><input ng-model="qtyHalfBarrels" type="number"  value="" placeholder="0">
-    <h5>Unit Price</h5><input ng-model="unitPrice" type="number"  value="" placeholder="0">
+    <h5>$</h5><input ng-model="priceHB" type="number" name="" value="">
 
     <button ng-click='addBeer()' type="button" name="button">Add Beer</button>
 </div>

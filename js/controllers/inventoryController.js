@@ -8,7 +8,7 @@ module.exports = function(app){
     $scope.showBeerDets = function(beer){
       $scope.beerDets = beer;
     }
-    
+
     $scope.addBeer = function() {
             $http({
                 method: 'POST',
@@ -22,7 +22,9 @@ module.exports = function(app){
                   qtyCases: $scope.qtyCases,
                   qtySixtels: $scope.qtySixtels,
                   qtyHalfBarrels: $scope.qtyHalfBarrels,
-                  unitPrice: $scope.unitPrice,
+                  priceCases: $scope.priceCases,
+                  priceSixtel: $scope.priceSixtel,
+                  priceHB: $scope.priceHB,
                   distributer: $scope.user.distributer
                 },
             }).then(function(response){

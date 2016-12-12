@@ -54,13 +54,27 @@ module.exports = function(app) {
             console.log("beers for order list", $scope.items);
         }
         $scope.orderList = []
-        $scope.addToOrderList = function(beerName, beerQty, beerVessel) {
-
+        $scope.orderTotal = 0;
+        $scope.addToOrderList = function(orderBeer, beerQty, beerVessel) {
+            var choicePrice = 0;
+            if (beerVessel === 'cases') {
+              choicePrice = orderBeer.priceCases;
+            } else if (beerVessel === 'sixtels') {
+              choicePrice = orderBeer.priceSixtel;
+            } else {
+              choicePrice = orderBeer.priceHB;
+            }
+            var beerTotal = beerQty * choicePrice;
+            console.log("beer total", beerTotal);
             $scope.orderList.push({
-                name: beerName,
+                name: orderBeer.name,
                 qty: beerQty,
-                vessel: beerVessel
+                vessel: beerVessel,
+                pricePerItem: choicePrice,
+                totalBeerPrice: beerTotal
             })
+            $scope.orderTotal= $scope.orderTotal + beerTotal;
+            console.log("orderTotal", $scope.orderTotal);
         }
         $scope.placeOrder = function(acctName, orderList, repUser, dist, delivery) {
             var today = new Date();
@@ -77,9 +91,15 @@ module.exports = function(app) {
             }
 
             today = mm + '/' + dd + '/' + yyyy;
+            var orderTotal = 0;
             console.log("List of beers to order", orderList);
             orderList.forEach(function(el){
+              // find total price of beer order and add to orderTotal
+              var beerTotal = el.qty * el.pricePerItem;
+              console.log("beer total", beerTotal);
+              orderTotal= orderTotal + beerTotal;
               // for each element of the order list, match the name and vessel type
+
               console.log('each beer to update',el.name);
               var matchBeer= {};
               var updateBeer = {};
@@ -110,7 +130,7 @@ module.exports = function(app) {
             })
 
             });
-
+            console.log("total price of order", orderTotal);
             $http({
                 method: 'POST',
                 url: '/orders',
@@ -119,6 +139,7 @@ module.exports = function(app) {
                     username: repUser,
                     accountName: acctName,
                     orderDate: today,
+                    totalPrice: orderTotal,
                     beers: orderList,
                     deliveryDate: delivery,
                     delivered: false
@@ -126,6 +147,7 @@ module.exports = function(app) {
             }).then(function(response){
               $scope.orderAcct = "";
               $scope.orderList = [];
+              $scope.orderTotal = 0;
             })
 
 
@@ -145,7 +167,7 @@ module.exports = function(app){
     $scope.showBeerDets = function(beer){
       $scope.beerDets = beer;
     }
-    
+
     $scope.addBeer = function() {
             $http({
                 method: 'POST',
@@ -159,7 +181,9 @@ module.exports = function(app){
                   qtyCases: $scope.qtyCases,
                   qtySixtels: $scope.qtySixtels,
                   qtyHalfBarrels: $scope.qtyHalfBarrels,
-                  unitPrice: $scope.unitPrice,
+                  priceCases: $scope.priceCases,
+                  priceSixtel: $scope.priceSixtel,
+                  priceHB: $scope.priceHB,
                   distributer: $scope.user.distributer
                 },
             }).then(function(response){
@@ -208,7 +232,8 @@ module.exports = function(app) {
             distributer: $scope.newDistributer
           }
         }).then(function(response){
-          alert("User Created Successfully");
+          console.log(response);
+          alert(response.data);
           $scope.newAccess = "";
           $scope.newRepId = "";
           $scope.newUserName = "";
