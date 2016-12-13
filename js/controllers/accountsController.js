@@ -167,7 +167,7 @@ module.exports = function(app) {
                 })
                 console.log("acctOrderList", acctOrderList);
                 console.log("total price of order", orderTotal);
-                debugger
+                
 
                 var sumOfOrders = 0;
 
