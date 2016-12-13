@@ -182,10 +182,11 @@ footer{
     }
 }
 .orderList{
-  height: 200px;
+  height: 300px;
   border: 1px solid black;
   .orderContainer{
     overflow-y: scroll;
+    height: 250px;
   }
   h5{
     display: inline-block;
