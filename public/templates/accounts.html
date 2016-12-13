@@ -17,7 +17,7 @@
     <h4>Phone Number: {{accountDets.phone}}</h4>
     <h4>Address: {{accountDets.address}}</h4>
     <h5>last order date: {{accountDets.lastOrderDate}}</h5>
-    <h5>avg order ammount: {{accountDets.avgOrderAmmount}}</h5>
+    <h5>avg order ammount: ${{accountDets.avgOrderAmmnt}}</h5>
     <button ng-click='newOrder(accountDets)' type="button" name="button">New Order</button>
     <button ng-click="rmAcct(accountDets._id,accountDets.accountName)" type="button" name="button">Remove Account</button>
 
