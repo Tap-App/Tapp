@@ -176,7 +176,7 @@ module.exports = function(app) {
                     console.log("price of each order", el.totalPrice);
                     sumOfOrders = sumOfOrders + el.totalPrice;
                 });
-                var divisor = acctOrderList.length;
+                var divisor = acctOrderList.length + 1;
                 console.log("number to divide by", divisor);
                 console.log("number to divide", sumOfOrders);
                 var totalToDivide = sumOfOrders + orderTotal;
