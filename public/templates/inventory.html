@@ -15,12 +15,13 @@
 <div class="beerDetailsBox col-xs-7">
     <h3>{{beerDets.name}}<h3>
     <h4>Brewery: {{beerDets.brewery}} </h4>
-    <h4>Type: {{beerDets.beerType}}</h4>
+    <h4>Style: {{beerDets.beerType}}</h4>
   <p>
     {{beerDets.description}}
   </p>
   <h4>Available:</h4>
   <h5>Sixtels: {{beerDets.qtySixtels}} @ ${{beerDets.priceSixtel}} ea. </h5>
+  <h5> Quarter Barrels {{beerDets.qtyQB}} @ ${{beerDets.priceQB}} ea. </h5>
   <h5> Half Barrels {{beerDets.qtyHalfBarrels}} @ ${{beerDets.priceHB}} ea. </h5>
   <h5> Cases: {{beerDets.qtyCases}} @ ${{beerDets.priceCases}} ea.</h5>
 
@@ -46,6 +47,12 @@
             <input ng-model="qtySixtels" type="number" value="" placeholder="0">
             <h5>$</h5>
             <input ng-model="priceSixtel" type="number" name="" value="">
+        </div>
+        <div class="inputsForAdd">
+            <h5 class="type">Quarter-Barrels</h5>
+            <input ng-model="qtyQB" type="number" value="" placeholder="0">
+            <h5>$</h5>
+            <input ng-model="priceQB" type="number" name="" value="">
         </div>
         <div class="inputsForAdd">
             <h5 class="type">Half-Barrels</h5>

@@ -137,7 +137,7 @@ module.exports = function(app) {
                         updateBeer = {
                             name: el.name,
                             qty: matchBeer.qtyHalfBarrels - el.qty,
-                            field: "HalfBarrels"
+                            field: "qtyHalfBarrels"
                         }
                     }
                     console.log("send to server", updateBeer);
@@ -167,7 +167,7 @@ module.exports = function(app) {
                 })
                 console.log("acctOrderList", acctOrderList);
                 console.log("total price of order", orderTotal);
-                
+
 
                 var sumOfOrders = 0;
 
