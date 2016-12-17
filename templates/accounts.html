@@ -101,8 +101,10 @@
                 <h6>{{beer.name}} ~ {{beer.qty}} ~ {{beer.vessel}} ~ ${{beer.totalBeerPrice}}</h6>
             </div>
         </div>
+        <div class="placeOrder">        
         <h5>Total: ${{orderTotal}} </h5>
         <button ng-click='placeOrder(orderAcct,orderList,user.username,user.distributer,deliveryDay)' type="button" name="button">Place Order</button>
+        </div>
     </div>
 </aside>
 
