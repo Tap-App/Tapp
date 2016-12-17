@@ -146,7 +146,26 @@ exports.register = (server, options, next) => {
     //   }
     // }
   })
+  server.route({
+    method: 'PUT',
+    path: '/updateBeerInfo',
+    handler(request,reply) {
+      var info = request.payload;
+      var infoId = ObjectId(info._id);
+      const inventoryCollection = Mongojs.db().collection('inventory');
+      console.log("field and value to update",info.field,info.editVal);
+      console.log("objectID to update", infoId);
+      inventoryCollection.update(
+        {_id: infoId},
+        {$set: {[info.field]: info.editVal}},
+        (err,result) => {
+          if (err) { return reply(Boom.wrap(err, 'Internal MongoDB error')) }
+          if (result.n === 0) { return reply(Boom.notFound()) }
 
+          reply().code(204);
+        })
+    }
+  });
 
    next()
 }

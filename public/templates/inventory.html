@@ -13,17 +13,32 @@
     </div>
 </div>
 <div class="beerDetailsBox col-xs-7">
-    <h3>{{beerDets.name}}<h3>
-    <h4>Brewery: {{beerDets.brewery}} </h4>
-    <h4>Style: {{beerDets.beerType}}</h4>
-  <p>
-    {{beerDets.description}}
-  </p>
+    <h3>{{beerDets.name}}
+      <button ng-if="user.invAdmin" ng-click="showInputs()"type="button" name="button"><i class="fa fa-pencil" aria-hidden="true"></i></button>
+      <button ng-show="editBeer" ng-click="cancelInputs()"type="button" name="button"><i class="fa fa-times-circle-o" aria-hidden="true"></i></button>
+</h3>
+
+      <input ng-model="nameInput" ng-show="editBeer"type="text" name="" value="" placeholder="Name"><button ng-show="editBeer" ng-click="updateBeerInfo(nameInput, 'name')"type="button" name="button"><i class="fa fa-floppy-o" aria-hidden="true"></i></button>
+
+
+    <h4>Brewery: {{beerDets.brewery}} </h4><input ng-model="breweryInput"ng-show="editBeer"type="text" name="" value=""><button ng-show="editBeer" ng-click="updateBeerInfo(breweryInput, 'brewery')"type="button" name="button"><i class="fa fa-floppy-o" aria-hidden="true"></i></button>
+    <h4>Style: {{beerDets.beerType}}</h4><input ng-model="typeInput"ng-show="editBeer"type="text" name="" value=""><button ng-show="editBeer" ng-click="updateBeerInfo(typeInput, 'beerType')"type="button" name="button"><i class="fa fa-floppy-o" aria-hidden="true"></i></button>
+
+    <h4>Description: {{beerDets.description}}</h4><input ng-model="descriptionInput"ng-show="editBeer"type="text" name="" value=""><button ng-show="editBeer" ng-click="updateBeerInfo(descriptionInput, 'description')"type="button" name="button"><i class="fa fa-floppy-o" aria-hidden="true"></i></button>
+
   <h4>Available:</h4>
   <h5>Sixtels: {{beerDets.qtySixtels}} @ ${{beerDets.priceSixtel}} ea. </h5>
+  <input ng-model="qtySixtelsInput"ng-show="editBeer"type="number" name="" value=""placeholder="Qty"><button ng-show="editBeer" ng-click="updateBeerInfo(qtySixtelsInput, 'qtySixtels')"type="button" name="button"><i class="fa fa-floppy-o" aria-hidden="true"></i></button>
+  <input ng-model="priceSixtelInput"ng-show="editBeer"type="number" name="" value=""placeholder="Price"><button ng-show="editBeer" ng-click="updateBeerInfo(priceSixtelInput, 'priceSixtel')"type="button" name="button"><i class="fa fa-floppy-o" aria-hidden="true"></i></button>
   <h5> Quarter Barrels {{beerDets.qtyQB}} @ ${{beerDets.priceQB}} ea. </h5>
+  <input ng-model="qtyQBInput"ng-show="editBeer"type="number" name="" value=""placeholder="Qty"><button ng-show="editBeer" ng-click="updateBeerInfo(qtyQBInput, 'qtyQB')"type="button" name="button"><i class="fa fa-floppy-o" aria-hidden="true"></i></button>
+  <input ng-model="priceQBInput"ng-show="editBeer"type="number" name="" value=""placeholder="Price"><button ng-show="editBeer" ng-click="updateBeerInfo(priceQBInput, 'priceQB')"type="button" name="button"><i class="fa fa-floppy-o" aria-hidden="true"></i></button>
   <h5> Half Barrels {{beerDets.qtyHalfBarrels}} @ ${{beerDets.priceHB}} ea. </h5>
+  <input ng-model="qtyHalfBarrelsInput"ng-show="editBeer"type="number" name="" value=""placeholder="Qty"><button ng-show="editBeer" ng-click="updateBeerInfo(qtyHalfBarrelsInput, 'qtyHalfBarrels')"type="button" name="button"><i class="fa fa-floppy-o" aria-hidden="true"></i></button>
+  <input ng-model="priceHBInput"ng-show="editBeer"type="number" name="" value=""placeholder="Price"><button ng-show="editBeer" ng-click="updateBeerInfo(priceHBInput, 'priceHB')"type="button" name="button"><i class="fa fa-floppy-o" aria-hidden="true"></i></button>
   <h5> Cases: {{beerDets.qtyCases}} @ ${{beerDets.priceCases}} ea.</h5>
+  <input ng-model="qtyCasesInput"ng-show="editBeer"type="number" name="" value=""placeholder="Qty"><button ng-show="editBeer" ng-click="updateBeerInfo(qtyCasesInput, 'qtyCases')"type="button" name="button"><i class="fa fa-floppy-o" aria-hidden="true"></i></button>
+  <input ng-model="priceCasesInput"ng-show="editBeer"type="number" name="" value=""placeholder="Price"><button ng-show="editBeer" ng-click="updateBeerInfo(priceCasesInput, 'priceCases')"type="button" name="button"><i class="fa fa-floppy-o" aria-hidden="true"></i></button>
 
 
 </div>

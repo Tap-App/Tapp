@@ -11,20 +11,103 @@
 </div>
 
 <div class="accountDetails col-xs-7 ">
-    <h3>Account Details</h3>
-    <h3>{{accountDets.accountName}}</h3>
-    <h4>Contact: {{accountDets.contact}}</h4>
-    <h4>Phone Number: {{accountDets.phone}}</h4>
-    <h4>Address: {{accountDets.address}}</h4>
-    <h5>last order date: {{accountDets.lastOrderDate}}</h5>
-    <h5>avg order ammount: ${{accountDets.avgOrderAmmnt}}</h5>
-    <button ng-click='newOrder(accountDets)' type="button" name="button">New Order</button>
-    <button ng-click="rmAcct(accountDets._id,accountDets.accountName)" type="button" name="button">Remove Account</button>
+    <div class="accountDetsBox">
+        <h3>Account Details</h3>
+        <h3>{{accountDets.accountName}}</h3>
+        <div class="editable">
+            <h4>Contact: <span ng-hide="editContact">{{accountDets.contact}}</span></h4>
+            <input ng-show="editContact" ng-model="contactInput" type="text" name="" value="">
+            <button ng-hide="editContact" ng-click="showContact()" type="button" name="button"><i class="fa fa-pencil" aria-hidden="true"></i></button>
+            <button ng-show="editContact" ng-click="cancelEditContact()"type="button" name="button"><i class="fa fa-times-circle-o" aria-hidden="true"></i></button>
+            <button ng-show="editContact" ng-click="updateInfo(contactInput,'contact')"type="button" name="button"><i class="fa fa-floppy-o" aria-hidden="true"></i></button>
+        </div>
+        <div class="editable">
+            <h4>Phone Number: <span ng-hide="editPhone">{{accountDets.phone}}</span></h4>
+            <input ng-show="editPhone" ng-model='phoneInput' type="text" name="" value="">
+            <button ng-hide="editPhone" ng-click="showPhone()"type="button" name="button"><i class="fa fa-pencil" aria-hidden="true"></i></button>
+            <button ng-show="editPhone" ng-click="cancelEditPhone()"type="button" name="button"><i class="fa fa-times-circle-o" aria-hidden="true"></i></button>
+            <button ng-show="editPhone" ng-click="updateInfo(phoneInput,'phone')"type="button" name="button"><i class="fa fa-floppy-o" aria-hidden="true"></i></button>
 
+        </div>
+        <div class="editable">
+            <h4>Address: <span ng-hide="editAddress">{{accountDets.address}}</span></h4>
+            <input ng-show="editAddress" ng-model='addressInput' type="text" name="" value="">
+            <button ng-hide="editAddress" ng-click="showAddress()" type="button" name="button"><i class="fa fa-pencil" aria-hidden="true"></i></button>
+            <button ng-show="editAddress" ng-click="cancelEditAddress()"type="button" name="button"><i class="fa fa-times-circle-o" aria-hidden="true"></i></button>
+            <button ng-show="editAddress" ng-click="updateInfo(addressInput,'address')"type="button" name="button"><i class="fa fa-floppy-o" aria-hidden="true"></i></button>
+
+        </div>
+
+        <h5>last order date: {{accountDets.lastOrderDate}}</h5>
+        <h5>avg order ammount: ${{accountDets.avgOrderAmmnt}}</h5>
+        <button ng-click='newOrder(accountDets)' type="button" name="button">New Order</button>
+        <button ng-click="rmAcct(accountDets._id,accountDets.accountName)" type="button" name="button">Remove Account</button>
+    </div>
 </div>
+<aside class="col-xs-12 col-sm-7 ">
+    <div class="orderForm">
 
-<div class="addAccount col-xs-5 ">
-    <h3>Create a new accout</h3>
+
+        <h4>Order Form</h4>
+        <div class="orderField">
+            <h6>Account: </h6>
+            <h5>{{orderAcct}}</h5>
+        </div>
+        <div class="orderField">
+            <h6>Delivery Day</h6>
+            <select ng-model="deliveryDay" class="deliveryDay" name="">
+                <option value="Monday">Monday</option>
+                <option value="Tuesday">Tuesday</option>
+                <option value="Wednesday">Wednesday</option>
+                <option value="Thursday">Thursday</option>
+                <option value="Friday">Friday</option>
+                <option value="Saturday">Saturday</option>
+                <option value="Sunday">Sunday</option>
+            </select>
+        </div>
+
+        <div class="orderField">
+            <h6>Beer: </h6>
+            <select ng-model="selectItem" ng-options="item as item.name for item in items">
+            </select>
+        </div>
+
+        <div class="orderField">
+            <h6>Quantity</h6>
+            <input ng-model="orderAmmnt" type="number" name="" value="">
+
+        </div>
+        <div class="orderField">
+            <h6>Vessel</h6>
+            <select ng-model='selectVessel' class="" name="">
+                <option value="cases">Cases</option>
+                <option value="sixtels">Sixtels</option>
+                <option value="quarterBarrels">Quarter Barrels</option>
+                <option value="halfBarrels">Half Barrels</option>
+            </select>
+            <h6>Cases Available: {{selectItem.qtyCases}} @ ${{selectItem.priceCases}} ea.</h6>
+            <h6>Sixtels Available: {{selectItem.qtySixtels}} @ ${{selectItem.priceSixtel}} ea.</h6>
+            <h6>Quarter Barrels Available: {{selectItem.qtyQB}} @ ${{selectItem.priceQB}} ea.</h6>
+            <h6>Half Barrels Available: {{selectItem.qtyHalfBarrels}} @ ${{selectItem.priceHB}} ea.</h6>
+            <button ng-click='addToOrderList(selectItem,orderAmmnt,selectVessel)' type="button" name="button">Add</button>
+
+        </div>
+
+
+        <div class="orderField">
+            <h4>Order List</h4>
+
+            <div class="orderBeerList" ng-repeat='beer in orderList'>
+                <h6>{{beer.name}} ~ {{beer.qty}} ~ {{beer.vessel}} ~ ${{beer.totalBeerPrice}}</h6>
+            </div>
+        </div>
+        <h5>Total: ${{orderTotal}} </h5>
+        <button ng-click='placeOrder(orderAcct,orderList,user.username,user.distributer,deliveryDay)' type="button" name="button">Place Order</button>
+    </div>
+</aside>
+
+<div class="addAccount col-xs-12 col-sm-5 ">
+    <h3>Create a new account</h3>
     <div class="inputContainer">
 
 
@@ -38,39 +121,3 @@
 
     </div>
 </div>
-
-<aside class="orderForm col-xs-7 ">
-    <h4>Order Form</h4>
-    <h5>Account: {{orderAcct}}</h5>
-    <h6>Delivery Day</h6>
-    <select ng-model="deliveryDay" class="deliveryDay" name="">
-        <option value="Monday">Monday</option>
-        <option value="Tuesday">Tuesday</option>
-        <option value="Wednesday">Wednesday</option>
-        <option value="Thursday">Thursday</option>
-        <option value="Friday">Friday</option>
-        <option value="Saturday">Saturday</option>
-        <option value="Sunday">Sunday</option>
-    </select>
-    <h6>Beer: </h6>
-    <select ng-model="selectItem" ng-options="item as item.name for item in items">
-    </select>
-    <h6>qty</h6>
-    <input ng-model="orderAmmnt" type="number" name="" value="">
-    <h6>Vessel</h6>
-    <h6>Cases Available: {{selectItem.qtyCases}} @ ${{selectItem.priceCases}} ea.</h6>
-    <h6>Sixtels Available: {{selectItem.qtySixtels}} @ ${{selectItem.priceSixtel}} ea.</h6>
-    <h6>Half Barrels Available: {{selectItem.qtyHalfBarrels}} @ ${{selectItem.priceHB}} ea.</h6>
-    <select ng-model='selectVessel' class="" name="">
-        <option value="cases">Cases</option>
-        <option value="sixtels">Sixtels</option>
-        <option value="halfBarrels">HalfBarrels</option>
-    </select>
-
-    <button ng-click='addToOrderList(selectItem,orderAmmnt,selectVessel)' type="button" name="button">Add</button>
-
-    <div class="orderBeerList" ng-repeat='beer in orderList'>
-        <h6>{{beer.name}} ~ {{beer.qty}} ~ {{beer.vessel}} ~ ${{beer.totalBeerPrice}}</h6>
-    </div>
-    <h5>Total: ${{orderTotal}} </h5><button ng-click='placeOrder(orderAcct,orderList,user.username,user.distributer,deliveryDay)' type="button" name="button">Place Order</button>
-</aside>

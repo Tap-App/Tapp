@@ -114,6 +114,10 @@ body{
     padding: 3%;
     background-color: #bfbfbf;
     margin-top: 2%;
+    h4{
+      text-align: center;
+      font-size: 2rem;
+    }
 }
 header{
   min-height: 300px;
@@ -200,7 +204,7 @@ footer{
 }
 .inputsForAdd{
   display: inline-block;
-  width: 30%;
+  width: 22%;
   .type{
     display: block;
   }
@@ -210,5 +214,47 @@ footer{
   }
   h5{
     display: inline-block;
+  }
+}
+aside{
+  margin-bottom: 5%;
+}
+.orderField{
+  border-top: 2px solid white;
+  min-height: 50px;
+  h5{
+    display: inline-block;
+    float: right;
+    margin-right: 5%;
+  }
+  h6{
+    display: inline-block;
+    width: 50%;
+  }
+  input{
+    float: right;
+    margin: 3% 1% 0 0;
+    width: 30%;
+    border-radius: 5px;
+  }
+  select{
+    float: right;
+    margin: 3% 1% 0 0;
+    width: 30%;
+  }
+  button{
+    float: right;
+  }
+}
+.orderBeerList{
+  border-top: 2px solid white;
+
+}
+.accountDetsBox{
+  background-color: #ffe978;
+  .editable{
+    h4{
+      display: inline-block;
+    }
   }
 }

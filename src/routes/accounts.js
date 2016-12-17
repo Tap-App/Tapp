@@ -153,8 +153,27 @@ exports.register = (server, options, next) => {
     //     }).required().min(1)
     //   }
     // }
-  })
+  });
+  server.route({
+    method: 'PUT',
+    path: '/updateAccountInfo',
+    handler(request,reply) {
+      var info = request.payload;
+      var infoId = ObjectId(info._id);
+      const accountCollection = Mongojs.db().collection('accounts');
+      console.log("field and value to update",info.field,info.editVal);
+      console.log("objectID to update", infoId);
+      accountCollection.update(
+        {_id: infoId},
+        {$set: {[info.field]: info.editVal}},
+        (err,result) => {
+          if (err) { return reply(Boom.wrap(err, 'Internal MongoDB error')) }
+          if (result.n === 0) { return reply(Boom.notFound()) }
 
+          reply().code(204);
+        })
+    }
+  });
   server.route({
       // remove ONE account
       method: 'DELETE',

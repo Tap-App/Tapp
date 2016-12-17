@@ -4,11 +4,42 @@ module.exports = function(app) {
         $scope.user = userService.getCurrentUser();
         $scope.myInventory = inventoryService.getMyInventoryServer($scope.user.distributer);
         console.log($scope.myInventory);
-
+        $scope.editBeer = false;
+        $scope.showInputs = function(){
+          $scope.editBeer = true;
+        }
+        $scope.cancelInputs= function(){
+          $scope.editBeer = false;
+        }
         $scope.showBeerDets = function(beer) {
             $scope.beerDets = beer;
         }
+        $scope.updateBeerInfo = function(editInput,setField){
+          console.log("id to update", $scope.beerDets._id);
+          console.log("input Value", editInput);
+          console.log("feild to update", setField);
+          $http({
+            method: 'PUT',
+            url:'/updateBeerInfo',
+            data: {_id: $scope.beerDets._id , field: setField, editVal : editInput}
 
+          }).then(function(response){
+            inventoryService.getMyInventoryServer($scope.user.distributer);
+            $scope.nameInput = "";
+            $scope.breweryInput = "";
+            $scope.typeInput = "";
+            $scope.descriptionInput = "";
+            $scope.qtyCasesInput = "";
+            $scope.qtyHalfBarrelsInput = "";
+            $scope.qtySixtelsInout = "";
+            $scope.qtyQBInput = "";
+            $scope.priceHBInput ="";
+            $scope.priceCasesInput = "";
+            $scope.priceSixtelInput = "";
+            $scope.priceQBInput = "";
+
+          })
+        }
         $scope.addBeer = function() {
             $scope.loading++;
             $http({

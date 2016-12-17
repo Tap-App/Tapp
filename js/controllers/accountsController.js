@@ -6,7 +6,46 @@ module.exports = function(app) {
         $scope.user = userService.getCurrentUser();
         $scope.myAccountsList = accountService.getMyAccountsServer($scope.user.repId);
         console.log($scope.myAccountsList);
+        $scope.editContact = false;
+        $scope.editPhone = false;
+        $scope.editAddress = false;
 
+        // show and hide edit contact input
+        $scope.showContact = function() {
+            $scope.editContact = true;
+        }
+        $scope.cancelEditContact = function() {
+                $scope.editContact = false;
+            }
+            // show and hide edit phone input
+        $scope.showPhone = function() {
+            $scope.editPhone = true;
+        }
+        $scope.cancelEditPhone = function() {
+                $scope.editPhone = false;
+            }
+            // show and hide edit address input
+        $scope.showAddress = function() {
+            $scope.editAddress = true;
+        }
+        $scope.cancelEditAddress = function() {
+            $scope.editAddress = false;
+        }
+        $scope.updateInfo = function (editInput,setField) {
+          console.log("field to update", setField);
+          console.log("update the contact", editInput);
+          console.log("Id to update", $scope.accountDets._id);
+          $http({
+            method: 'PUT',
+            url:'/updateAccountInfo',
+            data: {_id: $scope.accountDets._id , field: setField, editVal : editInput}
+
+          }).then(function(response){
+            accountService.getMyAccountsServer($scope.user.repId);
+          })
+        }
+
+        // Add an Account
         $scope.addAcct = function() {
             $scope.loading++;
             $http({
@@ -155,68 +194,68 @@ module.exports = function(app) {
             // Find the average order ammount and update the account
             var acctOrderList = [];
             $http({
-                method: 'GET',
-                url: '/orders'
-            }).then(function(response) {
-                console.log("order list response", response);
-                console.log("account", acctName);
-                response.data.forEach(function(el) {
-                    if (el.accountName === acctName) {
-                        acctOrderList.push(el)
-                    }
+                    method: 'GET',
+                    url: '/orders'
+                }).then(function(response) {
+                    console.log("order list response", response);
+                    console.log("account", acctName);
+                    response.data.forEach(function(el) {
+                        if (el.accountName === acctName) {
+                            acctOrderList.push(el)
+                        }
+                    })
+                    console.log("acctOrderList", acctOrderList);
+                    console.log("total price of order", orderTotal);
+
+
+                    var sumOfOrders = 0;
+
+                    acctOrderList.forEach(function(el) {
+
+                        console.log("price of each order", el.totalPrice);
+                        sumOfOrders = sumOfOrders + el.totalPrice;
+                    });
+                    var divisor = acctOrderList.length + 1;
+                    console.log("number to divide by", divisor);
+                    console.log("number to divide", sumOfOrders);
+                    var totalToDivide = sumOfOrders + orderTotal;
+                    var averageOrder = Math.ceil(totalToDivide / divisor);
+                    console.log("average order to update", averageOrder);
+                    $http({
+                        method: 'PUT',
+                        url: `/accounts/${$scope.orderAcctId}`,
+                        data: {
+                            lastOrderDate: today,
+                            avgOrderAmmnt: averageOrder
+                        }
+                    }).then(function(response) {
+                        accountService.getMyAccountsServer($scope.user.repId);
+                    })
                 })
-                console.log("acctOrderList", acctOrderList);
-                console.log("total price of order", orderTotal);
-
-
-                var sumOfOrders = 0;
-
-                acctOrderList.forEach(function(el) {
-
-                    console.log("price of each order", el.totalPrice);
-                    sumOfOrders = sumOfOrders + el.totalPrice;
-                });
-                var divisor = acctOrderList.length + 1;
-                console.log("number to divide by", divisor);
-                console.log("number to divide", sumOfOrders);
-                var totalToDivide = sumOfOrders + orderTotal;
-                var averageOrder = Math.ceil(totalToDivide / divisor);
-                console.log("average order to update", averageOrder);
-                $http({
-                  method:'PUT',
-                  url: `/accounts/${$scope.orderAcctId}`,
-                  data: {
-                    lastOrderDate: today,
-                    avgOrderAmmnt: averageOrder
-                  }
-                }).then(function(response){
-                  accountService.getMyAccountsServer($scope.user.repId);
-                })
-            })
-            // console.log("acctOrderList", acctOrderList);
-            // console.log("total price of order", orderTotal);
-            // debugger
-            //
-            // var sumOfOrders = 0;
-            //
-            // acctOrderList.forEach(function(el) {
-            //
-            //     console.log("price of each order", el.totalPrice);
-            //     sumOfOrders = sumOfOrders + el.totalPrice;
-            // });
-            // var divisor = acctOrderList.length;
-            // console.log("number to divide by", divisor);
-            // console.log("number to divide", sumOfOrders);
-            // var totalToDivide = sumOfOrders + orderTotal;
-            // var averageOrder = totalToDivide / divisor;
-            // console.log("average order to update", averageOrder);
+                // console.log("acctOrderList", acctOrderList);
+                // console.log("total price of order", orderTotal);
+                // debugger
+                //
+                // var sumOfOrders = 0;
+                //
+                // acctOrderList.forEach(function(el) {
+                //
+                //     console.log("price of each order", el.totalPrice);
+                //     sumOfOrders = sumOfOrders + el.totalPrice;
+                // });
+                // var divisor = acctOrderList.length;
+                // console.log("number to divide by", divisor);
+                // console.log("number to divide", sumOfOrders);
+                // var totalToDivide = sumOfOrders + orderTotal;
+                // var averageOrder = totalToDivide / divisor;
+                // console.log("average order to update", averageOrder);
             $http({
-              method:'PUT',
-              url: `/accounts/${$scope.orderAcctId}`,
-              data: {
-                lastOrderDate: today,
+                method: 'PUT',
+                url: `/accounts/${$scope.orderAcctId}`,
+                data: {
+                    lastOrderDate: today,
 
-              }
+                }
             })
             $http({
                 method: 'POST',
