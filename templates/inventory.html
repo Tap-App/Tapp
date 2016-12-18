@@ -1,12 +1,14 @@
 <div class="loader" ng-show="loading"><img class="loading" src="images/loading.png" alt=""></div>
 
 <h1>{{user.distributer}} Inventory Checker</h1>
-
+<div class="searchBar col-xs-12">
+  <i class='fa fa-search' aria-hidden="true"></i><input ng-model="invSearch" type="text" name="" value="" >
+</div>
 <div class="inventoryBox col-xs-5 ">
     <div class="listBox">
 
 
-        <div class="listItem" ng-repeat="beer in myInventory ">
+        <div class="listItem" ng-repeat="beer in myInventory | filter:invSearch ">
             <a ng-click="showBeerDets(beer)"><h5>{{beer.name}}<h5></a>
 
         </div>

@@ -249,3 +249,7 @@ aside {
   background-color: #ffe978; }
   .accountDetsBox .editable h4 {
     display: inline-block; }
+
+.searchBar {
+  height: 30px;
+  background-color: #ffe978; }
