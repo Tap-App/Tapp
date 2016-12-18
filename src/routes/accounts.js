@@ -115,11 +115,19 @@ exports.register = (server, options, next) => {
     path: '/accounts/{id}',
 
     handler(request, reply) {
+      var oid = ObjectId(request.params.id);
+      var acctUpdate = request.payload;
+
+      //  samplePayload = {
+      //   lastOrderDate: today,
+      //   avgOrderAmmnt: averageOrder
+      // };
+
       const accountCollection = Mongojs.db().collection('accounts');
 
       accountCollection.update(
-        {_id: request.params.id},
-        {$set: request.payload},
+        {_id: oid},
+        {$set: {lastOrderDate : acctUpdate.lastOrderDate, avgOrderAmmnt: acctUpdate.avgOrderAmmnt}},
         (err, result) => {
 
           if (err) { return reply(Boom.wrap(err, 'Internal MongoDB error')) }
@@ -129,24 +137,43 @@ exports.register = (server, options, next) => {
       })
 
     },
-    config: {
-      validate: {
-        payload: Joi.object({
+    // config: {
+    //   validate: {
+    //     payload: Joi.object({
+    //
+    //       repID: Joi.number().optional(),
+    //       accountName: Joi.string().min(10).max(50).optional(),
+    //       contact: Joi.string().min(1).max(50).optional(),
+    //       email: Joi.string().email().optional(),
+    //       phone: Joi.string().min(1).max(20).optional(),
+    //       address: Joi.string().min(1).max(50).optional(),
+    //       lastOrderDate: Joi.date().format('YYYY/MM/DD').optional(),
+    //       avgOrderAmmount: Joi.number().optional()
+    //
+    //     }).required().min(1)
+    //   }
+    // }
+  });
+  server.route({
+    method: 'PUT',
+    path: '/updateAccountInfo',
+    handler(request,reply) {
+      var info = request.payload;
+      var infoId = ObjectId(info._id);
+      const accountCollection = Mongojs.db().collection('accounts');
+      console.log("field and value to update",info.field,info.editVal);
+      console.log("objectID to update", infoId);
+      accountCollection.update(
+        {_id: infoId},
+        {$set: {[info.field]: info.editVal}},
+        (err,result) => {
+          if (err) { return reply(Boom.wrap(err, 'Internal MongoDB error')) }
+          if (result.n === 0) { return reply(Boom.notFound()) }
 
-          repID: Joi.number().optional(),
-          accountName: Joi.string().min(10).max(50).optional(),
-          contact: Joi.string().min(1).max(50).optional(),
-          email: Joi.string().email().optional(),
-          phone: Joi.string().min(1).max(20).optional(),
-          address: Joi.string().min(1).max(50).optional(),
-          lastOrderDate: Joi.date().format('YYYY/MM/DD').optional(),
-          avgOrderAmmount: Joi.number().optional()
-
-        }).required().min(1)
-      }
+          reply().code(204);
+        })
     }
-  })
-
+  });
   server.route({
       // remove ONE account
       method: 'DELETE',

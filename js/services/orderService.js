@@ -6,6 +6,7 @@ app.factory('orderService',['$http', function($http){
  let distributerOrderListNotDelivered = [];
  let myOrderList = [];
  let distributerOrderListDelivered= [];
+ let acctOrderList = [];
  return {
    getAllOrders: function(){
      $http({
@@ -37,7 +38,7 @@ app.factory('orderService',['$http', function($http){
      $http({
        method: 'GET',
        url: `/ordersDistD/${dist}`,
-       
+
 
      }).then(function(response){
        console.log("deliverd orders",response);
@@ -56,6 +57,24 @@ app.factory('orderService',['$http', function($http){
      });
      return myOrderList;
    },
+   getAccountOrders: function(account){
+     acctOrderList=[];
+     $http({
+       method: 'GET',
+       url: '/orders'
+     }).then(function(response){
+       console.log("order list response", response);
+       console.log("account", account);
+       response.data.forEach(function(el){
+         if (el.accountName === account) {
+           acctOrderList.push(el)
+         }
+       })
+
+     })
+     console.log("acctOrderList",acctOrderList);
+     return acctOrderList;
+   }
  };
 
 

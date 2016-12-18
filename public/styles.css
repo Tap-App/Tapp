@@ -2,10 +2,35 @@
   box-sizing: border-box; }
 
 body {
-  padding-top: 100px;
-  background-color: gold; }
+  padding-top: 85px;
+  background-color: #ffd500; }
   body h1 {
     text-align: center; }
+
+.loader {
+  width: 10%;
+  position: fixed;
+  z-index: 99;
+  margin-left: 1%; }
+
+.loading {
+  width: 25%;
+  -webkit-animation: spin 2s linear infinite;
+  -moz-animation: spin 2s linear infinite;
+  animation: spin 2s linear infinite; }
+
+@-moz-keyframes spin {
+  100% {
+    -moz-transform: rotate(360deg); } }
+
+@-webkit-keyframes spin {
+  100% {
+    -webkit-transform: rotate(360deg); } }
+
+@keyframes spin {
+  100% {
+    -webkit-transform: rotate(360deg);
+    transform: rotate(360deg); } }
 
 .col-center {
   float: none;
@@ -24,6 +49,7 @@ body {
 .accountListBox {
   height: 300px; }
   .accountListBox .accountList {
+    height: 300px;
     overflow: scroll; }
 
 .accountDetails {
@@ -46,10 +72,17 @@ body {
   overflow-y: scroll; }
 
 .addBeerBox {
-  background-color: grey;
+  background-color: #bfbfbf;
   margin: 2% 0 5% 0;
   box-shadow: 5px 6px 16px 1px;
   padding: 1%; }
+  .addBeerBox h3 {
+    text-align: center; }
+  .addBeerBox button {
+    display: block;
+    margin: 4% auto;
+    width: 30%;
+    height: 45px; }
 
 .addAccount {
   padding: 1%; }
@@ -66,32 +99,37 @@ body {
 
 .beerOrder {
   border-radius: 5px;
-  background-color: grey;
+  background-color: #bfbfbf;
   overflow: auto;
   margin: 1%; }
 
 .orderForm {
   border-radius: 5px;
   padding: 3%;
-  background-color: grey;
+  background-color: #bfbfbf;
   margin-top: 2%; }
+  .orderForm h4 {
+    text-align: center;
+    font-size: 2rem; }
 
 header {
-  height: 300px;
+  min-height: 300px;
   width: 100%;
   background-color: navy;
   color: white;
   text-align: center;
   margin-top: -10%;
-  padding-top: 10%; }
+  padding-top: 10%;
+  padding-bottom: 5%; }
   header h2 {
+    margin: 0;
     font-size: 5rem; }
 
 .aboutTapp {
   background-color: white;
   padding: 2%;
   width: 100%;
-  height: 250px; }
+  min-height: 250px; }
   .aboutTapp h3 {
     text-align: center;
     font-size: 4rem;
@@ -101,7 +139,7 @@ header {
 
 footer {
   width: 100%;
-  height: 100px;
+  min-height: 100px;
   text-align: center; }
   footer h4 {
     margin-top: 5%; }
@@ -109,7 +147,7 @@ footer {
 .loginBox {
   display: block;
   margin: 0% auto;
-  background-color: grey;
+  background-color: #bfbfbf;
   height: 200px;
   width: 40%;
   border-radius: 25px;
@@ -123,7 +161,7 @@ footer {
 .signUpBox {
   display: block;
   margin: 2% auto;
-  background-color: grey;
+  background-color: #bfbfbf;
   height: auto;
   width: 50%;
   border-radius: 25px;
@@ -135,15 +173,83 @@ footer {
     width: 65%; }
 
 .orderList {
-  height: 200px;
+  height: 300px;
   border: 1px solid black; }
   .orderList .orderContainer {
-    overflow-y: scroll; }
+    overflow-y: scroll;
+    height: 250px; }
   .orderList h5 {
     display: inline-block; }
 
 .orderDetails {
-  background-color: white;
+  background-color: #bfbfbf;
   margin: 1% 0 10% 8%;
   border-radius: 8px;
   box-shadow: 2px 2px 6px; }
+
+.inputsForAdd {
+  display: inline-block;
+  width: 22%; }
+  .inputsForAdd .type {
+    display: block; }
+  .inputsForAdd input {
+    display: inline-block;
+    width: 30%; }
+  .inputsForAdd h5 {
+    display: inline-block; }
+
+aside {
+  margin-bottom: 5%; }
+  aside .placeOrder {
+    border-right: 2px solid white;
+    border-bottom: 2px solid white;
+    width: 30%;
+    margin-left: 66%;
+    padding-bottom: 1%; }
+    aside .placeOrder h5 {
+      text-align: center; }
+    aside .placeOrder button {
+      margin: auto;
+      display: block; }
+
+.orderField {
+  margin-bottom: 2%;
+  border-left: 2px solid rgba(255, 225, 72, 0.65);
+  border-top: 2px solid rgba(255, 225, 72, 0.65);
+  min-height: 50px;
+  padding: 1%; }
+  .orderField h5 {
+    display: inline-block;
+    float: right;
+    margin-right: 5%; }
+  .orderField h6 {
+    display: inline-block;
+    width: 50%; }
+  .orderField input {
+    float: right;
+    margin: 2% 1% 0 0;
+    width: 30%;
+    height: 30px;
+    border-radius: 5px;
+    border: 1px solid grey; }
+  .orderField select {
+    float: right;
+    margin: 2% 1% 0 0;
+    width: 30%;
+    height: 30px;
+    border-radius: 5px;
+    border: 1px solid grey; }
+  .orderField button {
+    float: right; }
+
+.orderBeerList {
+  border-top: 2px solid white; }
+
+.accountDetsBox {
+  background-color: #ffe978; }
+  .accountDetsBox .editable h4 {
+    display: inline-block; }
+
+.searchBar {
+  height: 30px;
+  background-color: #ffe978; }
