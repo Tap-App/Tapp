@@ -15,27 +15,36 @@
         <h3>Account Details</h3>
         <h3>{{accountDets.accountName}}</h3>
         <div class="editable">
-            <h4>Contact: <span ng-hide="editContact">{{accountDets.contact}}</span></h4>
-            <input ng-show="editContact" ng-model="contactInput" type="text" name="" value="">
+            <h5>Contact:</h5>
             <button ng-hide="editContact" ng-click="showContact()" type="button" name="button"><i class="fa fa-pencil" aria-hidden="true"></i></button>
-            <button ng-show="editContact" ng-click="cancelEditContact()"type="button" name="button"><i class="fa fa-times-circle-o" aria-hidden="true"></i></button>
-            <button ng-show="editContact" ng-click="updateInfo(contactInput,'contact')"type="button" name="button"><i class="fa fa-floppy-o" aria-hidden="true"></i></button>
+            <button ng-show="editContact" ng-click="cancelEditContact()" type="button" name="button"><i class="fa fa-times-circle-o" aria-hidden="true"></i></button>
+            <button ng-show="editContact" ng-click="updateInfo(contactInput,'contact')" type="button" name="button"><i class="fa fa-floppy-o" aria-hidden="true"></i></button>
+            <h4><span ng-hide="editContact">{{accountDets.contact}}</span></h4>
+            <input ng-show="editContact" ng-model="contactInput" type="text" name="" value="">
         </div>
         <div class="editable">
-            <h4>Phone Number: <span ng-hide="editPhone">{{accountDets.phone}}</span></h4>
+            <h5>Email:</h5>
+            <button ng-hide="editEmail" ng-click="showEmail()" type="button" name="button"><i class="fa fa-pencil" aria-hidden="true"></i></button>
+            <button ng-show="editEmail" ng-click="cancelEditPhone()" type="button" name="button"><i class="fa fa-times-circle-o" aria-hidden="true"></i></button>
+            <button ng-show="editEmail" ng-click="updateInfo(emailInput,'email')" type="button" name="button"><i class="fa fa-floppy-o" aria-hidden="true"></i></button>
+            <h4> <span ng-hide="editPhone">{{accountDets.email}}</span></h4>
+            <input ng-show="editEmail" ng-model='emailInput' type="text" name="" value="">
+        </div>
+        <div class="editable">
+            <h5>Phone:</h5>
+            <button ng-hide="editPhone" ng-click="showPhone()" type="button" name="button"><i class="fa fa-pencil" aria-hidden="true"></i></button>
+            <button ng-show="editPhone" ng-click="cancelEditPhone()" type="button" name="button"><i class="fa fa-times-circle-o" aria-hidden="true"></i></button>
+            <button ng-show="editPhone" ng-click="updateInfo(phoneInput,'phone')" type="button" name="button"><i class="fa fa-floppy-o" aria-hidden="true"></i></button>
+            <h4> <span ng-hide="editPhone">{{accountDets.phone}}</span></h4>
             <input ng-show="editPhone" ng-model='phoneInput' type="text" name="" value="">
-            <button ng-hide="editPhone" ng-click="showPhone()"type="button" name="button"><i class="fa fa-pencil" aria-hidden="true"></i></button>
-            <button ng-show="editPhone" ng-click="cancelEditPhone()"type="button" name="button"><i class="fa fa-times-circle-o" aria-hidden="true"></i></button>
-            <button ng-show="editPhone" ng-click="updateInfo(phoneInput,'phone')"type="button" name="button"><i class="fa fa-floppy-o" aria-hidden="true"></i></button>
-
         </div>
         <div class="editable">
-            <h4>Address: <span ng-hide="editAddress">{{accountDets.address}}</span></h4>
-            <input ng-show="editAddress" ng-model='addressInput' type="text" name="" value="">
+            <h5>Address: </h5>
             <button ng-hide="editAddress" ng-click="showAddress()" type="button" name="button"><i class="fa fa-pencil" aria-hidden="true"></i></button>
-            <button ng-show="editAddress" ng-click="cancelEditAddress()"type="button" name="button"><i class="fa fa-times-circle-o" aria-hidden="true"></i></button>
-            <button ng-show="editAddress" ng-click="updateInfo(addressInput,'address')"type="button" name="button"><i class="fa fa-floppy-o" aria-hidden="true"></i></button>
-
+            <button ng-show="editAddress" ng-click="cancelEditAddress()" type="button" name="button"><i class="fa fa-times-circle-o" aria-hidden="true"></i></button>
+            <button ng-show="editAddress" ng-click="updateInfo(addressInput,'address')" type="button" name="button"><i class="fa fa-floppy-o" aria-hidden="true"></i></button>
+            <h4><span ng-hide="editAddress">{{accountDets.address}}</span></h4>
+            <input ng-show="editAddress" ng-model='addressInput' type="text" name="" value="">
         </div>
 
         <h5>last order date: {{accountDets.lastOrderDate}}</h5>
@@ -101,9 +110,9 @@
                 <h6>{{beer.name}} ~ {{beer.qty}} ~ {{beer.vessel}} ~ ${{beer.totalBeerPrice}}</h6>
             </div>
         </div>
-        <div class="placeOrder">        
-        <h5>Total: ${{orderTotal}} </h5>
-        <button ng-click='placeOrder(orderAcct,orderList,user.username,user.distributer,deliveryDay)' type="button" name="button">Place Order</button>
+        <div class="placeOrder">
+            <h5>Total: ${{orderTotal}} </h5>
+            <button ng-click='placeOrder(orderAcct,orderList,user.username,user.distributer,deliveryDay)' type="button" name="button">Place Order</button>
         </div>
     </div>
 </aside>

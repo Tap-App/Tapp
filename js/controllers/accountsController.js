@@ -24,6 +24,12 @@ module.exports = function(app) {
         $scope.cancelEditPhone = function() {
                 $scope.editPhone = false;
             }
+        $scope.showEmail = function() {
+                $scope.editEmail = true;
+            }
+        $scope.cancelEditPhone = function() {
+                $scope.editEmail = false;
+                }
             // show and hide edit address input
         $scope.showAddress = function() {
             $scope.editAddress = true;

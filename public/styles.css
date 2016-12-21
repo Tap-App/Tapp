@@ -146,13 +146,14 @@ footer {
 
 .loginBox {
   display: block;
-  margin: 0% auto;
+  margin: 2% auto;
   background-color: #bfbfbf;
-  height: 200px;
-  width: 40%;
+  min-height: 200px;
+  width: 85%;
   border-radius: 25px;
   padding: 2%;
-  text-align: center; }
+  text-align: center;
+  box-shadow: 3px 3px 15px; }
   .loginBox input {
     display: block;
     margin: 4% auto;
@@ -160,13 +161,14 @@ footer {
 
 .signUpBox {
   display: block;
-  margin: 2% auto;
+  margin: 10% auto;
   background-color: #bfbfbf;
   height: auto;
-  width: 50%;
+  width: 90%;
   border-radius: 25px;
   padding: 2%;
-  text-align: center; }
+  text-align: center;
+  box-shadow: 3px 3px 15px; }
   .signUpBox input {
     display: block;
     margin: 4% auto;
@@ -247,9 +249,22 @@ aside {
 
 .accountDetsBox {
   background-color: #ffe978; }
-  .accountDetsBox .editable h4 {
-    display: inline-block; }
 
 .searchBar {
   height: 30px;
   background-color: #ffe978; }
+
+.editable {
+  width: 80%;
+  margin: 1% auto;
+  background-color: bisque;
+  padding: 1%;
+  overflow-x: scroll; }
+  .editable h5 {
+    display: inline-block;
+    margin: 0; }
+  .editable button {
+    float: right;
+    margin: 1% 1% 0 0; }
+  .editable input {
+    width: 100%; }
