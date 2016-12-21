@@ -107,7 +107,7 @@ body {
   border-radius: 5px;
   padding: 3%;
   background-color: #bfbfbf;
-  margin-top: 2%; }
+  margin-top: 10%; }
   .orderForm h4 {
     text-align: center;
     font-size: 2rem; }
@@ -248,7 +248,14 @@ aside {
   border-top: 2px solid white; }
 
 .accountDetsBox {
-  background-color: #ffe978; }
+  background-color: #ffe978;
+  padding-bottom: 1%;
+  border-radius: 5px; }
+  .accountDetsBox h5 {
+    text-align: center; }
+  .accountDetsBox button {
+    display: block;
+    margin: 1% auto; }
 
 .searchBar {
   height: 30px;
@@ -268,3 +275,30 @@ aside {
     margin: 1% 1% 0 0; }
   .editable input {
     width: 100%; }
+
+.addAccountBox {
+  background-color: #ffe978;
+  padding: 2%;
+  width: 90%;
+  border-radius: 5px;
+  margin: 0 auto; }
+  .addAccountBox h3 {
+    text-align: center; }
+  .addAccountBox button {
+    display: block;
+    margin: 2% 0 2% 9%; }
+  .addAccountBox .acctField {
+    margin-bottom: 2%;
+    border-left: 2px solid #d2cebc;
+    border-top: 2px solid #d2cebc;
+    min-height: 50px;
+    padding: 1%; }
+    .addAccountBox .acctField h6 {
+      display: inline-block; }
+    .addAccountBox .acctField input {
+      display: inline-block;
+      margin: 2% 1% 0 0;
+      float: right;
+      height: 30px;
+      border-radius: 5px;
+      border: 1px solid grey; }

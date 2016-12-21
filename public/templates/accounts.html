@@ -118,17 +118,30 @@
 </aside>
 
 <div class="addAccount col-xs-12 col-sm-5 ">
-    <h3>Create a new account</h3>
-    <div class="inputContainer">
-
-
-        <input ng-model='accountName' type="text" name="accountName" value="" placeholder="Account Name">
-        <input ng-model='contact' type="text" name="contact" value="" placeholder="Who to Contact">
-        <input ng-model='email' type="text" name="email" value="" placeholder="Contact's email">
-        <input ng-model='phone' type="text" name="phone" value="" placeholder="Contact's phone number">
-        <input ng-model='address' type="text" name="address" value="" placeholder="Address">
-
-        <button ng-click='addAcct()' type="button" name="">Add Account</button>
-
+    <div class="addAccountBox">
+        <h3>Create a new account</h3>
+        <div class="inputContainer">
+            <div class="acctField">
+                <h6>Account Name</h6>
+                <input ng-model='accountName' type="text" name="accountName" value="">
+            </div>
+            <div class="acctField">
+              <h6>Contact Name</h6>
+                <input ng-model='contact' type="text" name="contact" value="" >
+            </div>
+            <div class="acctField">
+              <h6>Email</h6>
+                <input ng-model='email' type="text" name="email" value="" >
+            </div>
+            <div class="acctField">
+              <h6>Phone</h6>
+                <input ng-model='phone' type="text" name="phone" value="" >
+            </div>
+            <div class="acctField">
+              <h6>Address</h6>
+                <input ng-model='address' type="text" name="address" value="" >
+            </div>
+            <button ng-click='addAcct()' type="button" name="">Add Account</button>
+        </div>
     </div>
 </div>

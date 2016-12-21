@@ -113,7 +113,7 @@ body{
     border-radius: 5px;
     padding: 3%;
     background-color: #bfbfbf;
-    margin-top: 2%;
+    margin-top: 10%;
     h4{
       text-align: center;
       font-size: 2rem;
@@ -276,10 +276,14 @@ aside{
 }
 .accountDetsBox{
   background-color: #ffe978;
-  .editable{
-    // h4{
-    //   display: inline-block;
-    // }
+  padding-bottom: 1%;
+  border-radius: 5px;
+  h5{
+    text-align: center
+  }
+  button{
+    display: block;
+    margin: 1% auto;
   }
 }
 .searchBar{
@@ -303,4 +307,38 @@ aside{
     input{
       width: 100%;
     }
+}
+.addAccountBox{
+  background-color: #ffe978;
+  padding: 2%;
+  width: 90%;
+  border-radius: 5px;
+  margin: 0 auto;
+  h3{
+    text-align: center;
+  }
+  button{
+    display: block;
+    margin: 2% 0 2% 9%;
+  }
+  .acctField{
+
+    margin-bottom: 2%;
+    border-left: 2px solid rgb(210, 206, 188);
+    border-top: 2px solid rgb(210, 206, 188);
+    min-height: 50px;
+    padding: 1%;
+    h6{
+      display: inline-block;
+    }
+    input{
+      display: inline-block;
+      margin: 2% 1% 0 0;
+      float: right;
+      height: 30px;
+      border-radius: 5px;
+      border: 1px solid grey;
+    }
+  }
+
 }
