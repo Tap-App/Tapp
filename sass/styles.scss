@@ -290,11 +290,12 @@ aside{
   }
 }
 .searchBar{
-  height:35px;
+  min-height: 40px;
   background-color: #ffe978;
-  padding-top: 1%;
+
+
   input{
-    margin-left: 1%;
+    margin: 2% 0 1% 1%;
   }
 }
 .editable{
