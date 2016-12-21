@@ -2,12 +2,14 @@
 
 <div class="distOrders">
     <h1>{{user.distributer}}'s Order List</h1>
-
+    <div class="searchBar col-xs-12">
+      <i class='fa fa-search' aria-hidden="true"></i><input ng-model="orderSearch" type="text" name="" value="" >
+    </div>
 
     <div class="orderList col-xs-7">
         <h4>Not Delivered Orders</h4>
         <div class="orderContainer listBox">
-            <div class="listItem " ng-repeat="order in notDelivOrders">
+            <div class="listItem " ng-repeat="order in notDelivOrders | filter:orderSearch">
               <a ng-click="showDetails(order)"><h5>{{order.accountName}} {{order.orderDate}}</h5></a>                <button ng-click='delivered(order._id)' type="button" name="button">Delivered</button>
             </div>
         </div>
@@ -16,7 +18,7 @@
     <div class="orderList col-xs-5">
         <h4>Delivered Orders</h4>
         <div class="orderContainer listBox">
-            <div class="listItem" ng-repeat="order in delivOrders">
+            <div class="listItem" ng-repeat="order in delivOrders | filter:orderSearch">
                 <a ng-click="showDetails(order)"><h5>{{order.accountName}} {{order.orderDate}}</h5></a>
             </div>
         </div>

@@ -1,10 +1,12 @@
 <div class="loader" ng-show="loading"><img class="loading" src="images/loading.png" alt=""></div>
 
 <h1>{{user.name}}'s accounts</h1>
-
+<div class="searchBar col-xs-12">
+  <i class='fa fa-search' aria-hidden="true"></i><input ng-model="accountSearch" type="text" name="" value="" >
+</div>
 <div class="accountListBox col-xs-5 ">
     <div class="accountList listBox">
-        <div class="listItem" ng-repeat="account in myAccountsList">
+        <div class="listItem" ng-repeat="account in myAccountsList | filter:accountSearch">
             <a ng-click="showAccountDets(account)"><h5>{{account.accountName}}</h5></a>
         </div>
     </div>

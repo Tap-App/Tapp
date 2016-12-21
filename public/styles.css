@@ -175,11 +175,13 @@ footer {
     width: 65%; }
 
 .orderList {
-  height: 300px;
-  border: 1px solid black; }
+  height: 350px; }
   .orderList .orderContainer {
     overflow-y: scroll;
     height: 250px; }
+  .orderList h4 {
+    height: 40px;
+    text-align: center; }
   .orderList h5 {
     display: inline-block; }
 
@@ -258,8 +260,11 @@ aside {
     margin: 1% auto; }
 
 .searchBar {
-  height: 30px;
-  background-color: #ffe978; }
+  height: 35px;
+  background-color: #ffe978;
+  padding-top: 1%; }
+  .searchBar input {
+    margin-left: 1%; }
 
 .editable {
   width: 80%;
