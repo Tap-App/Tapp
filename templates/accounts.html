@@ -1,10 +1,12 @@
 <div class="loader" ng-show="loading"><img class="loading" src="images/loading.png" alt=""></div>
 
 <h1>{{user.name}}'s accounts</h1>
-
+<div class="searchBar col-xs-12">
+  <i class='fa fa-search' aria-hidden="true"></i><input ng-model="accountSearch" type="text" name="" value="" >
+</div>
 <div class="accountListBox col-xs-5 ">
     <div class="accountList listBox">
-        <div class="listItem" ng-repeat="account in myAccountsList">
+        <div class="listItem" ng-repeat="account in myAccountsList | filter:accountSearch">
             <a ng-click="showAccountDets(account)"><h5>{{account.accountName}}</h5></a>
         </div>
     </div>
@@ -15,27 +17,36 @@
         <h3>Account Details</h3>
         <h3>{{accountDets.accountName}}</h3>
         <div class="editable">
-            <h4>Contact: <span ng-hide="editContact">{{accountDets.contact}}</span></h4>
-            <input ng-show="editContact" ng-model="contactInput" type="text" name="" value="">
+            <h5>Contact:</h5>
             <button ng-hide="editContact" ng-click="showContact()" type="button" name="button"><i class="fa fa-pencil" aria-hidden="true"></i></button>
-            <button ng-show="editContact" ng-click="cancelEditContact()"type="button" name="button"><i class="fa fa-times-circle-o" aria-hidden="true"></i></button>
-            <button ng-show="editContact" ng-click="updateInfo(contactInput,'contact')"type="button" name="button"><i class="fa fa-floppy-o" aria-hidden="true"></i></button>
+            <button ng-show="editContact" ng-click="cancelEditContact()" type="button" name="button"><i class="fa fa-times-circle-o" aria-hidden="true"></i></button>
+            <button ng-show="editContact" ng-click="updateInfo(contactInput,'contact')" type="button" name="button"><i class="fa fa-floppy-o" aria-hidden="true"></i></button>
+            <h4><span ng-hide="editContact">{{accountDets.contact}}</span></h4>
+            <input ng-show="editContact" ng-model="contactInput" type="text" name="" value="">
         </div>
         <div class="editable">
-            <h4>Phone Number: <span ng-hide="editPhone">{{accountDets.phone}}</span></h4>
+            <h5>Email:</h5>
+            <button ng-hide="editEmail" ng-click="showEmail()" type="button" name="button"><i class="fa fa-pencil" aria-hidden="true"></i></button>
+            <button ng-show="editEmail" ng-click="cancelEditPhone()" type="button" name="button"><i class="fa fa-times-circle-o" aria-hidden="true"></i></button>
+            <button ng-show="editEmail" ng-click="updateInfo(emailInput,'email')" type="button" name="button"><i class="fa fa-floppy-o" aria-hidden="true"></i></button>
+            <h4> <span ng-hide="editPhone">{{accountDets.email}}</span></h4>
+            <input ng-show="editEmail" ng-model='emailInput' type="text" name="" value="">
+        </div>
+        <div class="editable">
+            <h5>Phone:</h5>
+            <button ng-hide="editPhone" ng-click="showPhone()" type="button" name="button"><i class="fa fa-pencil" aria-hidden="true"></i></button>
+            <button ng-show="editPhone" ng-click="cancelEditPhone()" type="button" name="button"><i class="fa fa-times-circle-o" aria-hidden="true"></i></button>
+            <button ng-show="editPhone" ng-click="updateInfo(phoneInput,'phone')" type="button" name="button"><i class="fa fa-floppy-o" aria-hidden="true"></i></button>
+            <h4> <span ng-hide="editPhone">{{accountDets.phone}}</span></h4>
             <input ng-show="editPhone" ng-model='phoneInput' type="text" name="" value="">
-            <button ng-hide="editPhone" ng-click="showPhone()"type="button" name="button"><i class="fa fa-pencil" aria-hidden="true"></i></button>
-            <button ng-show="editPhone" ng-click="cancelEditPhone()"type="button" name="button"><i class="fa fa-times-circle-o" aria-hidden="true"></i></button>
-            <button ng-show="editPhone" ng-click="updateInfo(phoneInput,'phone')"type="button" name="button"><i class="fa fa-floppy-o" aria-hidden="true"></i></button>
-
         </div>
         <div class="editable">
-            <h4>Address: <span ng-hide="editAddress">{{accountDets.address}}</span></h4>
-            <input ng-show="editAddress" ng-model='addressInput' type="text" name="" value="">
+            <h5>Address: </h5>
             <button ng-hide="editAddress" ng-click="showAddress()" type="button" name="button"><i class="fa fa-pencil" aria-hidden="true"></i></button>
-            <button ng-show="editAddress" ng-click="cancelEditAddress()"type="button" name="button"><i class="fa fa-times-circle-o" aria-hidden="true"></i></button>
-            <button ng-show="editAddress" ng-click="updateInfo(addressInput,'address')"type="button" name="button"><i class="fa fa-floppy-o" aria-hidden="true"></i></button>
-
+            <button ng-show="editAddress" ng-click="cancelEditAddress()" type="button" name="button"><i class="fa fa-times-circle-o" aria-hidden="true"></i></button>
+            <button ng-show="editAddress" ng-click="updateInfo(addressInput,'address')" type="button" name="button"><i class="fa fa-floppy-o" aria-hidden="true"></i></button>
+            <h4><span ng-hide="editAddress">{{accountDets.address}}</span></h4>
+            <input ng-show="editAddress" ng-model='addressInput' type="text" name="" value="">
         </div>
 
         <h5>last order date: {{accountDets.lastOrderDate}}</h5>
@@ -101,25 +112,38 @@
                 <h6>{{beer.name}} ~ {{beer.qty}} ~ {{beer.vessel}} ~ ${{beer.totalBeerPrice}}</h6>
             </div>
         </div>
-        <div class="placeOrder">        
-        <h5>Total: ${{orderTotal}} </h5>
-        <button ng-click='placeOrder(orderAcct,orderList,user.username,user.distributer,deliveryDay)' type="button" name="button">Place Order</button>
+        <div class="placeOrder">
+            <h5>Total: ${{orderTotal}} </h5>
+            <button ng-click='placeOrder(orderAcct,orderList,user.username,user.distributer,deliveryDay)' type="button" name="button">Place Order</button>
         </div>
     </div>
 </aside>
 
 <div class="addAccount col-xs-12 col-sm-5 ">
-    <h3>Create a new account</h3>
-    <div class="inputContainer">
-
-
-        <input ng-model='accountName' type="text" name="accountName" value="" placeholder="Account Name">
-        <input ng-model='contact' type="text" name="contact" value="" placeholder="Who to Contact">
-        <input ng-model='email' type="text" name="email" value="" placeholder="Contact's email">
-        <input ng-model='phone' type="text" name="phone" value="" placeholder="Contact's phone number">
-        <input ng-model='address' type="text" name="address" value="" placeholder="Address">
-
-        <button ng-click='addAcct()' type="button" name="">Add Account</button>
-
+    <div class="addAccountBox">
+        <h3>Create a new account</h3>
+        <div class="inputContainer">
+            <div class="acctField">
+                <h6>Account Name</h6>
+                <input ng-model='accountName' type="text" name="accountName" value="">
+            </div>
+            <div class="acctField">
+              <h6>Contact Name</h6>
+                <input ng-model='contact' type="text" name="contact" value="" >
+            </div>
+            <div class="acctField">
+              <h6>Email</h6>
+                <input ng-model='email' type="text" name="email" value="" >
+            </div>
+            <div class="acctField">
+              <h6>Phone</h6>
+                <input ng-model='phone' type="text" name="phone" value="" >
+            </div>
+            <div class="acctField">
+              <h6>Address</h6>
+                <input ng-model='address' type="text" name="address" value="" >
+            </div>
+            <button ng-click='addAcct()' type="button" name="">Add Account</button>
+        </div>
     </div>
 </div>
