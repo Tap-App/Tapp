@@ -47,34 +47,56 @@
 <div class="addBeerBox col-xs-12 ">
   <h3>Add a Beer!</h3>
     <div class="beerInfo">
-        <input ng-model="brewery" type="text" value="" placeholder="Brewery">
-        <input ng-model="name" type="text" value="" placeholder="Beer Name">
-        <input ng-model="beerType" type="text" value="" placeholder="Beer Type">
-        <input ng-model="description" type="text" value="" placeholder="Quick Description">
+      <div class="orderField">
+        <h6>Brewery</h6>
+        <input ng-model="brewery" type="text" value="" >
+      </div>
+      <div class="orderField">
+        <h6>Beer Name</h6>
+        <input ng-model="name" type="text" value="" >
+
+      </div>
+      <div class="orderField">
+        <h6>Style</h6>
+        <input ng-model="beerType" type="text" value="" >
+
+      </div>
+      <div class="orderField">
+        <h6>Description</h6>
+        <input ng-model="description" type="text" value="" >
+      </div>
     </div>
-    <div class="qtyAndPrice">
+    <div class="orderField">
+        <div class="QP">
+          <div class="qty">
+            <h6>QTY</h6>
+          </div>
+          <div class="price">
+            <h6>$</h6>
+          </div>
+        </div>
         <div class="inputsForAdd">
-            <h5 class="type">Cases</h5>
+            <h6>Cases</h6>
             <input ng-model="qtyCases" type="number" value="" placeholder="0">
-            <h5>$</h5>
+
             <input ng-model="priceCases" type="number" name="" value="">
         </div>
         <div class="inputsForAdd">
-            <h5 class="type">Sixtels</h5>
+            <h6>Sixtels</h6>
             <input ng-model="qtySixtels" type="number" value="" placeholder="0">
-            <h5>$</h5>
+
             <input ng-model="priceSixtel" type="number" name="" value="">
         </div>
         <div class="inputsForAdd">
-            <h5 class="type">Quarter-Barrels</h5>
+            <h6>Quarter-Barrels</h6>
             <input ng-model="qtyQB" type="number" value="" placeholder="0">
-            <h5>$</h5>
+
             <input ng-model="priceQB" type="number" name="" value="">
         </div>
         <div class="inputsForAdd">
-            <h5 class="type">Half-Barrels</h5>
+            <h6>Half-Barrels</h6>
             <input ng-model="qtyHalfBarrels" type="number" value="" placeholder="0">
-            <h5>$</h5>
+
             <input ng-model="priceHB" type="number" name="" value="">
         </div>
     </div>

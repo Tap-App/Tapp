@@ -210,20 +210,7 @@ footer{
       text-align: center;
     }
 }
-.inputsForAdd{
-  display: inline-block;
-  width: 22%;
-  .type{
-    display: block;
-  }
-  input{
-    display: inline-block;
-    width: 30%;
-  }
-  h5{
-    display: inline-block;
-  }
-}
+
 aside{
   margin-bottom: 5%;
   .placeOrder{
@@ -274,6 +261,34 @@ aside{
   }
   button{
     float: right;
+  }
+  .QP{
+    width: 40%;
+    display: block;
+    float: right;
+    h6{
+      margin: 0;
+    }
+    .qty{
+      display: inline-block;
+      text-align: center;
+    }
+    .price{
+      display:inline-block;
+      text-align: center;
+      float: right;
+      margin-right: 35%;
+    }
+  }
+  .inputsForAdd{
+    display: block;
+    width: 95%;
+    margin-top: 5%;
+    input{
+      display: inline-block;
+      width: 20%;
+      margin: -2% 0 0 1%;
+    }
   }
 }
 .orderBeerList{
