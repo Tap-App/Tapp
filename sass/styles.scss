@@ -206,6 +206,9 @@ footer{
     margin: 1% 0 10% 8%;
     border-radius: 8px;
     box-shadow: 2px 2px 6px;
+    h2{
+      text-align: center;
+    }
 }
 .inputsForAdd{
   display: inline-block;
@@ -321,7 +324,7 @@ aside{
   padding: 2%;
   width: 90%;
   border-radius: 5px;
-  margin: 0 auto;
+  margin: 10% auto;
   h3{
     text-align: center;
   }
@@ -349,4 +352,36 @@ aside{
     }
   }
 
+}
+
+.orderDetBodyItemLeft{
+  width: 95%;
+    margin: 2% auto;
+    display: block;
+    border-left: 2px solid whitesmoke;
+    border-top: 2px solid whitesmoke;
+    text-align: center;
+}
+.orderDetBodyItemRight{
+  display: block;
+    width: 95%;
+    margin: 2% auto;
+    border-top: 2px solid whitesmoke;
+    border-right: 2px solid whitesmoke;
+    text-align: center;
+}
+.orderDetDate{
+  display: inline-block;
+  width: 25%;
+  text-align: center;
+}
+.orderDetDay{
+  display: inline-block;
+  width: 25%;
+  text-align: center;
+}
+.orderDetAccount{
+  display: inline-block;
+  width: 45%;
+  text-align: center;
 }

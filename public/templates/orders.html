@@ -3,14 +3,16 @@
 <div class="distOrders">
     <h1>{{user.distributer}}'s Order List</h1>
     <div class="searchBar col-xs-12">
-      <i class='fa fa-search' aria-hidden="true"></i><input ng-model="orderSearch" type="text" name="" value="" >
+        <i class='fa fa-search' aria-hidden="true"></i>
+        <input ng-model="orderSearch" type="text" name="" value="">
     </div>
 
     <div class="orderList col-xs-7">
         <h4>Not Delivered Orders</h4>
         <div class="orderContainer listBox">
             <div class="listItem " ng-repeat="order in notDelivOrders | filter:orderSearch">
-              <a ng-click="showDetails(order)"><h5>{{order.accountName}} {{order.orderDate}}</h5></a>                <button ng-click='delivered(order._id)' type="button" name="button">Delivered</button>
+                <a ng-click="showDetails(order)"><h5>{{order.accountName}} {{order.orderDate}}</h5></a>
+                <button ng-click='delivered(order._id)' type="button" name="button">Delivered</button>
             </div>
         </div>
     </div>
@@ -25,14 +27,38 @@
     </div>
 
     <div class="orderDetails col-xs-10">
-        <h2>Order Details</h2>
-        <h3>Order Date: {{orderDets.orderDate}} Rep: {{orderDets.username}} Delivery Day: {{orderDets.deliveryDate}}</h3>
-        <h4>Beers:</h4>
-        <div class="beerOrder col-xs-3" ng-repeat="beer in orderDets.beers">
-            <h5>Beer: {{beer.brewery}} {{beer.name}}</h5>
-            <h6>Ammount: {{beer.qty}} {{beer.vessel}}</h6>
+        <div class="orderDetHeader">
+            <div class="orderDetDate">
+                <h6>Order Date</h6>
+                <h6>{{orderDets.orderDate}}</h6>
+            </div>
+            <div class="orderDetAccount">
+                <h5>Order Details</h5>
+                <h5>{{orderDets.accountName}}</h5>
+            </div>
+            <div class="orderDetDay">
+                <h6>Delivery Day</h6>
+                <h6>{{orderDets.deliveryDate}}</h6>
+            </div>
         </div>
-        <h3>Total: ${{orderDets.totalPrice}}</h3>
+        <div class="orderDetBody">
+            <div class="orderDetBodyItemLeft">
+              <h6>Rep</h6>
+              <h5>{{orderDets.username}}</h5>
+            </div>
+            <div class="orderDetBodyItemLeft">
+              <h6>Beer List</h6>
+              <div class="orderDetBeerList" ng-repeat="beer in orderDets.beers">
+                <h6> {{beer.name}} ~ {{beer.qty}} ~ {{beer.vessel}} @ ${{beer.pricePerItem}} ea. = ${{beer.totalBeerPrice}}</h6>
+              </div>
+
+            </div>
+            <div class="orderDetBodyItemLeft">
+              <h6>Order Total</h6>
+              <h5>${{orderDets.totalPrice}}</h5>
+            </div>
+        </div>
+
     </div>
 </div>
 <!-- </div distOrders>  -->
