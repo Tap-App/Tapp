@@ -44,16 +44,16 @@ exports.register = (server, options, next) => {
                         distributer: request.payload.distributer
                       }
       const userCollection = Mongojs.db().collection('users');
-      if (request.payload.access === 'TappRules') {
+      if (request.payload.access === 'ManageMyInventory') {
         console.log('acces granted');
         userCollection.save(newUser,(err,data) => {
           if (err) {
             return reply(Boom.wrap(err, 'Internal MongoDB error'))
           }
-          reply('New User Created Successfully').code(204);
+          reply('New User Created Successfully, You may login with your username and password.');
         })
       } else {
-        reply('Incorrect Access Code')
+        reply('Incorrect Access Code');
       }
     }
   })

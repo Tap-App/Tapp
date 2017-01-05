@@ -47,13 +47,13 @@ body {
   display: none; }
 
 .accountListBox {
-  height: 300px; }
+  height: 400px; }
   .accountListBox .accountList {
-    height: 300px;
+    height: 400px;
     overflow: scroll; }
 
 .accountDetails {
-  min-height: 300px; }
+  min-height: 400px; }
   .accountDetails h3 {
     text-align: center; }
 
@@ -349,4 +349,23 @@ aside {
 .orderDetAccount {
   display: inline-block;
   width: 45%;
+  text-align: center; }
+
+.fullInventoryListContainer {
+  width: 100%;
+  display: block;
+  margin: 0% auto;
+  background-color: whitesmoke; }
+
+.listHead {
+  text-align: center;
+  background-color: #ffe978;
+  border: 1px solid black; }
+
+.listRow {
+  border-top: 1px solid black;
+  border-bottom: 1px solid black; }
+
+.listCell {
+  padding: 1px;
   text-align: center; }

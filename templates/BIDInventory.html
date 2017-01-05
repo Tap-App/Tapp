@@ -1,0 +1,66 @@
+<div class="fullInvHeader">
+
+</div>
+<!-- <div class="searchBar col-xs-12">
+    <i class='fa fa-search' aria-hidden="true"></i>
+    <input ng-model="accountSearch" type="text" name="" value="">
+</div> -->
+<div class="fullInventoryListContainer">
+    <div class="listHead row">
+        <div class="colHead col-xs-2">
+            <h6>Brewery</h6>
+        </div>
+        <div class="colHead col-xs-2">
+            <h6>Beer</h6>
+        </div>
+        <div class="colHead col-xs-2">
+            <h6>Style</h6>
+        </div>
+        <div class="colHead col-xs-2">
+            <h6>Description</h6>
+        </div>
+        <div class="colHead col-xs-1">
+            <h6>$ per Case</h6>
+        </div>
+        <div class="colHead col-xs-1">
+            <h6>$ per Sixtel</h6>
+        </div>
+        <div class="colHead col-xs-1">
+            <h6>$ per QB</h6>
+        </div>
+        <div class="colHead col-xs-1">
+            <h6>$ per HB</h6>
+        </div>
+    </div>
+
+    <div class="listBody">
+        <div class="row listRow" ng-repeat="beer in inventory">
+            <div class="listCell col-xs-2">
+                <p>{{beer.brewery}}</p>
+            </div>
+            <div class="listCell col-xs-2">
+                <p>{{beer.name}}</p>
+            </div>
+            <div class="listCell col-xs-2">
+                <p>{{beer.beerType}}</p>
+            </div>
+            <div class="listCell col-xs-2">
+                <p>{{beer.description}}</p>
+            </div>
+            <div class="listCell col-xs-1">
+                <p>${{beer.priceCases}}</p>
+            </div>
+            <div class="listCell col-xs-1">
+                <p>${{beer.priceSixtel}}</p>
+            </div>
+            <div class="listCell col-xs-1">
+                <p>${{beer.priceQB}}</p>
+            </div>
+            <div class="listCell col-xs-1">
+                <p>${{beer.priceHB}}</p>
+            </div>
+
+        </div>
+    </div>
+</div>
+</div>

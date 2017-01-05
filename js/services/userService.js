@@ -25,7 +25,7 @@ module.exports = function(app){
               return currentUser;
           })
           // console.log("allsongs arrar", allSongList);
-      },
+      },      
       getCurrentUser: function() {
        console.log("user info", currentUser);
        return currentUser

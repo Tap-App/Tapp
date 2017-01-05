@@ -1,5 +1,5 @@
 module.exports = function(app) {
-    app.controller('loginController', ['$scope', '$http', 'userService', function($scope, $http, userService) {
+    app.controller('loginController', ['$scope', '$http', '$location', 'userService', function($scope, $http, $location, userService) {
       $scope.loading = 0;
 
 
@@ -24,6 +24,7 @@ module.exports = function(app) {
           $scope.loading --;
           console.log(response);
           alert(response.data);
+          userService.login($scope.newUserName,$scope.newPassword);
           $scope.newAccess = "";
           $scope.newRepId = "";
           $scope.newUserName = "";

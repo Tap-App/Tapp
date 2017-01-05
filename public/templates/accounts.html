@@ -5,11 +5,23 @@
   <i class='fa fa-search' aria-hidden="true"></i><input ng-model="accountSearch" type="text" name="" value="" >
 </div>
 <div class="accountListBox col-xs-5 ">
+  <div class="topListGradient">
+
+  </div>
     <div class="accountList listBox">
+      <div class="listSpacing">
+
+      </div>
         <div class="listItem" ng-repeat="account in myAccountsList | filter:accountSearch">
             <a ng-click="showAccountDets(account)"><h5>{{account.accountName}}</h5></a>
         </div>
+        <div class="listSpacing">
+
+        </div>
     </div>
+  <div class="bottomListGradient">
+
+  </div>
 </div>
 
 <div class="accountDetails col-xs-7 ">
