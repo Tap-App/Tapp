@@ -44,6 +44,7 @@
 
 
 </div>
+
 <div class="addBeerBox col-xs-12 ">
   <h3>Add a Beer!</h3>
     <div class="beerInfo">
@@ -103,6 +104,10 @@
     <button ng-click='addBeer()' type="button" name="button">Add Beer</button>
 </div>
 
-<!-- <div class="linkToFull">
+<div class="linkToFull col-xs-12">
+<div class="linkToFullBox" ng-if="user.distributer === 'BID'">
+  <p>To see a speadsheet style inventory follow the below link</p>
   <a href="#/BID">BearIsland Inventory</a>
-</div> -->
+
+</div>
+</div>
