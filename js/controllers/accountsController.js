@@ -269,6 +269,7 @@ module.exports = function(app) {
                 data: {
                     distributer: dist,
                     username: repUser,
+                    repName: $scope.user.name,
                     accountName: acctName,
                     orderDate: today,
                     totalPrice: orderTotal,

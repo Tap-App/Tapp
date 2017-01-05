@@ -8,6 +8,8 @@ require('./controllers/loginController')(app);
 require('./controllers/ordersController')(app);
 require('./controllers/inventoryController')(app);
 require('./controllers/welcomeController')(app);
+require('./controllers/bearIslandController')(app);
+
 
 // Services
 require('./services/userService')(app);
@@ -43,6 +45,10 @@ app.config(['$routeProvider', function ($routeProvider) {
     .when('/inventory', {
       controller: 'inventoryController',
       templateUrl: 'templates/inventory.html',
+    })
+    .when('/BID', {
+      controller: 'bearIslandController',
+      templateUrl: 'templates/BIDInventory.html',
     });
 
 }]);

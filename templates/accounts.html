@@ -5,11 +5,23 @@
   <i class='fa fa-search' aria-hidden="true"></i><input ng-model="accountSearch" type="text" name="" value="" >
 </div>
 <div class="accountListBox col-xs-5 ">
+  <div class="topListGradient">
+
+  </div>
     <div class="accountList listBox">
+      <div class="listSpacing">
+
+      </div>
         <div class="listItem" ng-repeat="account in myAccountsList | filter:accountSearch">
             <a ng-click="showAccountDets(account)"><h5>{{account.accountName}}</h5></a>
         </div>
+        <div class="listSpacing">
+
+        </div>
     </div>
+  <div class="bottomListGradient">
+
+  </div>
 </div>
 
 <div class="accountDetails col-xs-7 ">
@@ -29,7 +41,7 @@
             <button ng-hide="editEmail" ng-click="showEmail()" type="button" name="button"><i class="fa fa-pencil" aria-hidden="true"></i></button>
             <button ng-show="editEmail" ng-click="cancelEditPhone()" type="button" name="button"><i class="fa fa-times-circle-o" aria-hidden="true"></i></button>
             <button ng-show="editEmail" ng-click="updateInfo(emailInput,'email')" type="button" name="button"><i class="fa fa-floppy-o" aria-hidden="true"></i></button>
-            <h4> <span ng-hide="editPhone">{{accountDets.email}}</span></h4>
+            <h4> <span ng-hide="editPhone"><a href="mailto:{{accountDets.email}}">{{accountDets.email}}</a></span></h4>
             <input ng-show="editEmail" ng-model='emailInput' type="text" name="" value="">
         </div>
         <div class="editable">

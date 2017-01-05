@@ -270,6 +270,7 @@ module.exports = function(app) {
                 data: {
                     distributer: dist,
                     username: repUser,
+                    repName: $scope.user.name,
                     accountName: acctName,
                     orderDate: today,
                     totalPrice: orderTotal,
@@ -290,6 +291,17 @@ module.exports = function(app) {
 };
 
 },{}],2:[function(require,module,exports){
+module.exports= function(app){
+  app.controller('bearIslandController', ['$scope', 'inventoryService', function($scope, inventoryService){
+
+    $scope.inventory = inventoryService.getMyInventoryServer('AB')
+
+
+
+  }])
+};
+
+},{}],3:[function(require,module,exports){
 module.exports = function(app) {
     app.controller('inventoryController', ['$scope', '$http', 'inventoryService', 'userService', function($scope, $http, inventoryService, userService) {
         $scope.loading = 0;
@@ -381,9 +393,9 @@ module.exports = function(app) {
     }]);
 };
 
-},{}],3:[function(require,module,exports){
+},{}],4:[function(require,module,exports){
 module.exports = function(app) {
-    app.controller('loginController', ['$scope', '$http', 'userService', function($scope, $http, userService) {
+    app.controller('loginController', ['$scope', '$http', '$location', 'userService', function($scope, $http, $location, userService) {
       $scope.loading = 0;
 
 
@@ -408,6 +420,7 @@ module.exports = function(app) {
           $scope.loading --;
           console.log(response);
           alert(response.data);
+          userService.login($scope.newUserName,$scope.newPassword);
           $scope.newAccess = "";
           $scope.newRepId = "";
           $scope.newUserName = "";
@@ -419,7 +432,7 @@ module.exports = function(app) {
     }]);
 };
 
-},{}],4:[function(require,module,exports){
+},{}],5:[function(require,module,exports){
 module.exports = function(app) {
     app.controller('ordersController', ['$scope', '$http', 'userService', 'orderService', function($scope, $http, userService, orderService){
       $scope.loading = 0;
@@ -453,7 +466,7 @@ module.exports = function(app) {
     }]);
 };
 
-},{}],5:[function(require,module,exports){
+},{}],6:[function(require,module,exports){
 module.exports = function(app){
   app.controller('welcomeController',['$scope', '$http', function($scope, $http){
 
@@ -466,7 +479,7 @@ module.exports = function(app){
   }]);
 };
 
-},{}],6:[function(require,module,exports){
+},{}],7:[function(require,module,exports){
 
 
 let app = angular.module('Tapp', ['ngRoute']);
@@ -477,6 +490,8 @@ require('./controllers/loginController')(app);
 require('./controllers/ordersController')(app);
 require('./controllers/inventoryController')(app);
 require('./controllers/welcomeController')(app);
+require('./controllers/bearIslandController')(app);
+
 
 // Services
 require('./services/userService')(app);
@@ -512,11 +527,15 @@ app.config(['$routeProvider', function ($routeProvider) {
     .when('/inventory', {
       controller: 'inventoryController',
       templateUrl: 'templates/inventory.html',
+    })
+    .when('/BID', {
+      controller: 'bearIslandController',
+      templateUrl: 'templates/BIDInventory.html',
     });
 
 }]);
 
-},{"./controllers/accountsController":1,"./controllers/inventoryController":2,"./controllers/loginController":3,"./controllers/ordersController":4,"./controllers/welcomeController":5,"./services/accountService":7,"./services/inventoryService":8,"./services/orderService":9,"./services/userService":10}],7:[function(require,module,exports){
+},{"./controllers/accountsController":1,"./controllers/bearIslandController":2,"./controllers/inventoryController":3,"./controllers/loginController":4,"./controllers/ordersController":5,"./controllers/welcomeController":6,"./services/accountService":8,"./services/inventoryService":9,"./services/orderService":10,"./services/userService":11}],8:[function(require,module,exports){
 module.exports = function(app){
 
 
@@ -576,7 +595,7 @@ module.exports = function(app){
   }]);
 };
 
-},{}],8:[function(require,module,exports){
+},{}],9:[function(require,module,exports){
 module.exports = function(app){
 
 
@@ -625,7 +644,7 @@ module.exports = function(app){
   }]);
 };
 
-},{}],9:[function(require,module,exports){
+},{}],10:[function(require,module,exports){
 module.exports = function(app){
 
 
@@ -709,7 +728,7 @@ app.factory('orderService',['$http', function($http){
 }]);
 };
 
-},{}],10:[function(require,module,exports){
+},{}],11:[function(require,module,exports){
 module.exports = function(app){
 
 
@@ -737,7 +756,7 @@ module.exports = function(app){
               return currentUser;
           })
           // console.log("allsongs arrar", allSongList);
-      },
+      },      
       getCurrentUser: function() {
        console.log("user info", currentUser);
        return currentUser
@@ -757,4 +776,4 @@ module.exports = function(app){
   }]);
 };
 
-},{}]},{},[6])
+},{}]},{},[7])

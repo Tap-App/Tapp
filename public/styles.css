@@ -47,13 +47,13 @@ body {
   display: none; }
 
 .accountListBox {
-  height: 300px; }
+  height: 400px; }
   .accountListBox .accountList {
-    height: 300px;
+    height: 400px;
     overflow: scroll; }
 
 .accountDetails {
-  min-height: 300px; }
+  min-height: 400px; }
   .accountDetails h3 {
     text-align: center; }
 
@@ -190,17 +190,8 @@ footer {
   margin: 1% 0 10% 8%;
   border-radius: 8px;
   box-shadow: 2px 2px 6px; }
-
-.inputsForAdd {
-  display: inline-block;
-  width: 22%; }
-  .inputsForAdd .type {
-    display: block; }
-  .inputsForAdd input {
-    display: inline-block;
-    width: 30%; }
-  .inputsForAdd h5 {
-    display: inline-block; }
+  .orderDetails h2 {
+    text-align: center; }
 
 aside {
   margin-bottom: 5%; }
@@ -245,6 +236,28 @@ aside {
     border: 1px solid grey; }
   .orderField button {
     float: right; }
+  .orderField .QP {
+    width: 40%;
+    display: block;
+    float: right; }
+    .orderField .QP h6 {
+      margin: 0; }
+    .orderField .QP .qty {
+      display: inline-block;
+      text-align: center; }
+    .orderField .QP .price {
+      display: inline-block;
+      text-align: center;
+      float: right;
+      margin-right: 35%; }
+  .orderField .inputsForAdd {
+    display: block;
+    width: 95%;
+    margin-top: 5%; }
+    .orderField .inputsForAdd input {
+      display: inline-block;
+      width: 20%;
+      margin: -2% 0 0 1%; }
 
 .orderBeerList {
   border-top: 2px solid white; }
@@ -285,7 +298,7 @@ aside {
   padding: 2%;
   width: 90%;
   border-radius: 5px;
-  margin: 0 auto; }
+  margin: 10% auto; }
   .addAccountBox h3 {
     text-align: center; }
   .addAccountBox button {
@@ -306,3 +319,53 @@ aside {
       height: 30px;
       border-radius: 5px;
       border: 1px solid grey; }
+
+.orderDetBodyItemLeft {
+  width: 95%;
+  margin: 2% auto;
+  display: block;
+  border-left: 2px solid whitesmoke;
+  border-top: 2px solid whitesmoke;
+  text-align: center; }
+
+.orderDetBodyItemRight {
+  display: block;
+  width: 95%;
+  margin: 2% auto;
+  border-top: 2px solid whitesmoke;
+  border-right: 2px solid whitesmoke;
+  text-align: center; }
+
+.orderDetDate {
+  display: inline-block;
+  width: 25%;
+  text-align: center; }
+
+.orderDetDay {
+  display: inline-block;
+  width: 25%;
+  text-align: center; }
+
+.orderDetAccount {
+  display: inline-block;
+  width: 45%;
+  text-align: center; }
+
+.fullInventoryListContainer {
+  width: 100%;
+  display: block;
+  margin: 0% auto;
+  background-color: whitesmoke; }
+
+.listHead {
+  text-align: center;
+  background-color: #ffe978;
+  border: 1px solid black; }
+
+.listRow {
+  border-top: 1px solid black;
+  border-bottom: 1px solid black; }
+
+.listCell {
+  padding: 1px;
+  text-align: center; }
