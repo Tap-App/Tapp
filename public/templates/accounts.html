@@ -121,11 +121,15 @@
             <h4>Order List</h4>
 
             <div class="orderBeerList" ng-repeat='beer in orderList'>
-                <h6>{{beer.name}} ~ {{beer.qty}} ~ {{beer.vessel}} ~ ${{beer.totalBeerPrice}}</h6>
+                <p>{{beer.name}} ~ {{beer.qty}} ~ {{beer.vessel}} ~ ${{beer.totalBeerPrice}} </p>
+                <p>kegs: {{beer.numberOfKegs}} ~ Dep: ${{beer.kegDeposit}} ~ Total ${{beer.totalWithDeposit}}</p>
             </div>
         </div>
         <div class="placeOrder">
-            <h5>Total: ${{orderTotal}} </h5>
+            <h5>Beer Total: ${{orderTotal}} </h5>
+            <h5>Deposit Total: ${{orderDeposit}} </h5>
+            <h5>Order Total: ${{orderTotalDeposit}} </h5>
+
             <button ng-click='placeOrder(orderAcct,orderList,user.username,user.distributer,deliveryDay)' type="button" name="button">Place Order</button>
         </div>
     </div>

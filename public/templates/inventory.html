@@ -25,7 +25,7 @@
 
     <h4>Brewery: {{beerDets.brewery}} </h4><input ng-model="breweryInput"ng-show="editBeer"type="text" name="" value=""><button ng-show="editBeer" ng-click="updateBeerInfo(breweryInput, 'brewery')"type="button" name="button"><i class="fa fa-floppy-o" aria-hidden="true"></i></button>
     <h4>Style: {{beerDets.beerType}}</h4><input ng-model="typeInput"ng-show="editBeer"type="text" name="" value=""><button ng-show="editBeer" ng-click="updateBeerInfo(typeInput, 'beerType')"type="button" name="button"><i class="fa fa-floppy-o" aria-hidden="true"></i></button>
-    <h4>ABV: {{beerDets.abv}}%</h4><input ng-model="abvInput"ng-show="editBeer"type="text" name="" value=""><button ng-show="editBeer" ng-click="updateBeerInfo(abvInput, 'abv')"type="button" name="button"><i class="fa fa-floppy-o" aria-hidden="true"></i></button>
+    <h4>ABV: {{beerDets.abv}}</h4><input ng-model="abvInput"ng-show="editBeer"type="text" name="" value=""><button ng-show="editBeer" ng-click="updateBeerInfo(abvInput, 'abv')"type="button" name="button"><i class="fa fa-floppy-o" aria-hidden="true"></i></button>
 
     <h4>Description: {{beerDets.description}}</h4><input ng-model="descriptionInput"ng-show="editBeer"type="text" name="" value=""><button ng-show="editBeer" ng-click="updateBeerInfo(descriptionInput, 'description')"type="button" name="button"><i class="fa fa-floppy-o" aria-hidden="true"></i></button>
 
@@ -76,10 +76,10 @@
     <div class="orderField">
         <div class="QP">
           <div class="qty">
-            <h6>$</h6>
+            <h6>QTY</h6>
           </div>
           <div class="price">
-            <h6>QTY</h6>
+            <h6>$</h6>
           </div>
         </div>
         <div class="inputsForAdd">

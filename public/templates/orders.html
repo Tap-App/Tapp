@@ -54,8 +54,19 @@
 
             </div>
             <div class="orderDetBodyItemLeft">
-              <h6>Order Total</h6>
-              <h5>${{orderDets.totalPrice}}</h5>
+              <div class="totalItem">
+                <h6>Beer Total</h6>
+                <h5>${{orderDets.totalBeerPrice}}</h5>
+              </div>
+              <div class="totalItem">
+                <h6>Total Kegs</h6>
+                <h5>{{orderDets.totalKegs}} = ${{orderDets.totalDeposit}}</h5>
+              </div>
+              <div class="totalItem">
+                <h6>Order Total </h6>
+                <h5>${{orderDets.totalPriceWitDeposit}}</h5>
+              </div>
+
             </div>
         </div>
 
