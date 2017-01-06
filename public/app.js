@@ -107,27 +107,49 @@ module.exports = function(app) {
             console.log("beers for order list", $scope.items);
         }
         $scope.orderList = []
+        $scope.orderDeposit= 0;
+        $scope.totalOrderKegs = 0;
         $scope.orderTotal = 0;
+        $scope.orderTotalDeposit = 0;
         $scope.addToOrderList = function(orderBeer, beerQty, beerVessel) {
+            var orderBeerKegs = 0;
             var choicePrice = 0;
             if (beerVessel === 'cases') {
                 choicePrice = orderBeer.priceCases;
             } else if (beerVessel === 'sixtels') {
                 choicePrice = orderBeer.priceSixtel;
-            } else {
+                orderBeerKegs = 1;
+            } else if (beerVessel === 'halfBarrels'){
                 choicePrice = orderBeer.priceHB;
+                orderBeerKegs = 1;
+            } else if (beerVessel === 'quarterBarrels'){
+              choicePrice = orderBeer.priceQB;
+              orderBeerKegs = 1;
             }
             var beerTotal = beerQty * choicePrice;
+            var kegTotal = beerQty * orderBeerKegs;
+            var kegCost = kegTotal * 40;
+            var priceWithDeposit = beerTotal + kegCost;
             console.log("beer total", beerTotal);
+            console.log("total kegs", kegTotal);
+            console.log("keg cost", kegCost);
+            console.log("total price", priceWithDeposit);
             $scope.orderList.push({
                 name: orderBeer.name,
                 qty: beerQty,
                 vessel: beerVessel,
                 pricePerItem: choicePrice,
-                totalBeerPrice: beerTotal
+                totalBeerPrice: beerTotal,
+                numberOfKegs: kegTotal,
+                kegDeposit: kegCost,
+                totalWithDeposit: priceWithDeposit,
             })
             $scope.orderTotal = $scope.orderTotal + beerTotal;
+            $scope.totalOrderKegs = $scope.totalOrderKegs + kegTotal;
+            $scope.orderDeposit = $scope.orderDeposit + kegCost;
+            $scope.orderTotalDeposit = $scope.orderTotalDeposit + priceWithDeposit;
             console.log("orderTotal", $scope.orderTotal);
+            console.log("order List: ", $scope.orderList);
         }
         $scope.placeOrder = function(acctName, orderList, repUser, dist, delivery) {
             var today = new Date();
@@ -146,6 +168,7 @@ module.exports = function(app) {
             today = mm + '/' + dd + '/' + yyyy;
 
             var orderTotal = 0;
+
             console.log("acct id to update when order placed", $scope.orderAcctId);
 
             console.log("List of beers to order", orderList);
@@ -273,7 +296,10 @@ module.exports = function(app) {
                     repName: $scope.user.name,
                     accountName: acctName,
                     orderDate: today,
-                    totalPrice: orderTotal,
+                    totalBeerPrice: orderTotal,
+                    totalKegs: $scope.totalOrderKegs,
+                    totalPriceWitDeposit: $scope.orderTotalDeposit,
+                    totalDeposit: $scope.orderDeposit,
                     beers: orderList,
                     deliveryDate: delivery,
                     delivered: false
@@ -282,6 +308,9 @@ module.exports = function(app) {
                 $scope.orderAcct = "";
                 $scope.orderList = [];
                 $scope.orderTotal = 0;
+                $scope.totalOrderKegs = 0;
+                $scope.orderTotalDeposit = 0;
+                $scope.orderDeposit = 0;
             })
 
 
@@ -294,7 +323,7 @@ module.exports = function(app) {
 module.exports= function(app){
   app.controller('bearIslandController', ['$scope', 'inventoryService', function($scope, inventoryService){
 
-    $scope.inventory = inventoryService.getMyInventoryServer('AB')
+    $scope.inventory = inventoryService.getMyInventoryServer('BID')
 
 
 
@@ -332,6 +361,7 @@ module.exports = function(app) {
             $scope.nameInput = "";
             $scope.breweryInput = "";
             $scope.typeInput = "";
+            $scope.abvInput = "";
             $scope.descriptionInput = "";
             $scope.qtyCasesInput = "";
             $scope.qtyHalfBarrelsInput = "";
@@ -354,6 +384,7 @@ module.exports = function(app) {
                     name: $scope.name,
                     brewery: $scope.brewery,
                     beerType: $scope.beerType,
+                    abv: $scope.abv,
                     description: $scope.description,
                     qtyCases: $scope.qtyCases,
                     qtySixtels: $scope.qtySixtels,
@@ -372,6 +403,7 @@ module.exports = function(app) {
                 $scope.name = "";
                 $scope.brewery = "";
                 $scope.beerType = "";
+                $scope.abv = "";
                 $scope.description = "";
                 $scope.qtyCases = "";
                 $scope.qtySixtels = "";

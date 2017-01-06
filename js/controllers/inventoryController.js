@@ -28,6 +28,7 @@ module.exports = function(app) {
             $scope.nameInput = "";
             $scope.breweryInput = "";
             $scope.typeInput = "";
+            $scope.abvInput = "";
             $scope.descriptionInput = "";
             $scope.qtyCasesInput = "";
             $scope.qtyHalfBarrelsInput = "";
@@ -50,6 +51,7 @@ module.exports = function(app) {
                     name: $scope.name,
                     brewery: $scope.brewery,
                     beerType: $scope.beerType,
+                    abv: $scope.abv,
                     description: $scope.description,
                     qtyCases: $scope.qtyCases,
                     qtySixtels: $scope.qtySixtels,
@@ -68,6 +70,7 @@ module.exports = function(app) {
                 $scope.name = "";
                 $scope.brewery = "";
                 $scope.beerType = "";
+                $scope.abv = "";
                 $scope.description = "";
                 $scope.qtyCases = "";
                 $scope.qtySixtels = "";

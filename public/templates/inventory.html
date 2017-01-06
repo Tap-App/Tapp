@@ -25,6 +25,7 @@
 
     <h4>Brewery: {{beerDets.brewery}} </h4><input ng-model="breweryInput"ng-show="editBeer"type="text" name="" value=""><button ng-show="editBeer" ng-click="updateBeerInfo(breweryInput, 'brewery')"type="button" name="button"><i class="fa fa-floppy-o" aria-hidden="true"></i></button>
     <h4>Style: {{beerDets.beerType}}</h4><input ng-model="typeInput"ng-show="editBeer"type="text" name="" value=""><button ng-show="editBeer" ng-click="updateBeerInfo(typeInput, 'beerType')"type="button" name="button"><i class="fa fa-floppy-o" aria-hidden="true"></i></button>
+    <h4>ABV: {{beerDets.abv}}%</h4><input ng-model="abvInput"ng-show="editBeer"type="text" name="" value=""><button ng-show="editBeer" ng-click="updateBeerInfo(abvInput, 'abv')"type="button" name="button"><i class="fa fa-floppy-o" aria-hidden="true"></i></button>
 
     <h4>Description: {{beerDets.description}}</h4><input ng-model="descriptionInput"ng-show="editBeer"type="text" name="" value=""><button ng-show="editBeer" ng-click="updateBeerInfo(descriptionInput, 'description')"type="button" name="button"><i class="fa fa-floppy-o" aria-hidden="true"></i></button>
 
@@ -44,6 +45,7 @@
 
 
 </div>
+
 <div class="addBeerBox col-xs-12 ">
   <h3>Add a Beer!</h3>
     <div class="beerInfo">
@@ -59,6 +61,11 @@
       <div class="orderField">
         <h6>Style</h6>
         <input ng-model="beerType" type="text" value="" >
+
+      </div>
+      <div class="orderField">
+        <h6>ABV</h6>
+        <input ng-model="abv" type="text" value="" >
 
       </div>
       <div class="orderField">
@@ -103,6 +110,10 @@
     <button ng-click='addBeer()' type="button" name="button">Add Beer</button>
 </div>
 
-<!-- <div class="linkToFull">
+<div class="linkToFull col-xs-12">
+<div class="linkToFullBox" ng-if="user.distributer === 'BID'">
+  <p>To see a speadsheet style inventory follow the below link</p>
   <a href="#/BID">BearIsland Inventory</a>
-</div> -->
+
+</div>
+</div>
