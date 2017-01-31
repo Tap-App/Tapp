@@ -30,7 +30,7 @@
     "gulp": "^3.9.1",
     "gulp-browserify": "^0.5.1",
     "gulp-sass": "^2.3.2",
-    "gulp-watch": "^4.3.9",
+    "gulp-watch": "^4.3.11",
     "hapi": "^13.4.0",
     "hapi-mongojs": "^3.0.1",
     "inert": "^4.0.2",

@@ -244,12 +244,13 @@ aside {
       margin: 0; }
     .orderField .QP .qty {
       display: inline-block;
-      text-align: center; }
-    .orderField .QP .price {
-      display: inline-block;
       text-align: center;
       float: right;
       margin-right: 35%; }
+    .orderField .QP .price {
+      display: inline-block;
+      text-align: center;
+      margin-left: 10%; }
   .orderField .inputsForAdd {
     display: block;
     width: 95%;

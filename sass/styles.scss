@@ -273,14 +273,15 @@ aside{
       margin: 0;
     }
     .qty{
-      display: inline-block;
-      text-align: center;
-    }
-    .price{
       display:inline-block;
       text-align: center;
       float: right;
       margin-right: 35%;
+    }
+    .price{
+      display:inline-block;
+      text-align: center;
+      margin-left: 10%;
     }
   }
   .inputsForAdd{
