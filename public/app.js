@@ -492,6 +492,20 @@ module.exports = function(app) {
         $scope.orderDets = order;
       }
 
+      $scope.cancelOrder = function(id) {
+        $scope.loading ++;
+        console.log(id, 'object id to cancel');
+        $http({
+          method: 'DELETE',
+          url: `/orders/${id}`
+
+        }).then(function(response){
+          alert('Successfully Canceled Order')
+          orderService.getDistOrdersNotDeliv($scope.user.distributer);
+          orderService.getDistOrdersDeliv($scope.user.distributer);
+          $scope.loading --;
+        })
+      }
 
 
 
