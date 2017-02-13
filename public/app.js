@@ -14,30 +14,30 @@ module.exports = function(app) {
         // show and hide edit contact input
         $scope.showContact = function() {
             $scope.editContact = true;
-        }
+        };
         $scope.cancelEditContact = function() {
                 $scope.editContact = false;
-            }
+            };
             // show and hide edit phone input
         $scope.showPhone = function() {
             $scope.editPhone = true;
-        }
+        };
         $scope.cancelEditPhone = function() {
                 $scope.editPhone = false;
-            }
+            };
         $scope.showEmail = function() {
                 $scope.editEmail = true;
-            }
+            };
         $scope.cancelEditPhone = function() {
                 $scope.editEmail = false;
-                }
+              };
             // show and hide edit address input
         $scope.showAddress = function() {
             $scope.editAddress = true;
-        }
+        };
         $scope.cancelEditAddress = function() {
             $scope.editAddress = false;
-        }
+        };
         $scope.updateInfo = function (editInput,setField) {
           console.log("field to update", setField);
           console.log("update the contact", editInput);
@@ -492,6 +492,20 @@ module.exports = function(app) {
         $scope.orderDets = order;
       }
 
+      $scope.cancelOrder = function(id) {
+        $scope.loading ++;
+        console.log(id, 'object id to cancel');
+        $http({
+          method: 'DELETE',
+          url: `/orders/${id}`
+
+        }).then(function(response){
+          alert('Successfully Canceled Order')
+          orderService.getDistOrdersNotDeliv($scope.user.distributer);
+          orderService.getDistOrdersDeliv($scope.user.distributer);
+          $scope.loading --;
+        })
+      }
 
 
 
