@@ -21,6 +21,7 @@ module.exports = function(app) {
       };
 
       $scope.showDetails = function(order){
+        console.log("match with", $scope.user.username);
         console.log("show details for", order);
         $scope.orderDets = order;
       }
@@ -38,6 +39,48 @@ module.exports = function(app) {
           orderService.getDistOrdersDeliv($scope.user.distributer);
           $scope.loading --;
         })
+      }
+
+      $scope.reOrder = function(orderDets) {
+        var today = new Date();
+        var dd = today.getDate();
+        var mm = today.getMonth() + 1; //January is 0!
+        var yyyy = today.getFullYear();
+
+        if (dd < 10) {
+            dd = '0' + dd
+        }
+
+        if (mm < 10) {
+            mm = '0' + mm
+        }
+
+        today = mm + '/' + dd + '/' + yyyy;
+
+        $http({
+          method: 'POST',
+          url: '/orders',
+          data: {
+              distributer: orderDets.distributer,
+              username: orderDets.username,
+              repName: orderDets.repName,
+              accountName: orderDets.accountName,
+              orderDate: today,
+              totalBeerPrice: orderDets.totalBeerPrice,
+              totalKegs: orderDets.totalKegs,
+              totalPriceWitDeposit: orderDets.totalPriceWitDeposit,
+              totalDeposit: orderDets.totalDeposit,
+              beers: orderDets.beers,
+              deliveryDate: orderDets.deliveryDate,
+              delivered: false
+          },
+
+        }).then(function(response){
+          $scope.notDelivOrders = orderService.getDistOrdersNotDeliv($scope.user.distributer);
+          $scope.delivOrders = orderService.getDistOrdersDeliv($scope.user.distributer);
+        })
+
+
       }
 
 
