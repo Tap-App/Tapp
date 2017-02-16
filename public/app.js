@@ -472,6 +472,7 @@ module.exports = function(app) {
       $scope.allOrders = orderService.getAllOrders();
       $scope.notDelivOrders = orderService.getDistOrdersNotDeliv($scope.user.distributer);
       $scope.delivOrders = orderService.getDistOrdersDeliv($scope.user.distributer);
+      $scope.updateOrderDets = false;
 
       $scope.delivered = function(id){
         $scope.loading ++;
@@ -509,6 +510,7 @@ module.exports = function(app) {
       }
 
       $scope.reOrder = function(orderDets) {
+        console.log("orderDets", orderDets);
         var today = new Date();
         var dd = today.getDate();
         var mm = today.getMonth() + 1; //January is 0!
@@ -517,18 +519,16 @@ module.exports = function(app) {
         if (dd < 10) {
             dd = '0' + dd
         }
-
         if (mm < 10) {
             mm = '0' + mm
         }
-
         today = mm + '/' + dd + '/' + yyyy;
 
         $http({
           method: 'POST',
           url: '/orders',
           data: {
-              distributer: orderDets.distributer,
+              distributer: $scope.user.distributer,
               username: orderDets.username,
               repName: orderDets.repName,
               accountName: orderDets.accountName,
@@ -546,10 +546,11 @@ module.exports = function(app) {
           $scope.notDelivOrders = orderService.getDistOrdersNotDeliv($scope.user.distributer);
           $scope.delivOrders = orderService.getDistOrdersDeliv($scope.user.distributer);
         })
-
-
       }
 
+      $scope.showUpdate = function() {
+        $scope.updateOrderDets = true;
+      }
 
 
     }]);
