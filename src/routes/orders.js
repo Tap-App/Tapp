@@ -130,6 +130,27 @@ exports.register = (server, options, next) => {
         })
     }
   })
+
+  server.route({
+    // DELETE an order aka cancel order
+
+    method: 'DELETE',
+    path: '/orders/{id}',
+    handler(request,reply) {
+      const ordersCollection = Mongojs.db().collection('orders');
+      var oid = ObjectId(request.params.id);
+
+      ordersCollection.remove(
+        { _id: oid},
+        (err, result) => {
+
+          if (err) { return reply(Boom.wrap(err, 'Internal MongoDB error')) }
+          if (result.n === 0) { return reply(Boom.notFound()) }
+
+          reply().code(204);
+      })
+    }
+  })
   next()
 // end of register wrapper
 }
