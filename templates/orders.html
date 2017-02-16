@@ -50,6 +50,7 @@
               <h6>Beer List</h6>
               <div class="orderDetBeerList" ng-repeat="beer in orderDets.beers">
                 <h6> {{beer.name}} ~ {{beer.qty}} ~ {{beer.vessel}} @ ${{beer.pricePerItem}} ea. = ${{beer.totalBeerPrice}}</h6>
+
               </div>
 
             </div>
@@ -70,10 +71,8 @@
             </div>
         </div>
         <div class="order-options">
-
-          <button type="button" name="cancel">Cancel</button>
-          <button type="button" name="update">Update</button>
-          <button type="button" name="reOrder">Re-Order</button>
+          <button type="button" name="cancel" ng-click='cancelOrder(orderDets._id)'>Cancel</button>
+          <button type="button" name="reOrder" ng-click='reOrder(orderDets)'>Re-Order</button>
         </div>
     </div>
 </div>

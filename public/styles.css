@@ -383,3 +383,12 @@ aside {
 .totalItem {
   display: inline-block;
   width: 30%; }
+
+.order-options {
+  display: block;
+  width: 90%;
+  margin: 4% auto; }
+  .order-options button {
+    width: 49%;
+    height: 50px;
+    font-size: 2rem; }

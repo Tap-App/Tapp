@@ -132,14 +132,14 @@ exports.register = (server, options, next) => {
   })
 
   server.route({
-    // DELETE and order aka cancel order
+    // DELETE an order aka cancel order
 
     method: 'DELETE',
     path: '/orders/{id}',
     handler(request,reply) {
       const ordersCollection = Mongojs.db().collection('orders');
       var oid = ObjectId(request.params.id);
-      
+
       ordersCollection.remove(
         { _id: oid},
         (err, result) => {
