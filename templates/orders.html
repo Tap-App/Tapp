@@ -12,7 +12,7 @@
         <div class="orderContainer listBox">
             <div class="listItem " ng-repeat="order in notDelivOrders | filter:orderSearch">
                 <a ng-click="showDetails(order)"><h5>{{order.accountName}} {{order.orderDate}}</h5></a>
-                <button ng-click='delivered(order._id)' type="button" name="button">Delivered</button>
+                <button ng-if="user.username === order.username" ng-click='delivered(order._id)' type="button" name="button">Delivered</button>
             </div>
         </div>
     </div>
@@ -71,8 +71,8 @@
             </div>
         </div>
         <div class="order-options">
-          <button type="button" name="cancel" ng-click='cancelOrder(orderDets._id)'>Cancel</button>
-          <button type="button" name="reOrder" ng-click='reOrder(orderDets)'>Re-Order</button>
+          <button type="button" name="cancel" ng-if="user.username === orderDets.username && !orderDets.delivered" ng-click='cancelOrder(orderDets._id)'>Cancel</button>
+          <button type="button" name="reOrder" ng-if="user.username === orderDets.username" ng-click='reOrder(orderDets)'>Re-Order</button>
         </div>
     </div>
 </div>
